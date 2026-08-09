@@ -3,85 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>For Mayna 💗</title>
+<title>A Little Surprise ✨</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:Georgia,serif;
+  background:#080914;
+  color:white;
+}
 
 body{
-  font-family:Georgia,serif;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at 20% 20%,#ffd6e8,transparent 30%),
-    radial-gradient(circle at 80% 80%,#dcd4ff,transparent 30%),
-    linear-gradient(135deg,#fff5f9,#eeeaff);
-  color:#493b44;
-  overflow-x:hidden;
+  position:relative;
 }
 
-button{
-  border:0;
-  cursor:pointer;
-  font:inherit;
-}
+/* ---------- BACKGROUND ---------- */
 
-.screen{
-  min-height:100vh;
+.scene{
+  position:absolute;
+  inset:0;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:25px 18px;
-}
-
-.hidden{display:none!important}
-
-.card{
-  width:100%;
-  max-width:520px;
-  background:rgba(255,255,255,.78);
-  backdrop-filter:blur(14px);
-  border-radius:28px;
-  padding:30px 22px;
+  align-items:center;
   text-align:center;
-  box-shadow:0 20px 60px rgba(80,40,70,.14);
+  opacity:0;
+  visibility:hidden;
+  transform:scale(1.04);
+  transition:
+    opacity 1s ease,
+    transform 1.2s ease;
+  overflow:hidden;
 }
 
-.kicker{
-  font:11px Arial,sans-serif;
-  letter-spacing:3px;
+.scene.active{
+  opacity:1;
+  visibility:visible;
+  transform:scale(1);
+}
+
+.scene::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,
+    rgba(180,130,255,.16),
+    transparent 65%);
+  filter:blur(20px);
+}
+
+/* ---------- TEXT ---------- */
+
+.content{
+  position:relative;
+  z-index:10;
+  width:min(90%,600px);
+}
+
+.small{
+  font-size:14px;
+  letter-spacing:4px;
   text-transform:uppercase;
-  color:#a16c82;
-  margin-bottom:14px;
+  opacity:.65;
+  margin-bottom:18px;
 }
 
 h1{
-  color:#c74678;
-  font-size:34px;
-  margin-bottom:15px;
+  font-size:clamp(35px,9vw,75px);
+  line-height:1.05;
+  margin-bottom:20px;
+}
+
+h2{
+  font-size:clamp(28px,7vw,55px);
+  margin-bottom:20px;
 }
 
 p{
-  line-height:1.75;
+  font-size:18px;
+  line-height:1.7;
+  opacity:.85;
 }
 
-.primary{
-  margin-top:25px;
-  padding:14px 25px;
-  border-radius:30px;
+/* ---------- BUTTON ---------- */
+
+.btn{
+  margin-top:35px;
+  padding:14px 30px;
+  border:none;
+  border-radius:50px;
+  background:rgba(255,255,255,.1);
   color:white;
-  background:linear-gradient(135deg,#ff6196,#9277ee);
-  box-shadow:0 10px 25px rgba(160,100,200,.25);
+  border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(10px);
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
 }
 
-.primary:active{transform:scale(.96)}
+.btn:hover{
+  transform:scale(1.08);
+  background:rgba(255,255,255,.18);
+}
 
-/* ENVELOPE */
+/* ---------- PARTICLES ---------- */
+
+.particle{
+  position:absolute;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:white;
+  opacity:.5;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh);opacity:0}
+  20%{opacity:.7}
+  80%{opacity:.5}
+  100%{transform:translateY(-20vh);opacity:0}
+}
+
+/* ---------- LOCK ---------- */
+
+.lock{
+  font-size:90px;
+  cursor:pointer;
+  animation:pulse 2s infinite;
+  filter:drop-shadow(0 0 25px rgba(255,255,255,.4));
+}
+
+@keyframes pulse{
+  50%{transform:scale(1.08)}
+}
+
+/* ---------- ENVELOPE ---------- */
 
 .envelope{
-  width:210px;
-  height:140px;
-  margin:30px auto 10px;
+  width:280px;
+  height:180px;
   position:relative;
+  margin:auto;
   cursor:pointer;
   perspective:700px;
 }
@@ -89,765 +160,518 @@ p{
 .env-body{
   position:absolute;
   inset:0;
-  background:#f58aaa;
+  background:#f3e5d0;
   border-radius:8px;
-  box-shadow:0 15px 30px #b9788d55;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 
-.env-flap{
+.flap{
   position:absolute;
-  z-index:3;
   top:0;
   left:0;
   width:0;
   height:0;
-  border-left:105px solid transparent;
-  border-right:105px solid transparent;
-  border-top:78px solid #df6d91;
+  border-left:140px solid transparent;
+  border-right:140px solid transparent;
+  border-top:105px solid #e5cbb0;
   transform-origin:top;
-  transition:1s ease;
+  transition:1s;
+  z-index:4;
 }
 
-.heart-seal{
-  position:absolute;
-  z-index:5;
-  left:50%;
-  top:55px;
-  transform:translateX(-50%);
-  font-size:30px;
-  transition:.5s;
-}
-
-.envelope.open .env-flap{
+.envelope.open .flap{
   transform:rotateX(180deg);
 }
 
-.envelope.open .heart-seal{
-  opacity:0;
-  transform:translateX(-50%) scale(0);
+.letter{
+  position:absolute;
+  width:220px;
+  height:145px;
+  background:#fffaf2;
+  color:#333;
+  left:30px;
+  top:25px;
+  border-radius:5px;
+  padding:20px;
+  transition:1s;
+  z-index:2;
 }
 
-/* PHOTO */
-
-.polaroid{
-  width:235px;
-  margin:25px auto;
-  padding:10px 10px 25px;
-  background:white;
-  box-shadow:0 18px 40px #60405230;
-  transform:rotate(-3deg);
-  animation:photoIn 1s ease;
+.envelope.open .letter{
+  transform:translateY(-100px);
 }
+
+/* ---------- PHOTO ---------- */
 
 .photo{
+  width:min(75vw,320px);
+  padding:12px 12px 35px;
+  background:#fff;
+  box-shadow:0 25px 70px rgba(0,0,0,.5);
+  transform:rotate(-4deg) scale(.5);
+  opacity:0;
+  transition:1.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.photo.show{
+  transform:rotate(-4deg) scale(1);
+  opacity:1;
+}
+
+.photo img{
   width:100%;
-  aspect-ratio:1;
+  height:320px;
   object-fit:cover;
-  background:#f8dce8;
+  display:block;
 }
 
 .caption{
-  font-size:15px;
-  color:#956b7e;
-  margin-top:9px;
+  color:#333;
+  margin-top:12px;
+  font-size:18px;
 }
 
-/* LETTER */
+/* ---------- MEMORY CARDS ---------- */
 
-.letter{
-  margin-top:20px;
-  padding:25px 20px;
-  text-align:left;
-  background:#fffafc;
-  border-radius:20px;
-  line-height:1.8;
-  box-shadow:0 10px 25px #603e5010;
-}
-
-.letter h2{
-  text-align:center;
-  color:#c74678;
-  margin-bottom:15px;
-}
-
-.friendship{
-  margin-top:20px;
-  padding:18px;
-  text-align:center;
-  border-radius:16px;
-  background:linear-gradient(135deg,#fff0f6,#eeeaff);
-  color:#984f70;
-  font-style:italic;
-}
-
-/* SECTIONS */
-
-.section{
-  margin-top:28px;
-  padding-top:25px;
-  border-top:1px solid #d9c5cf;
-}
-
-.section h2{
-  color:#c74678;
-  margin-bottom:10px;
-}
-
-.choice{
+.cards{
   display:flex;
-  gap:12px;
+  gap:15px;
+  flex-wrap:wrap;
   justify-content:center;
-  margin-top:20px;
+  margin-top:30px;
 }
 
-.choice button{
-  padding:12px 17px;
-  border-radius:25px;
-  background:white;
-  color:#a14d72;
-  box-shadow:0 5px 15px #633d5018;
-}
-
-.choice button:hover{
-  transform:translateY(-3px);
-}
-
-.result{
-  margin-top:15px;
-  min-height:28px;
-  color:#a34c70;
-}
-
-/* STARS */
-
-.stars{
-  display:flex;
-  justify-content:center;
-  gap:18px;
-  margin:20px 0;
-}
-
-.star{
-  font-size:28px;
-  filter:grayscale(1);
-  opacity:.5;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.star.found{
-  filter:none;
-  opacity:1;
-  transform:scale(1.25);
-}
-
-/* BALLOONS */
-
-.balloons{
-  display:flex;
-  justify-content:center;
-  gap:14px;
-  margin:20px 0;
-}
-
-.balloon{
-  width:48px;
-  height:60px;
-  border-radius:50%;
+.card{
+  width:150px;
+  height:110px;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:18px;
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(12px);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:20px;
-  background:#ff9fbd;
   cursor:pointer;
-  transition:.3s;
-  box-shadow:0 8px 15px #633d5020;
+  transition:.4s;
 }
 
-.balloon:nth-child(2){background:#b6a4ff}
-.balloon:nth-child(3){background:#ffd58c}
-.balloon:nth-child(4){background:#9ee3d1}
-
-.balloon:hover{
-  transform:translateY(-8px) rotate(5deg);
+.card:hover{
+  transform:translateY(-10px) rotate(-2deg);
 }
 
-/* METER */
+/* ---------- GIFT ---------- */
 
-.meter{
-  height:15px;
-  background:#eadde4;
-  border-radius:20px;
-  overflow:hidden;
-  margin:15px 0;
+.gift{
+  font-size:120px;
+  cursor:pointer;
+  animation:bounce 1.5s infinite;
 }
 
-.meter-fill{
-  width:100%;
-  height:100%;
-  background:linear-gradient(90deg,#ff6b9c,#9a7aff);
-  animation:shine 2s infinite;
+@keyframes bounce{
+  50%{transform:translateY(-12px)}
 }
 
-/* FINAL */
+/* ---------- YES / NO ---------- */
 
-.final{
-  margin-top:30px;
-  padding:28px 18px;
-  background:linear-gradient(135deg,#fff0f7,#f0ebff);
-  border-radius:22px;
+.choice{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin-top:35px;
+  position:relative;
+  min-height:70px;
 }
 
-.final h2{
-  color:#c74678;
-  margin-bottom:12px;
+.yes{
+  background:#ff6f91;
+  border:none;
 }
 
-/* PARTICLES */
+.no{
+  position:relative;
+}
 
-.particle{
+/* ---------- CONFETTI ---------- */
+
+.confetti{
   position:fixed;
-  top:-30px;
-  z-index:50;
-  pointer-events:none;
-  animation:fall linear forwards;
-}
-
-/* ANIMATIONS */
-
-@keyframes photoIn{
-  from{opacity:0;transform:translateY(50px) rotate(-15deg) scale(.8)}
-  to{opacity:1;transform:translateY(0) rotate(-3deg) scale(1)}
+  width:8px;
+  height:14px;
+  top:-20px;
+  z-index:100;
+  animation:fall 3s linear forwards;
 }
 
 @keyframes fall{
   to{
-    transform:translateY(110vh) rotate(500deg);
-    opacity:0;
+    transform:translateY(110vh) rotate(720deg);
   }
 }
 
-@keyframes shine{
-  50%{filter:brightness(1.3)}
+/* ---------- FINAL ---------- */
+
+.final-heart{
+  font-size:100px;
+  animation:heartBeat 1.3s infinite;
 }
 
-@media(max-width:450px){
-  h1{font-size:29px}
-  .choice{flex-direction:column}
+@keyframes heartBeat{
+  50%{transform:scale(1.18)}
+}
+
+.glow{
+  text-shadow:
+    0 0 10px rgba(255,255,255,.7),
+    0 0 30px rgba(255,120,180,.6),
+    0 0 60px rgba(170,120,255,.5);
+}
+
+.hidden{
+  display:none;
+}
+
+/* mobile */
+@media(max-width:600px){
+  .photo img{
+    height:300px;
+  }
+
+  .envelope{
+    transform:scale(.9);
+  }
+
+  .card{
+    width:135px;
+    height:95px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= OPENING ================= -->
+<!-- PARTICLES -->
+<div id="particles"></div>
 
-<div class="screen" id="opening">
+<!-- SCENE 1 -->
+<section class="scene active" id="s1">
+  <div class="content">
+    <div class="small">A little surprise</div>
+    <h1 class="glow">I made something for you… ✨</h1>
+    <p>But you have to discover it yourself.</p>
+    <button class="btn" onclick="next(2)">I'm curious 👀</button>
+  </div>
+</section>
 
-  <div class="card">
+<!-- SCENE 2 -->
+<section class="scene" id="s2">
+  <div class="content">
+    <div class="small">Before we begin</div>
+    <div class="lock" onclick="unlock()">🔒</div>
+    <h2 id="lockText">Something is locked…</h2>
+    <p>Tap the lock.</p>
+  </div>
+</section>
 
-    <div class="kicker">A little surprise</div>
-
-    <h1>I made something for you... 💌</h1>
-
-    <p>
-      Don't rush. There are a few little surprises
-      waiting inside. ✨
-    </p>
+<!-- SCENE 3 -->
+<section class="scene" id="s3">
+  <div class="content">
+    <div class="small">For you</div>
 
     <div class="envelope" id="envelope" onclick="openEnvelope()">
-
       <div class="env-body"></div>
-
-      <div class="env-flap"></div>
-
-      <div class="heart-seal">💗</div>
-
+      <div class="letter">💌<br><br>A tiny surprise is waiting inside…</div>
+      <div class="flap"></div>
     </div>
 
-    <p>
-      Tap the envelope to open
-    </p>
-
+    <p style="margin-top:30px">Tap the envelope 💌</p>
   </div>
+</section>
 
-</div>
+<!-- SCENE 4 -->
+<section class="scene" id="s4">
+  <div class="content">
+    <div class="small">A little memory</div>
 
-
-<!-- ================= MAIN EXPERIENCE ================= -->
-
-<div class="screen hidden" id="main">
-
-<div class="card">
-
-  <div class="kicker">For Mayna</div>
-
-  <h1>Happy Birthday 🎂</h1>
-
-
-  <!-- PHOTO -->
-
-  <div class="polaroid">
-
-    <!-- REPLACE THIS URL WITH YOUR PHOTO LATER -->
-
-    <img
-      class="photo"
-      src="https://placehold.co/500x500/f8dce8/c74678?text=Mayna+%F0%9F%92%97"
-      alt="Mayna">
-
-    <div class="caption">
-      A little memory ✨
+    <!-- CHANGE THIS IMAGE -->
+    <div class="photo" id="photo">
+      <img src="YOUR_PHOTO_HERE.jpg">
+      <div class="caption">A moment worth remembering ✨</div>
     </div>
 
+    <button class="btn" onclick="next(5)">Continue 🩵</button>
   </div>
+</section>
 
+<!-- SCENE 5 -->
+<section class="scene" id="s5">
+  <div class="content">
+    <div class="small">There is more…</div>
+    <h2>Choose one 👀</h2>
 
-  <!-- LETTER -->
-
-  <div class="letter">
-
-    <h2>Dear Mayna 🌸</h2>
-
-    <p id="typing"></p>
-
-    <div class="friendship">
-
-      🫶 <b>Our Friendship</b>
-
-      <br><br>
-
-      “Bas ek wish hai —
-      <b>hamari friendship hamesha aise hi bani rahe,</b>
-      chahe waqt kitna bhi badal jaaye.” ✨
-
+    <div class="cards">
+      <div class="card" onclick="memory('✨')">✨<br>A moment</div>
+      <div class="card" onclick="memory('💭')">💭<br>A thought</div>
+      <div class="card" onclick="memory('❤️')">❤️<br>A secret</div>
     </div>
 
+    <p id="memoryText" style="margin-top:30px;min-height:50px"></p>
+
+    <button class="btn" onclick="next(6)">One more thing →</button>
   </div>
+</section>
 
-
-  <!-- SECRET COUNTER -->
-
-  <div class="section">
-
-    <h2>🔐 Find the little secrets</h2>
-
-    <p>
-      There are <b>5</b> hidden surprises here.
-      Explore a little. 👀
-    </p>
-
-    <p id="counter">Secrets found: 0 / 5</p>
-
+<!-- SCENE 6 -->
+<section class="scene" id="s6">
+  <div class="content">
+    <div class="small">Almost there</div>
+    <h2>🎁</h2>
+    <div class="gift" onclick="openGift()">🎁</div>
+    <p>There's definitely something inside…</p>
   </div>
+</section>
 
-
-  <!-- STARS -->
-
-  <div class="section">
-
-    <h2>🌌 Make a wish</h2>
-
-    <p>Tap every star.</p>
-
-    <div class="stars">
-
-      <span class="star" onclick="findSecret(this,1)">★</span>
-      <span class="star" onclick="findSecret(this,2)">★</span>
-      <span class="star" onclick="findSecret(this,3)">★</span>
-      <span class="star" onclick="findSecret(this,4)">★</span>
-      <span class="star" onclick="findSecret(this,5)">★</span>
-
-    </div>
-
-    <div id="starResult" class="result"></div>
-
-  </div>
-
-
-  <!-- BALLOONS -->
-
-  <div class="section">
-
-    <h2>🎈 Pop a balloon</h2>
-
-    <p>One of them has a little message.</p>
-
-    <div class="balloons">
-
-      <div class="balloon" onclick="balloon(this,'You deserve lots of happiness. 🌸')">🎈</div>
-
-      <div class="balloon" onclick="balloon(this,'Keep smiling, always. 🩵')">🎈</div>
-
-      <div class="balloon" onclick="balloon(this,'May this year bring beautiful memories. ✨')">🎈</div>
-
-      <div class="balloon" onclick="balloon(this,'Okay... you found me! 😂💗')">🎈</div>
-
-    </div>
-
-    <div id="balloonResult" class="result"></div>
-
-  </div>
-
-
-  <!-- CHOICE -->
-
-  <div class="section">
-
-    <h2>😈 One important question</h2>
-
-    <p>
-      Which one sounds better?
-    </p>
+<!-- SCENE 7 -->
+<section class="scene" id="s7">
+  <div class="content">
+    <div class="small">Wait…</div>
+    <h2>One last question 👀</h2>
+    <p>Will you stay for one more surprise?</p>
 
     <div class="choice">
-
-      <button onclick="choice(1)">
-        Stay friends forever 🫶
-      </button>
-
-      <button onclick="choice(2)">
-        Annoy each other forever 😂
-      </button>
-
+      <button class="btn yes" onclick="yes()">YES 🩵</button>
+      <button class="btn no" id="noBtn" onclick="runAway()">NO 🙃</button>
     </div>
-
-    <div id="choiceResult" class="result"></div>
-
   </div>
+</section>
 
+<!-- SCENE 8 -->
+<section class="scene" id="s8">
+  <div class="content">
+    <div class="small">JUST KIDDING 😂</div>
+    <h1 class="glow">You thought it was over?</h1>
+    <p>Not even close…</p>
 
-  <!-- MAGIC -->
+    <button class="btn" onclick="next(9)">Okay, surprise me 😌</button>
+  </div>
+</section>
 
-  <div class="section">
+<!-- SCENE 9 -->
+<section class="scene" id="s9">
+  <div class="content">
+    <div class="final-heart">🩵</div>
+    <div class="small">The final surprise</div>
 
-    <h2>🔮 Birthday Universe</h2>
+    <h1 class="glow">Happy Birthday,<br>HER NAME ✨</h1>
 
     <p>
-      Ask the universe for a birthday message.
+      I hope your day is filled with happiness,
+      beautiful moments and lots of reasons to smile. 🫶
     </p>
 
-    <button class="primary" onclick="magic()">
-      Reveal ✨
-    </button>
-
-    <div id="magicResult" class="result"></div>
-
-  </div>
-
-
-  <!-- FRIENDSHIP METER -->
-
-  <div class="section">
-
-    <h2>🫶 Friendship level</h2>
-
-    <div class="meter">
-      <div class="meter-fill"></div>
-    </div>
-
-    <p>
-      <b>100%</b>
+    <p style="margin-top:25px">
+      Made especially for you. 💌
     </p>
-
-    <p>
-      Error: friendship level cannot be measured. 😂
-    </p>
-
   </div>
-
-
-  <!-- FINAL -->
-
-  <div class="section hidden" id="finalUnlock">
-
-    <div class="final">
-
-      <h2>🎁 You found everything!</h2>
-
-      <p>
-        But... I kept one last thing hidden.
-      </p>
-
-      <button class="primary" onclick="finalSurprise()">
-        One more thing... 👀
-      </button>
-
-      <div id="finalText"></div>
-
-    </div>
-
-  </div>
-
-</div>
-
-</div>
-
+</section>
 
 <script>
 
-let secrets = 0;
-let opened = false;
+/* ---------- CREATE PARTICLES ---------- */
 
+const particleBox=document.getElementById("particles");
+
+for(let i=0;i<45;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDelay=Math.random()*6+"s";
+  p.style.animationDuration=(4+Math.random()*5)+"s";
+
+  particleBox.appendChild(p);
+}
+
+/* ---------- SCENE SYSTEM ---------- */
+
+function next(num){
+
+  document.querySelectorAll(".scene").forEach(scene=>{
+    scene.classList.remove("active");
+  });
+
+  setTimeout(()=>{
+    document.getElementById("s"+num).classList.add("active");
+  },100);
+}
+
+/* ---------- LOCK ---------- */
+
+function unlock(){
+
+  const text=document.getElementById("lockText");
+
+  text.innerHTML="Unlocked. 🔓";
+
+  setTimeout(()=>{
+    next(3);
+  },1200);
+}
 
 /* ---------- ENVELOPE ---------- */
 
+let envelopeOpened=false;
+
 function openEnvelope(){
 
-  if(opened) return;
+  if(envelopeOpened)return;
 
-  opened = true;
+  envelopeOpened=true;
 
-  const env =
-    document.getElementById("envelope");
+  document.getElementById("envelope")
+    .classList.add("open");
 
-  env.classList.add("open");
+  setTimeout(()=>{
 
-  particles();
+    flash();
 
-  setTimeout(function(){
+    setTimeout(()=>{
+      next(4);
 
-    document
-      .getElementById("opening")
-      .classList.add("hidden");
+      setTimeout(()=>{
+        document.getElementById("photo")
+          .classList.add("show");
+      },500);
 
-    document
-      .getElementById("main")
-      .classList.remove("hidden");
+    },500);
 
-    typeMessage();
-
-  },1100);
+  },1200);
 }
 
+/* ---------- MEMORY ---------- */
 
-/* ---------- TYPEWRITER ---------- */
+function memory(type){
 
-function typeMessage(){
+  const text=document.getElementById("memoryText");
 
-  const text =
-  "Wishing you a very Happy Birthday! 🎂 I hope this year brings you happiness, peace, success and countless beautiful moments. Keep smiling, keep being yourself, and never stop chasing the things that make you happy. 🌷";
+  const messages={
+    "✨":"Some moments are small… but somehow stay with us.",
+    "💭":"Sometimes one person can make an ordinary day feel special.",
+    "❤️":"Okay… this one is a little secret. Keep smiling. 🤭"
+  };
 
-  const target =
-    document.getElementById("typing");
+  text.innerHTML=messages[type];
 
-  let i=0;
-
-  function write(){
-
-    if(i < text.length){
-
-      target.innerHTML +=
-        text.charAt(i);
-
-      i++;
-
-      setTimeout(write,28);
-
-    }
-  }
-
-  write();
 }
 
+/* ---------- GIFT ---------- */
 
-/* ---------- SECRET SYSTEM ---------- */
+function openGift(){
 
-function findSecret(element,num){
+  flash();
+  confetti();
 
-  if(element.classList.contains("found"))
-    return;
-
-  element.classList.add("found");
-
-  secrets++;
-
-  document.getElementById("counter").innerText =
-    "Secrets found: " + secrets + " / 5";
-
-  document.getElementById("starResult").innerText =
-    "✨ A little wish unlocked.";
-
-  if(secrets >= 5){
-
-    document
-      .getElementById("finalUnlock")
-      .classList.remove("hidden");
-
-    particles();
-  }
+  setTimeout(()=>{
+    next(7);
+  },1000);
 }
 
+/* ---------- NO BUTTON ---------- */
 
-/* ---------- BALLOON ---------- */
+let noCount=0;
 
-function balloon(el,msg){
+function runAway(){
 
-  if(el.dataset.done) return;
+  const btn=document.getElementById("noBtn");
 
-  el.dataset.done = "yes";
+  noCount++;
 
-  el.style.transform =
-    "scale(0) translateY(-100px)";
-
-  setTimeout(function(){
-
-    el.style.visibility="hidden";
-
-  },300);
-
-  document
-    .getElementById("balloonResult")
-    .innerText = msg;
-
-  if(secrets < 5){
-
-    secrets++;
-
-    document.getElementById("counter").innerText =
-      "Secrets found: " + secrets + " / 5";
-
-    if(secrets >= 5){
-
-      document
-        .getElementById("finalUnlock")
-        .classList.remove("hidden");
-    }
+  if(noCount===1){
+    btn.style.transform="translateX(70px)";
+    btn.innerText="Are you sure? 👀";
   }
 
-  particles();
-}
-
-
-/* ---------- CHOICE ---------- */
-
-function choice(option){
-
-  const result =
-    document.getElementById("choiceResult");
-
-  if(option === 1){
-
-    result.innerHTML =
-      "Good choice. 🫶 But honestly... option 2 was inevitable. 😂";
-
-  }else{
-
-    result.innerHTML =
-      "Exactly! Because apparently annoying each other is part of friendship. 😂💗";
-
+  else if(noCount===2){
+    btn.style.transform="translate(-70px,40px)";
+    btn.innerText="Really? 😭";
   }
 
-  if(secrets < 5){
+  else if(noCount===3){
+    btn.style.transform="translate(50px,-50px)";
+    btn.innerText="Think again 😂";
+  }
 
-    secrets++;
-
-    document.getElementById("counter").innerText =
-      "Secrets found: " + secrets + " / 5";
+  else{
+    btn.style.opacity="0";
+    btn.style.pointerEvents="none";
   }
 }
 
+/* ---------- YES ---------- */
 
-/* ---------- MAGIC ---------- */
+function yes(){
 
-function magic(){
+  confetti();
 
-  const answers = [
-
-    "✨ Something good is waiting for you.",
-
-    "🌸 This year is going to give you beautiful memories.",
-
-    "💗 Keep smiling. You have more people cheering for you than you know.",
-
-    "🌙 A peaceful and happy year is coming.",
-
-    "🎂 Birthday rule: today you are allowed to be extra happy."
-
-  ];
-
-  const random =
-    answers[Math.floor(Math.random()*answers.length)];
-
-  document
-    .getElementById("magicResult")
-    .innerText = random;
-
-  if(secrets < 5){
-
-    secrets++;
-
-    document.getElementById("counter").innerText =
-      "Secrets found: " + secrets + " / 5";
-  }
+  setTimeout(()=>{
+    next(8);
+  },700);
 }
 
+/* ---------- FLASH ---------- */
 
-/* ---------- FINAL ---------- */
+function flash(){
 
-function finalSurprise(){
+  const f=document.createElement("div");
 
-  const final =
-    document.getElementById("finalText");
+  f.style.position="fixed";
+  f.style.inset="0";
+  f.style.background="white";
+  f.style.zIndex="99";
+  f.style.opacity="0";
 
-  final.innerHTML = `
-    <br>
-    <p style="line-height:1.8;color:#96506f">
-      And finally... 🥹💗
-      <br><br>
-      No matter how much time passes,
-      I hope we always have the same comfort,
-      laughter and friendship.
-      <br><br>
-      <b>Happy Birthday, Mayna. 🌸</b>
-      <br>
-      Here's to many more memories together. 🫶✨
-    </p>
-  `;
+  document.body.appendChild(f);
 
-  particles();
+  f.animate([
+    {opacity:0},
+    {opacity:.9},
+    {opacity:0}
+  ],{
+    duration:900,
+    easing:"ease-out"
+  });
 
+  setTimeout(()=>f.remove(),1000);
 }
 
+/* ---------- CONFETTI ---------- */
 
-/* ---------- PARTICLES ---------- */
+function confetti(){
 
-function particles(){
+  for(let i=0;i<80;i++){
 
-  const icons=[
-    "💗","✨","🌸","💕","🎀","💫","🎉"
-  ];
+    const c=document.createElement("div");
 
-  for(let i=0;i<40;i++){
+    c.className="confetti";
 
-    const p =
-      document.createElement("div");
+    c.style.left=Math.random()*100+"%";
 
-    p.className="particle";
+    c.style.background=
+      `hsl(${Math.random()*360},80%,70%)`;
 
-    p.innerText =
-      icons[
-        Math.floor(Math.random()*icons.length)
-      ];
+    c.style.animationDuration=
+      (2+Math.random()*2)+"s";
 
-    p.style.left =
-      Math.random()*100+"vw";
+    c.style.animationDelay=
+      Math.random()*1+"s";
 
-    p.style.fontSize =
-      (13+Math.random()*17)+"px";
+    document.body.appendChild(c);
 
-    p.style.animationDuration =
-      (2.5+Math.random()*3)+"s";
-
-    document.body.appendChild(p);
-
-    setTimeout(function(){
-      p.remove();
-    },6000);
+    setTimeout(()=>c.remove(),4000);
   }
 }
 
 </script>
 
 </body>
-</html>
+</html> 
