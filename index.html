@@ -3,157 +3,290 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Pallavi 💗</title>
+<title>For Mayna 💗</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #ffd6e7, #e8d9ff);
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+body{
+  min-height:100vh;
+  overflow:hidden;
+  font-family:Georgia,serif;
+  background:
+    radial-gradient(circle at 20% 20%,#ffd9e8 0,transparent 35%),
+    radial-gradient(circle at 80% 80%,#ddd4ff 0,transparent 35%),
+    linear-gradient(135deg,#fff1f7,#eeeaff);
+  color:#4a3b43;
 }
 
-.container {
-  text-align: center;
+/* ---------- OPENING ---------- */
+
+.opening{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
 }
 
-h1 {
-  color: #ff4f91;
-  font-size: 28px;
-  margin-bottom: 25px;
+.open-content{
+  animation:fadeIn 1.5s ease;
 }
 
-.gift {
-  width: 180px;
-  height: 150px;
-  position: relative;
-  margin: auto;
-  cursor: pointer;
-  transition: transform 0.3s;
+.small{
+  font-family:Arial,sans-serif;
+  letter-spacing:3px;
+  font-size:12px;
+  color:#9b7285;
+  text-transform:uppercase;
+  margin-bottom:15px;
 }
 
-.gift:hover {
-  transform: scale(1.05);
+.open-content h1{
+  font-size:32px;
+  color:#c84d7c;
+  margin-bottom:35px;
 }
 
-.box {
-  position: absolute;
-  bottom: 0;
-  width: 180px;
-  height: 110px;
-  background: #ff5c93;
-  border-radius: 8px;
+/* ---------- GIFT ---------- */
+
+.gift{
+  width:180px;
+  height:150px;
+  position:relative;
+  margin:auto;
+  cursor:pointer;
+  filter:drop-shadow(0 18px 20px rgba(130,70,100,.18));
 }
 
-.box::before {
-  content: "";
-  position: absolute;
-  left: 75px;
-  width: 30px;
-  height: 110px;
-  background: #ffd166;
+.box{
+  position:absolute;
+  bottom:0;
+  width:180px;
+  height:105px;
+  border-radius:8px;
+  background:linear-gradient(135deg,#ef6295,#d94379);
 }
 
-.lid {
-  position: absolute;
-  top: 30px;
-  left: -10px;
-  width: 200px;
-  height: 35px;
-  background: #ff4081;
-  border-radius: 8px;
-  transition: 0.8s ease;
-  z-index: 2;
+.box:before{
+  content:"";
+  position:absolute;
+  left:75px;
+  width:30px;
+  height:105px;
+  background:#f8d47b;
 }
 
-.lid::before {
-  content: "";
-  position: absolute;
-  left: 85px;
-  width: 30px;
-  height: 35px;
-  background: #ffd166;
+.lid{
+  position:absolute;
+  z-index:3;
+  top:27px;
+  left:-10px;
+  width:200px;
+  height:35px;
+  border-radius:8px;
+  background:#df477e;
+  transition:1s cubic-bezier(.68,-.55,.27,1.55);
 }
 
-.tap {
-  margin-top: 25px;
-  color: #555;
-  font-size: 16px;
+.lid:before{
+  content:"";
+  position:absolute;
+  left:85px;
+  width:30px;
+  height:35px;
+  background:#f8d47b;
 }
 
-/* Birthday card */
-
-.card {
-  display: none;
-  width: 90%;
-  max-width: 360px;
-  padding: 25px;
-  background: rgba(255,255,255,0.9);
-  border-radius: 25px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-  animation: appear 1s ease forwards;
+.ribbon-left,
+.ribbon-right{
+  position:absolute;
+  z-index:4;
+  width:55px;
+  height:30px;
+  border:7px solid #f8d47b;
+  top:0;
 }
 
-.photo {
-  width: 190px;
-  height: 190px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid #ff76a8;
-  box-shadow: 0 8px 25px rgba(255,80,140,0.35);
+.ribbon-left{
+  left:45px;
+  border-radius:50% 50% 10% 50%;
+  transform:rotate(-25deg);
 }
 
-.card h2 {
-  color: #ff4081;
-  margin: 18px 0 10px;
+.ribbon-right{
+  right:45px;
+  border-radius:50% 50% 50% 10%;
+  transform:rotate(25deg);
 }
 
-.card p {
-  color: #555;
-  line-height: 1.6;
-  font-size: 16px;
+.tap{
+  margin-top:28px;
+  font-family:Arial,sans-serif;
+  color:#806773;
+  font-size:14px;
+  animation:pulse 1.8s infinite;
 }
 
-.heart {
-  font-size: 30px;
-  animation: beat 1s infinite;
+/* ---------- SURPRISE ---------- */
+
+.surprise{
+  display:none;
+  min-height:100vh;
+  overflow-y:auto;
+  padding:45px 20px;
+  text-align:center;
+  animation:reveal 1.2s ease;
 }
 
-@keyframes appear {
-  from {
-    opacity: 0;
-    transform: scale(0.5) translateY(50px);
+.inner{
+  max-width:520px;
+  margin:auto;
+}
+
+.top{
+  font-family:Arial,sans-serif;
+  font-size:12px;
+  letter-spacing:3px;
+  color:#a06c82;
+  text-transform:uppercase;
+}
+
+.title{
+  font-size:38px;
+  color:#c74375;
+  margin:15px 0 25px;
+}
+
+/* ---------- PHOTO ---------- */
+
+.photo-frame{
+  width:230px;
+  margin:0 auto 28px;
+  padding:10px 10px 25px;
+  background:#fff;
+  box-shadow:0 15px 35px rgba(80,40,70,.18);
+  transform:rotate(-3deg);
+  animation:photoIn 1.2s ease;
+}
+
+.photo{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+  background:#f7dce8;
+}
+
+.photo-caption{
+  font-family:cursive;
+  color:#9b667d;
+  margin-top:10px;
+}
+
+/* ---------- LETTER ---------- */
+
+.letter{
+  background:rgba(255,255,255,.78);
+  border-radius:24px;
+  padding:30px 24px;
+  box-shadow:0 15px 45px rgba(70,40,70,.12);
+  line-height:1.8;
+  font-size:16px;
+  text-align:left;
+}
+
+.letter-title{
+  text-align:center;
+  color:#c74375;
+  font-size:24px;
+  margin-bottom:18px;
+}
+
+.friendship{
+  margin-top:22px;
+  padding:18px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#fff0f6,#f0ebff);
+  text-align:center;
+  color:#9a4d72;
+  font-style:italic;
+}
+
+.signature{
+  text-align:right;
+  margin-top:20px;
+  color:#9b687d;
+}
+
+/* ---------- FINAL ---------- */
+
+.final{
+  margin-top:30px;
+  padding:28px 20px;
+}
+
+.final h2{
+  color:#c74375;
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.final p{
+  color:#806773;
+  line-height:1.7;
+}
+
+/* ---------- PARTICLES ---------- */
+
+.particle{
+  position:fixed;
+  top:-30px;
+  pointer-events:none;
+  animation:fall linear forwards;
+  z-index:20;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(25px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes reveal{
+  from{opacity:0;transform:scale(.92)}
+  to{opacity:1;transform:scale(1)}
+}
+
+@keyframes photoIn{
+  from{opacity:0;transform:translateY(40px) rotate(-10deg)}
+  to{opacity:1;transform:translateY(0) rotate(-3deg)}
+}
+
+@keyframes pulse{
+  50%{opacity:.45}
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(540deg);
+    opacity:0;
   }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+}
+
+@media(max-width:450px){
+  .open-content h1{
+    font-size:28px;
   }
-}
 
-@keyframes beat {
-  50% {
-    transform: scale(1.3);
-  }
-}
-
-.confetti {
-  position: fixed;
-  top: -20px;
-  font-size: 22px;
-  animation: fall 3s linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
+  .title{
+    font-size:32px;
   }
 }
 </style>
@@ -161,89 +294,76 @@ h1 {
 
 <body>
 
-<div class="container" id="opening">
+<!-- ================= OPENING ================= -->
 
-  <h1>Something special for you 💗</h1>
+<section class="opening" id="opening">
 
-  <div class="gift" onclick="openGift()">
-    <div class="lid" id="lid"></div>
-    <div class="box"></div>
+  <div class="open-content">
+
+    <div class="small">A little surprise for you</div>
+
+    <h1>Hey Mayna... 💗</h1>
+
+    <div class="gift" onclick="openGift()">
+
+      <div class="ribbon-left"></div>
+      <div class="ribbon-right"></div>
+
+      <div class="lid" id="lid"></div>
+
+      <div class="box"></div>
+
+    </div>
+
+    <div class="tap">
+      🎁 Tap the gift to open
+    </div>
+
   </div>
 
-  <div class="tap">🎁 Tap the gift to open 🎁</div>
-
-</div>
+</section>
 
 
-<div class="card" id="card">
+<!-- ================= SURPRISE ================= -->
 
-  <!-- YAHAN PHOTO LAGANI HAI -->
-  <img class="photo"
-       src="https://placehold.co/400x400/ffd6e7/ff4081?text=Mayna+%F0%9F%92%97"
-       alt="Mayna">
+<section class="surprise" id="surprise">
 
-  <div class="heart">💗</div>
+  <div class="inner">
 
-  <h2>Happy Birthday, Pallavi ! 🎂</h2>
+    <div class="top">
+      A little birthday surprise
+    </div>
 
-  <p>
-    Wishing you a day filled with happiness,
-    beautiful moments and lots of smiles. ✨
-  </p>
-
-  <p>
-    May your special day be as wonderful as you are. 🌸
-  </p>
-
-  <div>🎂 🎈 💐 ✨ 💗</div>
-
-</div>
+    <div class="title">
+      Happy Birthday, Mayna! 🎂
+    </div>
 
 
-<script>
+    <!-- PHOTO -->
 
-function openGift() {
+    <div class="photo-frame">
 
-  const lid = document.getElementById("lid");
-  const opening = document.getElementById("opening");
-  const card = document.getElementById("card");
+      <!--
+      PHOTO:
+      Later replace the image URL below with Mayna's photo.
+      -->
 
-  lid.style.transform = "translateY(-100px) rotate(-10deg)";
+      <img
+        class="photo"
+        src="https://placehold.co/500x500/f8dce8/c74375?text=Mayna+%F0%9F%92%97"
+        alt="Mayna">
 
-  setTimeout(() => {
+      <div class="photo-caption">
+        A little memory ✨
+      </div>
 
-    opening.style.display = "none";
-    card.style.display = "block";
+    </div>
 
-    // Confetti
-    for (let i = 0; i < 35; i++) {
 
-      const confetti = document.createElement("div");
+    <!-- LETTER -->
 
-      confetti.className = "confetti";
+    <div class="letter">
 
-      const emojis = ["💗","✨","🎉","💕","🌸","🎀"];
-
-      confetti.innerText =
-        emojis[Math.floor(Math.random() * emojis.length)];
-
-      confetti.style.left =
-        Math.random() * 100 + "vw";
-
-      confetti.style.animationDuration =
-        (2 + Math.random() * 2) + "s";
-
-      document.body.appendChild(confetti);
-
-      setTimeout(() => {
-        confetti.remove();
-      }, 4000);
-    }
-
-  }, 900);
-}
-
-</script>
-
-</body>
-</html> 
+      <div class="letter-title">
+        Dear Mayna 🌸
+      </ 
