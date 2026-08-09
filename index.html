@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Birthday 🎂</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fff0f6, #eee8ff);
+      color: #333;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 28px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .emoji {
+      font-size: 55px;
+      animation: bounce 1.5s infinite;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin: 15px 0;
+    }
+
+    .name {
+      color: #d9467c;
+    }
+
+    .subtitle {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    button {
+      border: none;
+      padding: 13px 24px;
+      border-radius: 30px;
+      background: #d9467c;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(217,70,124,0.25);
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    .message {
+      display: none;
+      margin-top: 30px;
+      animation: appear 0.8s ease;
+    }
+
+    .message h2 {
+      margin-bottom: 15px;
+    }
+
+    .message p {
+      line-height: 1.8;
+      color: #555;
+      font-size: 16px;
+    }
+
+    .memories {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .memory {
+      padding: 25px 10px;
+      border-radius: 18px;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 20px;
+      animation: float 5s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width:
