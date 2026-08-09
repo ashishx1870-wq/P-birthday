@@ -3,132 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Happy Birthday 🎂</title>
+  <title>Happy Birthday Mayna 🎂</title>
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #fff0f6, #eee8ff);
-      color: #333;
       min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffe4ec, #e9ddff, #dff5ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       overflow-x: hidden;
+      color: #333;
     }
 
-    .page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
+    .container {
+      width: 92%;
+      max-width: 520px;
+      text-align: center;
+      padding: 30px 20px;
     }
 
     .card {
-      width: 100%;
-      max-width: 600px;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.78);
+      backdrop-filter: blur(12px);
       border-radius: 28px;
-      padding: 35px 25px;
-      text-align: center;
-      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
-      backdrop-filter: blur(10px);
+      padding: 38px 25px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+      animation: appear 1.2s ease;
     }
 
-    .emoji {
-      font-size: 55px;
-      animation: bounce 1.5s infinite;
+    .cake {
+      font-size: 75px;
+      animation: bounce 2s infinite;
+      margin-bottom: 15px;
     }
 
     h1 {
       font-size: 38px;
-      margin: 15px 0;
-    }
-
-    .name {
-      color: #d9467c;
+      color: #d94b82;
+      margin-bottom: 12px;
     }
 
     .subtitle {
-      font-size: 17px;
-      line-height: 1.7;
+      font-size: 18px;
       color: #666;
       margin-bottom: 25px;
+      line-height: 1.6;
     }
 
     button {
       border: none;
-      padding: 13px 24px;
-      border-radius: 30px;
-      background: #d9467c;
+      background: linear-gradient(135deg, #ff6f9c, #9b7cff);
       color: white;
+      padding: 14px 25px;
+      border-radius: 30px;
       font-size: 16px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(217,70,124,0.25);
+      box-shadow: 0 8px 20px rgba(155,124,255,0.3);
+      transition: 0.25s;
     }
 
-    button:active {
-      transform: scale(0.96);
+    button:hover {
+      transform: scale(1.05);
     }
 
-    .message {
+    #message {
       display: none;
-      margin-top: 30px;
+      margin-top: 25px;
+      padding: 20px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 20px;
+      line-height: 1.8;
+      font-size: 17px;
       animation: appear 0.8s ease;
     }
 
-    .message h2 {
-      margin-bottom: 15px;
-    }
-
-    .message p {
-      line-height: 1.8;
-      color: #555;
-      font-size: 16px;
-    }
-
-    .memories {
-      margin-top: 30px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .memory {
-      padding: 25px 10px;
-      border-radius: 18px;
-      background: #fff;
-      font-size: 14px;
-    }
-
     .footer {
-      margin-top: 30px;
+      margin-top: 22px;
       font-size: 13px;
-      color: #888;
+      color: #777;
     }
 
     .heart {
       position: fixed;
       bottom: -30px;
-      font-size: 20px;
-      animation: float 5s linear forwards;
+      font-size: 22px;
+      animation: floatUp 5s linear forwards;
       pointer-events: none;
-    }
-
-    @keyframes bounce {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
     }
 
     @keyframes appear {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
       }
       to {
         opacity: 1;
@@ -136,7 +110,16 @@
       }
     }
 
-    @keyframes float {
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes floatUp {
       from {
         transform: translateY(0) rotate(0deg);
         opacity: 1;
@@ -146,5 +129,79 @@
         opacity: 0;
       }
     }
+  </style>
+</head>
 
-    @media (max-width:
+<body>
+
+  <div class="container">
+    <div class="card">
+
+      <div class="cake">🎂</div>
+
+      <h1>Happy Birthday, Mayna! 🎉</h1>
+
+      <p class="subtitle">
+        Today is your special day ✨<br>
+        So this little corner of the internet is just for you.
+      </p>
+
+      <button onclick="showMessage()">
+        Open Your Surprise 🎁
+      </button>
+
+      <div id="message">
+        🌸 <b>Dear Mayna,</b> 🌸
+
+        <br><br>
+
+        Wishing you a very Happy Birthday! 🥳
+
+        <br>
+
+        May this year bring you lots of happiness,
+        good memories, success and plenty of reasons to smile. ✨
+
+        <br><br>
+
+        Keep being the wonderful person you are. 🌷
+
+        <br><br>
+
+        <b>Have an amazing birthday! 🎂💫</b>
+      </div>
+
+      <div class="footer">
+        Made specially for Mayna ✨
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+
+      for (let i = 0; i < 25; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = ["💗", "💖", "💕", "✨", "🌸"][Math.floor(Math.random() * 5)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+  </script>
+
+</body>
+</html> 
