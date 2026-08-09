@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>A Little Birthday Surprise</title>
+<title>For Pallavi ✨</title>
 
-<!-- Minimal typography -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -44,8 +43,6 @@ body{
   color:var(--text);
   background:var(--cream);
 }
-
-/* ---------------- BACKGROUND ---------------- */
 
 #app{
   position:fixed;
@@ -97,8 +94,6 @@ body{
   to{transform:translate(35px,25px) scale(1.08)}
 }
 
-/* ---------------- PARTICLES ---------------- */
-
 .spark{
   position:absolute;
   width:4px;
@@ -122,8 +117,6 @@ body{
     opacity:0;
   }
 }
-
-/* ---------------- SCENES ---------------- */
 
 .scene{
   position:absolute;
@@ -202,8 +195,6 @@ p{
   color:#a96876;
 }
 
-/* ---------------- BUTTONS ---------------- */
-
 .btn{
   border:1px solid var(--line);
   background:rgba(255,255,255,.72);
@@ -220,6 +211,10 @@ p{
     background .25s ease;
 }
 
+.btn:hover{
+  box-shadow:0 12px 30px rgba(70,50,55,.12);
+}
+
 .btn:active{
   transform:scale(.94);
 }
@@ -229,12 +224,7 @@ p{
   border-color:transparent;
 }
 
-.btn.small{
-  padding:9px 16px;
-  font-size:10px;
-}
-
-/* ---------------- OPENING ---------------- */
+/* OPENING */
 
 .open-dot{
   width:12px;
@@ -252,17 +242,20 @@ p{
   }
 }
 
-.reveal-line{
-  margin-top:18px;
-  font-size:13px;
-  color:#817477;
+.opening-small{
   opacity:0;
-  transform:translateY(10px);
-  animation:reveal .8s .5s var(--ease) forwards;
+  transform:translateY(12px);
+  animation:reveal .8s .4s var(--ease) forwards;
+}
+
+.opening-main{
+  opacity:0;
+  transform:translateY(18px);
+  animation:reveal .9s 1s var(--ease) forwards;
 }
 
 .open-card{
-  width:min(340px,84vw);
+  width:min(350px,84vw);
   margin:28px auto 0;
   padding:23px;
   background:rgba(255,255,255,.76);
@@ -271,7 +264,7 @@ p{
   box-shadow:var(--shadow);
   transform:translateY(35px) scale(.94);
   opacity:0;
-  animation:cardIn 1s .9s var(--ease) forwards;
+  animation:cardIn 1s 1.7s var(--ease) forwards;
   position:relative;
   cursor:pointer;
 }
@@ -328,7 +321,7 @@ p{
   }
 }
 
-/* ---------------- ENVELOPE ---------------- */
+/* ENVELOPE */
 
 .envelope-wrap{
   height:260px;
@@ -439,7 +432,7 @@ p{
   opacity:0;
 }
 
-/* ---------------- MEMORY CARDS ---------------- */
+/* MEMORY */
 
 .memory-area{
   height:410px;
@@ -523,42 +516,7 @@ p{
   transform:scale(1.4);
 }
 
-/* ---------------- FRIENDSHIP LAST ---------------- */
-
-.friend-card{
-  margin:25px auto 0;
-  width:min(500px,88vw);
-  padding:27px 23px;
-  background:rgba(255,255,255,.75);
-  border:1px solid var(--line);
-  border-radius:22px;
-  box-shadow:var(--shadow);
-}
-
-.friend-main{
-  font-size:25px;
-  line-height:1.25;
-  font-weight:600;
-}
-
-.friend-main span{
-  color:var(--accent);
-}
-
-.friend-line{
-  margin-top:22px;
-  font:27px/1.25 "Caveat",cursive;
-  color:#a96876;
-}
-
-.friend-mini{
-  margin-top:20px;
-  color:#817477;
-  font-size:12px;
-  line-height:1.7;
-}
-
-/* ---------------- GIFT ---------------- */
+/* GIFT */
 
 .gift{
   width:150px;
@@ -620,7 +578,7 @@ p{
   transform:translateY(-55px) rotate(-4deg);
 }
 
-/* ---------------- CHOICE ---------------- */
+/* CHOICE */
 
 .choice{
   height:105px;
@@ -635,27 +593,15 @@ p{
   position:relative;
 }
 
-/* ---------------- FAKE END ---------------- */
-
-.wait{
-  margin-top:28px;
-  font-size:11px;
-  color:#9b8d90;
-  animation:blink 1.4s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:.3}
-}
-
-/* ---------------- CAKE ---------------- */
+/* CAKE */
 
 .cake-stage{
-  width:320px;
-  height:300px;
-  margin:8px auto 0;
+  width:340px;
+  height:315px;
+  margin:4px auto 0;
   position:relative;
   touch-action:none;
+  user-select:none;
 }
 
 .cake{
@@ -663,8 +609,9 @@ p{
   width:210px;
   height:120px;
   left:50%;
-  bottom:30px;
+  bottom:34px;
   transform:translateX(-50%);
+  transition:transform .35s ease;
 }
 
 .plate{
@@ -737,10 +684,13 @@ p{
   height:19px;
   left:-2px;
   top:-18px;
-  border-radius:50% 50% 50% 50%;
+  border-radius:50%;
   background:#f1c861;
   transform-origin:50% 100%;
   animation:flame .6s infinite alternate;
+  transition:
+    opacity .45s ease,
+    transform .45s ease;
 }
 
 @keyframes flame{
@@ -749,18 +699,19 @@ p{
 
 .knife{
   position:absolute;
-  z-index:20;
+  z-index:30;
   width:125px;
   height:12px;
-  right:17px;
-  top:150px;
+  right:7px;
+  top:145px;
   border-radius:8px;
-  background:#d5d2d0;
+  background:linear-gradient(90deg,#c9c7c6,#eee);
   transform:rotate(-42deg);
   transform-origin:100% 50%;
   cursor:grab;
   touch-action:none;
   box-shadow:0 4px 10px rgba(60,50,50,.18);
+  will-change:transform;
 }
 
 .knife::after{
@@ -774,12 +725,8 @@ p{
   background:#8e6c71;
 }
 
-.cake.cut .knife{
-  animation:cutMove .7s var(--ease);
-}
-
-@keyframes cutMove{
-  50%{transform:rotate(-42deg) translate(-65px,35px)}
+.knife.dragging{
+  cursor:grabbing;
 }
 
 .cake-piece{
@@ -797,34 +744,38 @@ p{
 .piece-right{right:55px}
 
 .cake.cut .piece-left{
-  animation:pieceLeft 1s var(--ease) forwards;
+  animation:pieceLeft 1.15s var(--ease) forwards;
 }
 
 .cake.cut .piece-right{
-  animation:pieceRight 1s var(--ease) forwards;
+  animation:pieceRight 1.15s var(--ease) forwards;
 }
 
 @keyframes pieceLeft{
-  to{
+  0%{opacity:0}
+  30%{opacity:1}
+  100%{
     opacity:1;
-    transform:translateX(-35px) rotate(-4deg);
+    transform:translateX(-38px) rotate(-4deg);
   }
 }
 
 @keyframes pieceRight{
-  to{
+  0%{opacity:0}
+  30%{opacity:1}
+  100%{
     opacity:1;
-    transform:translateX(35px) rotate(4deg);
+    transform:translateX(38px) rotate(4deg);
   }
 }
 
 .cut-hint{
-  margin-top:-3px;
   font-size:11px;
   color:#9b8d90;
+  transition:opacity .3s;
 }
 
-/* ---------------- FINAL ---------------- */
+/* FINAL */
 
 .final-photos{
   display:flex;
@@ -851,6 +802,39 @@ p{
   object-fit:cover;
 }
 
+.friend-card{
+  margin:25px auto 0;
+  width:min(500px,88vw);
+  padding:27px 23px;
+  background:rgba(255,255,255,.75);
+  border:1px solid var(--line);
+  border-radius:22px;
+  box-shadow:var(--shadow);
+}
+
+.friend-main{
+  font-size:25px;
+  line-height:1.25;
+  font-weight:600;
+}
+
+.friend-main span{
+  color:var(--accent);
+}
+
+.friend-line{
+  margin-top:22px;
+  font:27px/1.25 "Caveat",cursive;
+  color:#a96876;
+}
+
+.friend-mini{
+  margin-top:20px;
+  color:#817477;
+  font-size:12px;
+  line-height:1.7;
+}
+
 .final-note{
   margin-top:20px;
   font:26px "Caveat",cursive;
@@ -863,7 +847,7 @@ p{
   color:#9b8d90;
 }
 
-/* ---------------- FLASH / CONFETTI ---------------- */
+/* FLASH / CONFETTI */
 
 #flash{
   position:fixed;
@@ -889,8 +873,6 @@ p{
     opacity:0;
   }
 }
-
-/* ---------------- MOBILE ---------------- */
 
 @media(max-width:600px){
 
@@ -930,21 +912,23 @@ p{
   <div class="blob one"></div>
   <div class="blob two"></div>
 
-  <!-- ================= OPENING ================= -->
-
+  <!-- OPENING -->
   <section class="scene active" id="s1">
     <div class="content">
 
       <div class="open-dot"></div>
 
-      <div class="eyebrow">Ek chhoti si baat</div>
+      <div class="eyebrow opening-small">
+        Ek minute…
+      </div>
 
-      <h1>
-        Aapko pata hai…
+      <h1 class="opening-main">
+        Ye <span class="accent">Pallavi</span><br>
+        aapke liye hai.
       </h1>
 
-      <div class="reveal-line">
-        Aaj kuch alag hai. ✦
+      <div class="reveal-line opening-main">
+        Bas thoda sa waqt nikaaliye. ✦
       </div>
 
       <div class="open-card" onclick="go(2)">
@@ -963,8 +947,7 @@ p{
   </section>
 
 
-  <!-- ================= ENVELOPE ================= -->
-
+  <!-- ENVELOPE -->
   <section class="scene" id="s2">
     <div class="content">
 
@@ -982,7 +965,8 @@ p{
           <div class="env-back"></div>
 
           <div class="letter">
-            Bas ek chhoti si<br>
+            Pallavi,<br>
+            bas ek chhoti si<br>
             baat aapke liye ✦
           </div>
 
@@ -1002,8 +986,7 @@ p{
   </section>
 
 
-  <!-- ================= LETTER ================= -->
-
+  <!-- LETTER -->
   <section class="scene" id="s3">
     <div class="content">
 
@@ -1031,8 +1014,7 @@ p{
   </section>
 
 
-  <!-- ================= PHOTOS ================= -->
-
+  <!-- PHOTOS -->
   <section class="scene" id="s4">
     <div class="content">
 
@@ -1045,7 +1027,6 @@ p{
 
       <div class="memory-area">
 
-        <!-- PHOTO 1 -->
         <div class="memory-card active" id="m1">
 
           <div class="memory-note">memory ✦</div>
@@ -1058,8 +1039,6 @@ p{
 
         </div>
 
-
-        <!-- PHOTO 2 -->
         <div class="memory-card" id="m2">
 
           <div class="memory-note">another one 😄</div>
@@ -1072,8 +1051,6 @@ p{
 
         </div>
 
-
-        <!-- PHOTO 3 -->
         <div class="memory-card" id="m3">
 
           <div class="memory-note">hmm… 👀</div>
@@ -1105,8 +1082,7 @@ p{
   </section>
 
 
-  <!-- ================= GIFT ================= -->
-
+  <!-- GIFT -->
   <section class="scene" id="s5">
     <div class="content">
 
@@ -1137,8 +1113,7 @@ p{
   </section>
 
 
-  <!-- ================= MINI SURPRISE ================= -->
-
+  <!-- MINI SURPRISE -->
   <section class="scene" id="s6">
     <div class="content">
 
@@ -1160,8 +1135,7 @@ p{
   </section>
 
 
-  <!-- ================= YES NO ================= -->
-
+  <!-- CHOICE -->
   <section class="scene" id="s7">
     <div class="content">
 
@@ -1188,8 +1162,7 @@ p{
   </section>
 
 
-  <!-- ================= FAKE END ================= -->
-
+  <!-- FAKE END -->
   <section class="scene" id="s8">
     <div class="content">
 
@@ -1208,8 +1181,7 @@ p{
   </section>
 
 
-  <!-- ================= WAIT ================= -->
-
+  <!-- WAIT -->
   <section class="scene" id="s9">
     <div class="content">
 
@@ -1232,15 +1204,14 @@ p{
   </section>
 
 
-  <!-- ================= CAKE ================= -->
-
+  <!-- CAKE -->
   <section class="scene" id="s10">
     <div class="content">
 
       <div class="eyebrow">Ab important kaam</div>
 
       <h2>
-        Cake cut karein? 🎂
+        Cake cut karein, Pallavi? 🎂
       </h2>
 
       <div class="cake-stage" id="cakeStage">
@@ -1277,22 +1248,22 @@ p{
       </div>
 
       <div class="cut-hint" id="cutHint">
-        Knife ko cake par drag kijiye ✦
+        Knife ko cake par smoothly drag kijiye ✦
       </div>
 
     </div>
   </section>
 
 
-  <!-- ================= BIRTHDAY CELEBRATION ================= -->
-
+  <!-- BIRTHDAY -->
   <section class="scene" id="s11">
     <div class="content">
 
       <div class="eyebrow">And finally…</div>
 
       <h1>
-        Happy Birthday! 🎉
+        Happy Birthday,<br>
+        <span class="accent">Pallavi! 🎉</span>
       </h1>
 
       <div class="hand" style="font-size:34px;margin-top:20px;">
@@ -1307,8 +1278,7 @@ p{
   </section>
 
 
-  <!-- ================= FINAL FRIENDSHIP ================= -->
-
+  <!-- FINAL FRIENDSHIP -->
   <section class="scene" id="s12">
     <div class="content">
 
@@ -1354,7 +1324,7 @@ p{
       </div>
 
       <div class="final-note">
-        Happy Birthday once again. ✨
+        Happy Birthday once again, Pallavi. ✨
       </div>
 
       <div class="final-small">
@@ -1366,12 +1336,13 @@ p{
 
 </div>
 
+<div id="flash"></div>
 
 <script>
 
-/* =========================================================
-   SMALL BACKGROUND SPARKLES
-========================================================= */
+/* ===============================
+   BACKGROUND SPARKLES
+================================ */
 
 for(let i=0;i<32;i++){
 
@@ -1387,9 +1358,9 @@ for(let i=0;i<32;i++){
 }
 
 
-/* =========================================================
+/* ===============================
    SCENE SYSTEM
-========================================================= */
+================================ */
 
 let busy=false;
 
@@ -1421,9 +1392,9 @@ function go(number){
 }
 
 
-/* =========================================================
+/* ===============================
    ENVELOPE
-========================================================= */
+================================ */
 
 let envelopeOpened=false;
 
@@ -1447,9 +1418,9 @@ function openEnvelope(){
 }
 
 
-/* =========================================================
+/* ===============================
    MEMORY SECTION
-========================================================= */
+================================ */
 
 let memory=1;
 
@@ -1489,9 +1460,9 @@ function nextMemory(){
 }
 
 
-/* =========================================================
+/* ===============================
    GIFT
-========================================================= */
+================================ */
 
 let giftOpened=false;
 
@@ -1515,9 +1486,9 @@ function openGift(){
 }
 
 
-/* =========================================================
+/* ===============================
    YES / NO
-========================================================= */
+================================ */
 
 let noCount=0;
 
@@ -1558,9 +1529,9 @@ function yesAnswer(){
 }
 
 
-/* =========================================================
-   FAKE END -> CAKE
-========================================================= */
+/* ===============================
+   FAKE END
+================================ */
 
 let fakeStarted=false;
 
@@ -1582,61 +1553,112 @@ document
   });
 
 
-/* =========================================================
-   CAKE CUTTING
-========================================================= */
+/* ===============================
+   SMOOTH CAKE CUTTING
+================================ */
 
-const cakeStage=document.getElementById("cakeStage");
 const knife=document.getElementById("knife");
 const cake=document.getElementById("cake");
 
 let dragging=false;
-let startX=0;
 let cutDone=false;
+
+let knifeStartX=0;
+let knifeStartY=0;
+let lastX=0;
+
+function getPoint(e){
+
+  if(e.touches && e.touches.length){
+    return {
+      x:e.touches[0].clientX,
+      y:e.touches[0].clientY
+    };
+  }
+
+  return {
+    x:e.clientX,
+    y:e.clientY
+  };
+}
 
 function pointerDown(e){
 
   if(cutDone)return;
 
+  const p=getPoint(e);
+
   dragging=true;
 
-  const point=e.touches ? e.touches[0] : e;
+  knifeStartX=p.x;
+  knifeStartY=p.y;
 
-  startX=point.clientX;
+  lastX=p.x;
 
-  knife.style.cursor="grabbing";
+  knife.classList.add("dragging");
+
+  e.preventDefault();
 }
 
 function pointerMove(e){
 
   if(!dragging || cutDone)return;
 
-  const point=e.touches ? e.touches[0] : e;
+  const p=getPoint(e);
 
-  const movement=point.clientX-startX;
+  const dx=p.x-lastX;
 
-  if(movement<-25){
+  const totalX=p.x-knifeStartX;
+  const totalY=p.y-knifeStartY;
 
-    knife.style.transform=
-      "rotate(-42deg) translate(-65px,35px)";
+  lastX=p.x;
 
-  }
+  /*
+    The knife follows the finger gradually.
+    requestAnimationFrame isn't necessary here because
+    CSS transform is GPU-friendly and the movement is tiny.
+  */
 
-  if(movement<-65){
+  const moveX=Math.max(-78,Math.min(8,totalX));
 
-    dragging=false;
+  const moveY=Math.max(-5,Math.min(52,totalY));
+
+  knife.style.transform=
+    `rotate(-42deg) translate(${moveX}px,${moveY}px)`;
+
+  /*
+    Actual cutting threshold.
+    User has to move the knife across the cake,
+    so accidental taps don't trigger it.
+  */
+
+  if(totalX < -62){
 
     cutCake();
   }
+
+  e.preventDefault();
 }
 
 function pointerUp(){
 
+  if(!dragging)return;
+
   dragging=false;
 
+  knife.classList.remove("dragging");
+
   if(!cutDone){
-    knife.style.cursor="grab";
-    knife.style.transform="rotate(-42deg)";
+
+    knife.style.transition=
+      "transform .45s cubic-bezier(.22,.75,.18,1)";
+
+    knife.style.transform=
+      "rotate(-42deg) translate(0,0)";
+
+    setTimeout(()=>{
+      knife.style.transition="";
+    },500);
   }
 }
 
@@ -1644,9 +1666,17 @@ knife.addEventListener("mousedown",pointerDown);
 window.addEventListener("mousemove",pointerMove);
 window.addEventListener("mouseup",pointerUp);
 
-knife.addEventListener("touchstart",pointerDown,{passive:true});
-window.addEventListener("touchmove",pointerMove,{passive:true});
-window.addEventListener("touchend",pointerUp);
+knife.addEventListener("touchstart",pointerDown,{
+  passive:false
+});
+
+window.addEventListener("touchmove",pointerMove,{
+  passive:false
+});
+
+window.addEventListener("touchend",pointerUp,{
+  passive:true
+});
 
 
 function cutCake(){
@@ -1654,36 +1684,118 @@ function cutCake(){
   if(cutDone)return;
 
   cutDone=true;
+  dragging=false;
 
-  cake.classList.add("cut");
+  knife.classList.remove("dragging");
 
-  document.getElementById("cutHint").textContent=
-    "Cake cut! 🎂✨";
+  /*
+    Smooth final knife position
+  */
+
+  knife.style.transition=
+    "transform .42s cubic-bezier(.22,.75,.18,1)";
+
+  knife.style.transform=
+    "rotate(-42deg) translate(-70px,34px)";
+
+  document
+    .getElementById("cutHint")
+    .textContent=
+    "Cut! ✨";
+
+  /*
+    Tiny settling motion
+  */
+
+  cake.animate(
+    [
+      {transform:"translateX(-50%)"},
+      {transform:"translateX(-50%) scale(1.015)"},
+      {transform:"translateX(-50%) scale(1)"}
+    ],
+    {
+      duration:500,
+      easing:"ease-out"
+    }
+  );
+
+  /*
+    Candle extinguish
+  */
 
   setTimeout(()=>{
+
     document
       .querySelectorAll(".flame")
       .forEach(flame=>{
+
         flame.style.animation="none";
-        flame.style.opacity="0";
-        flame.style.transform="scale(.3)";
+
+        flame.animate(
+          [
+            {
+              opacity:1,
+              transform:"scale(1)"
+            },
+            {
+              opacity:0,
+              transform:"translateY(-7px) scale(.15)"
+            }
+          ],
+          {
+            duration:480,
+            easing:"ease-out",
+            fill:"forwards"
+          }
+        );
+
       });
-  },350);
+
+  },250);
+
+
+  /*
+    Cake separates
+  */
 
   setTimeout(()=>{
+
+    cake.classList.add("cut");
+
+  },450);
+
+
+  /*
+    Celebration burst
+  */
+
+  setTimeout(()=>{
+
     flash();
+
     makeConfetti(45);
-  },700);
+
+  },950);
+
+
+  /*
+    Give the animation time to breathe
+    before changing scene.
+  */
 
   setTimeout(()=>{
+
+    knife.style.transition="";
+
     go(11);
-  },1700);
+
+  },2350);
 }
 
 
-/* =========================================================
+/* ===============================
    FLASH
-========================================================= */
+================================ */
 
 function flash(){
 
@@ -1692,7 +1804,7 @@ function flash(){
   layer.animate(
     [
       {opacity:0},
-      {opacity:.55},
+      {opacity:.45},
       {opacity:0}
     ],
     {
@@ -1703,9 +1815,9 @@ function flash(){
 }
 
 
-/* =========================================================
+/* ===============================
    CONFETTI
-========================================================= */
+================================ */
 
 function makeConfetti(amount){
 
@@ -1745,9 +1857,9 @@ function makeConfetti(amount){
 }
 
 
-/* =========================================================
+/* ===============================
    IMAGE PRELOAD
-========================================================= */
+================================ */
 
 [
   "photo1.jpg",
@@ -1761,9 +1873,9 @@ function makeConfetti(amount){
 });
 
 
-/* =========================================================
-   PREVENT ACCIDENTAL PAGE SCROLL
-========================================================= */
+/* ===============================
+   PREVENT PAGE SCROLL
+================================ */
 
 document.addEventListener(
   "touchmove",
