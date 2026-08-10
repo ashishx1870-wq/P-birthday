@@ -3,26 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-
-<title>For Pallavi ✦</title>
+<title>A Little Something ✦</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#fbf7f3;
-  --paper:#fffdfa;
-  --ink:#393337;
+  --bg:#faf6f2;
+  --paper:#fffdf9;
+  --text:#393236;
   --muted:#817579;
   --rose:#b86d7c;
-  --rose-soft:#f1cbd1;
-  --peach:#f5d9c5;
-  --lav:#ddd8ed;
-  --gold:#dfbd69;
+  --rose2:#efcbd0;
+  --gold:#d9b968;
+  --lav:#dfd9eb;
+  --peach:#f3d8c6;
   --line:rgba(65,45,52,.12);
-  --shadow:0 22px 60px rgba(75,50,58,.13);
+  --shadow:0 25px 70px rgba(72,49,57,.14);
   --ease:cubic-bezier(.22,.75,.18,1);
 }
 
@@ -41,26 +40,22 @@ html,body{
 
 body{
   font-family:"Manrope",sans-serif;
-  color:var(--ink);
+  color:var(--text);
   background:var(--bg);
 }
 
 button{
-  font-family:inherit;
+  font:inherit;
 }
 
 #app{
   position:fixed;
   inset:0;
   overflow:hidden;
-
   background:
-    radial-gradient(circle at 7% 12%,
-      rgba(241,203,209,.6),transparent 28%),
-    radial-gradient(circle at 94% 82%,
-      rgba(221,216,237,.62),transparent 31%),
-    radial-gradient(circle at 48% 105%,
-      rgba(245,217,197,.5),transparent 34%),
+    radial-gradient(circle at 10% 10%,rgba(239,203,208,.55),transparent 28%),
+    radial-gradient(circle at 92% 88%,rgba(223,217,235,.62),transparent 32%),
+    radial-gradient(circle at 50% 110%,rgba(243,216,198,.5),transparent 35%),
     var(--bg);
 }
 
@@ -70,63 +65,60 @@ button{
   inset:0;
   pointer-events:none;
   opacity:.025;
-
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.blob{
+.glow{
   position:absolute;
+  width:250px;
+  height:250px;
   border-radius:50%;
-  filter:blur(55px);
+  filter:blur(65px);
+  opacity:.28;
   pointer-events:none;
-  opacity:.38;
-  animation:blobMove 16s ease-in-out infinite alternate;
+  animation:drift 15s ease-in-out infinite alternate;
 }
 
-.blob.one{
-  width:220px;
-  height:220px;
-  left:-100px;
-  top:5%;
-  background:var(--rose-soft);
+.glow.a{
+  background:var(--rose2);
+  left:-120px;
+  top:0;
 }
 
-.blob.two{
-  width:260px;
-  height:260px;
-  right:-120px;
-  bottom:-50px;
+.glow.b{
   background:var(--lav);
-  animation-delay:-6s;
+  right:-130px;
+  bottom:-80px;
+  animation-delay:-5s;
 }
 
-@keyframes blobMove{
+@keyframes drift{
   to{
     transform:translate(35px,25px) scale(1.08);
   }
 }
 
+/* SCENES */
+
 .scene{
   position:absolute;
   inset:0;
   z-index:5;
-
   display:flex;
-  justify-content:center;
   align-items:center;
-
+  justify-content:center;
   padding:18px;
 
   opacity:0;
   visibility:hidden;
   pointer-events:none;
 
-  transform:translateY(20px) scale(.985);
+  transform:translateY(22px) scale(.985);
 
   transition:
-    opacity .65s ease,
-    transform .85s var(--ease),
-    visibility 0s linear .85s;
+    opacity .7s ease,
+    transform .9s var(--ease),
+    visibility 0s linear .9s;
 }
 
 .scene.active{
@@ -136,8 +128,8 @@ button{
   transform:none;
 
   transition:
-    opacity .65s ease,
-    transform .85s var(--ease);
+    opacity .7s ease,
+    transform .9s var(--ease);
 }
 
 .content{
@@ -147,14 +139,12 @@ button{
 }
 
 .eyebrow{
-  margin-bottom:14px;
-
   font-size:8px;
   font-weight:700;
   letter-spacing:3px;
   text-transform:uppercase;
-
-  color:#998d91;
+  color:#9a8d91;
+  margin-bottom:15px;
 }
 
 h1,h2{
@@ -163,19 +153,18 @@ h1,h2{
 }
 
 h1{
-  font-size:clamp(38px,10vw,68px);
+  font-size:clamp(39px,10vw,70px);
   line-height:1.04;
 }
 
 h2{
-  font-size:clamp(29px,7.5vw,51px);
+  font-size:clamp(29px,7.5vw,52px);
   line-height:1.08;
 }
 
 p{
   max-width:510px;
   margin:15px auto 0;
-
   color:var(--muted);
   font-size:12px;
   line-height:1.8;
@@ -192,26 +181,17 @@ p{
 
 .btn{
   border:1px solid var(--line);
-  background:rgba(255,255,255,.76);
-
-  color:var(--ink);
-
+  background:rgba(255,255,255,.8);
+  color:var(--text);
   border-radius:100px;
-
   padding:12px 21px;
   margin-top:23px;
-
   font-size:10px;
   font-weight:700;
   letter-spacing:.5px;
-
   cursor:pointer;
-
-  box-shadow:0 9px 28px rgba(70,50,55,.07);
-
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease;
+  box-shadow:0 10px 30px rgba(70,50,55,.07);
+  transition:transform .25s ease,box-shadow .25s ease;
 }
 
 .btn:active{
@@ -219,114 +199,103 @@ p{
 }
 
 .btn.primary{
-  background:var(--rose-soft);
+  background:var(--rose2);
   border-color:transparent;
 }
 
-
-/* FLOATING PARTICLES */
+/* PARTICLES */
 
 .particle{
   position:absolute;
-
   width:4px;
   height:4px;
-
   border-radius:50%;
-
   background:var(--gold);
   opacity:.3;
-
-  animation:floatParticle linear infinite;
+  pointer-events:none;
+  animation:float linear infinite;
 }
 
-@keyframes floatParticle{
+@keyframes float{
   from{
     transform:translateY(110vh);
     opacity:0;
   }
-
   15%{opacity:.35}
-
-  85%{opacity:.18}
-
+  85%{opacity:.15}
   to{
     transform:translateY(-10vh);
     opacity:0;
   }
 }
 
-
 /* OPENING */
 
-.open-dot{
-  width:11px;
-  height:11px;
-
-  margin:0 auto 24px;
-
+.opening-light{
+  width:12px;
+  height:12px;
   border-radius:50%;
-
-  background:var(--gold);
-
-  animation:pulse 2s infinite;
+  margin:0 auto 30px;
+  background:#e1c57d;
+  box-shadow:0 0 0 0 rgba(217,185,104,.3);
+  animation:lightPulse 2.2s ease-out infinite;
 }
 
-@keyframes pulse{
+@keyframes lightPulse{
   70%{
-    box-shadow:
-      0 0 0 22px rgba(223,189,105,0);
+    box-shadow:0 0 0 28px rgba(217,185,104,0);
   }
 }
 
-.opening-small{
-  animation:reveal .8s .25s var(--ease) both;
+.opening-line{
+  opacity:0;
+  transform:translateY(15px);
 }
 
-.opening-main{
-  animation:reveal .9s .65s var(--ease) both;
+.scene.active .opening-line{
+  animation:up .9s var(--ease) forwards;
 }
 
-.open-card{
+.scene.active .opening-line:nth-child(2){
+  animation-delay:.35s;
+}
+
+.scene.active .opening-line:nth-child(3){
+  animation-delay:.7s;
+}
+
+@keyframes up{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.opening-card{
   width:min(350px,84vw);
-
-  margin:27px auto 0;
-
+  margin:30px auto 0;
   padding:22px;
-
-  background:rgba(255,255,255,.78);
-
   border:1px solid var(--line);
-  border-radius:20px;
-
+  border-radius:22px;
+  background:rgba(255,255,255,.74);
   box-shadow:var(--shadow);
-
   cursor:pointer;
-
-  animation:
-    cardIn 1s 1.15s var(--ease) both;
-
-  position:relative;
+  opacity:0;
+  transform:translateY(25px) scale(.96);
 }
 
-.open-card:before,
-.open-card:after{
-  content:"✦";
-  position:absolute;
-  color:var(--gold);
+.scene.active .opening-card{
+  animation:cardIn 1s 1.05s var(--ease) forwards;
 }
 
-.open-card:before{
-  top:10px;
-  left:14px;
+@keyframes cardIn{
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
-.open-card:after{
-  right:14px;
-  bottom:10px;
-}
-
-.card-label{
+.card-small{
   font-size:8px;
   font-weight:700;
   letter-spacing:2px;
@@ -335,352 +304,260 @@ p{
 }
 
 .card-title{
-  margin-top:8px;
+  margin-top:9px;
   font-size:19px;
   font-weight:600;
 }
 
 .card-sub{
   margin-top:5px;
-
-  font-family:"Playfair Display",serif;
-  font-style:italic;
-
   color:var(--rose);
-  font-size:16px;
-}
-
-@keyframes reveal{
-  from{
-    opacity:0;
-    transform:translateY(18px);
-  }
-
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-@keyframes cardIn{
-  from{
-    opacity:0;
-    transform:translateY(30px) scale(.95);
-  }
-
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-
-/* ENVELOPE */
-
-.envelope-wrap{
-  height:260px;
-
-  display:grid;
-  place-items:center;
-}
-
-.envelope{
-  width:280px;
-  height:175px;
-
-  position:relative;
-
-  cursor:pointer;
-
-  filter:
-    drop-shadow(0 22px 30px rgba(74,50,55,.15));
-
-  perspective:900px;
-}
-
-.env-back{
-  position:absolute;
-  inset:0;
-
-  background:#f2d4d0;
-  border-radius:7px;
-}
-
-.env-back:before,
-.env-back:after{
-  content:"";
-
-  position:absolute;
-  bottom:0;
-
-  width:0;
-  height:0;
-
-  border-style:solid;
-}
-
-.env-back:before{
-  left:0;
-
-  border-width:
-    0 140px 98px 0;
-
-  border-color:
-    transparent #e8c2c4
-    transparent transparent;
-}
-
-.env-back:after{
-  right:0;
-
-  border-width:
-    98px 140px 0 0;
-
-  border-color:
-    #e4bbbf transparent transparent;
-}
-
-.letter{
-  position:absolute;
-
-  left:29px;
-  top:17px;
-
-  width:222px;
-  height:145px;
-
-  z-index:2;
-
-  background:var(--paper);
-
-  display:grid;
-  place-items:center;
-
-  padding:20px;
-
-  border-radius:4px;
-
-  box-shadow:
-    0 10px 25px rgba(70,50,55,.13);
-
-  color:#5e5053;
-
   font-family:"Playfair Display",serif;
   font-style:italic;
-  font-size:20px;
-
-  transition:
-    transform 1s var(--ease);
+  font-size:15px;
 }
 
-.flap{
-  position:absolute;
+/* SURPRISE BOX */
 
-  top:0;
-  left:0;
-
-  z-index:4;
-
-  width:0;
-  height:0;
-
-  border-left:140px solid transparent;
-  border-right:140px solid transparent;
-  border-top:102px solid #f6ded8;
-
-  transform-origin:50% 0;
-
-  transition:
-    transform .95s var(--ease);
-
-  backface-visibility:hidden;
-}
-
-.seal{
-  position:absolute;
-
-  z-index:6;
-
-  left:50%;
-  top:70px;
-
-  transform:translateX(-50%);
-
-  width:34px;
-  height:34px;
-
-  border-radius:50%;
-
-  background:#dfbd69;
-  color:#fff;
-
+.box-stage{
+  height:310px;
   display:grid;
   place-items:center;
-
-  transition:.35s;
+  perspective:1000px;
 }
 
-.envelope.open .flap{
-  transform:rotateX(180deg);
+.memory-box{
+  width:260px;
+  height:175px;
+  position:relative;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  filter:drop-shadow(0 25px 30px rgba(72,49,57,.16));
 }
 
-.envelope.open .letter{
-  transform:translateY(-105px);
+.box-base{
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:0;
+  height:125px;
+  border-radius:7px;
+  background:linear-gradient(135deg,#e7adb7,#d995a3);
+  box-shadow:inset 0 8px 15px rgba(255,255,255,.18);
 }
 
-.envelope.open .seal{
+.box-base:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:15px;
+  transform:translateX(-50%);
+  background:#e5c56e;
+  opacity:.9;
+}
+
+.box-lid{
+  position:absolute;
+  z-index:5;
+  left:0;
+  right:0;
+  top:25px;
+  height:42px;
+  border-radius:7px;
+  background:linear-gradient(135deg,#f0c5cb,#e4a8b2);
+  transform-origin:50% 100%;
+  transition:transform 1s var(--ease);
+}
+
+.box-lid:after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:15px;
+  transform:translateX(-50%);
+  background:#e5c56e;
+}
+
+.box-ribbon{
+  position:absolute;
+  z-index:7;
+  width:36px;
+  height:36px;
+  left:50%;
+  top:8px;
+  transform:translateX(-50%) rotate(45deg);
+  border-radius:6px 6px 3px 6px;
+  background:#e5c56e;
+  transition:opacity .35s;
+}
+
+.box-light{
+  position:absolute;
+  z-index:1;
+  left:50%;
+  top:58px;
+  width:120px;
+  height:100px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(circle,#fff9d8,rgba(255,244,194,0));
+  opacity:0;
+  filter:blur(7px);
+  transition:opacity .8s;
+}
+
+.box-card{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:68px;
+  width:180px;
+  height:105px;
+  transform:translate(-50%,35px) scale(.9);
+  background:var(--paper);
+  border-radius:5px;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  box-shadow:0 12px 30px rgba(60,40,45,.16);
+  opacity:0;
+  transition:
+    transform 1s .2s var(--ease),
+    opacity .5s .15s ease;
+}
+
+.box-card-text{
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+  font-size:17px;
+  line-height:1.45;
+  color:var(--rose);
+}
+
+.memory-box.open .box-lid{
+  transform:rotateX(-115deg) translateY(-8px);
+}
+
+.memory-box.open .box-ribbon{
   opacity:0;
 }
 
+.memory-box.open .box-light{
+  opacity:1;
+}
+
+.memory-box.open .box-card{
+  opacity:1;
+  transform:translate(-50%,-40px) scale(1);
+}
+
+.box-hint{
+  font-size:10px;
+  color:#988b8f;
+}
 
 /* MEMORY */
 
 .memory-area{
-  height:385px;
-
+  height:380px;
   position:relative;
-
   display:grid;
   place-items:center;
 }
 
 .memory-card{
   position:absolute;
-
   width:min(275px,76vw);
-
   padding:9px 9px 14px;
-
   background:#fff;
-
   border-radius:5px;
-
   box-shadow:var(--shadow);
-
   opacity:0;
-
-  transform:
-    translateY(35px)
-    scale(.93)
-    rotate(3deg);
-
-  transition:
-    opacity .7s ease,
-    transform .9s var(--ease);
+  transform:translateY(35px) scale(.93) rotate(3deg);
+  transition:opacity .65s ease,transform .8s var(--ease);
 }
 
 .memory-card.active{
   opacity:1;
-
-  transform:
-    translateY(0)
-    scale(1)
-    rotate(-2deg);
+  transform:translateY(0) scale(1) rotate(-2deg);
 }
 
 .memory-card img{
+  display:block;
   width:100%;
   height:230px;
-
-  display:block;
-
   object-fit:cover;
-
   background:#eee;
 }
 
 .memory-caption{
   margin-top:7px;
-
   font-family:"Playfair Display",serif;
   font-style:italic;
-
   font-size:14px;
-  color:#5c4e52;
+  color:#5d5053;
 }
 
 .memory-note{
   position:absolute;
-
-  right:-20px;
+  right:-18px;
   top:-17px;
-
   padding:6px 9px;
-
   background:#fff1a9;
-
-  color:#645c40;
-
   font-family:"Playfair Display",serif;
   font-style:italic;
-
-  font-size:12px;
-
+  font-size:11px;
+  color:#655e45;
   transform:rotate(7deg);
-
-  box-shadow:0 4px 10px rgba(50,40,20,.08);
+  box-shadow:0 5px 12px rgba(50,40,20,.08);
 }
 
 .no-photo-card{
   height:230px;
-
   display:flex;
   flex-direction:column;
-
-  justify-content:center;
   align-items:center;
-
+  justify-content:center;
   text-align:center;
-
-  padding:23px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #fffdf9,
-      #fff5ef
-    );
-
-  border:
-    1px dashed
-    rgba(184,109,124,.28);
+  padding:20px;
+  background:linear-gradient(145deg,#fffdf9,#fff5ef);
+  border:1px dashed rgba(184,109,124,.28);
 }
 
-.camera-icon{
-  font-size:26px;
-  margin-bottom:12px;
-  opacity:.7;
+.camera{
+  font-size:27px;
+  opacity:.65;
 }
 
 .no-photo-title{
-  font-size:15px;
+  margin-top:10px;
+  font-size:14px;
   line-height:1.4;
   font-weight:600;
 }
 
 .no-photo-text{
   margin-top:9px;
-
+  color:var(--rose);
   font-family:"Playfair Display",serif;
   font-style:italic;
-
   font-size:14px;
   line-height:1.4;
-
-  color:var(--rose);
 }
 
 .no-photo-small{
-  margin-top:10px;
-
+  margin-top:9px;
   font-size:9px;
-  color:#9b8d90;
+  color:#9a8d91;
 }
 
 .dots{
   position:absolute;
   bottom:0;
-
   display:flex;
   gap:7px;
 }
@@ -688,11 +565,8 @@ p{
 .dot{
   width:6px;
   height:6px;
-
   border-radius:50%;
-
-  background:#d7cdd0;
-
+  background:#d8ced1;
   transition:.3s;
 }
 
@@ -701,307 +575,172 @@ p{
   transform:scale(1.4);
 }
 
-
 /* GIFT */
 
 .gift{
   width:150px;
   height:135px;
-
   margin:30px auto;
-
   position:relative;
-
   cursor:pointer;
-
-  animation:
-    giftFloat 2.6s ease-in-out infinite;
+  animation:giftFloat 2.7s ease-in-out infinite;
 }
 
 @keyframes giftFloat{
-  50%{
-    transform:translateY(-8px);
-  }
+  50%{transform:translateY(-8px)}
 }
 
 .gift-body{
   position:absolute;
-
-  bottom:0;
   left:9px;
   right:9px;
-
+  bottom:0;
   height:85px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #efb9c2,
-      #e6a6b1
-    );
-
   border-radius:5px;
-
-  box-shadow:
-    0 22px 40px rgba(100,55,65,.18);
+  background:linear-gradient(135deg,#efb9c2,#e6a6b1);
+  box-shadow:0 22px 40px rgba(100,55,65,.18);
 }
 
 .gift-lid{
   position:absolute;
-
   z-index:4;
-
   left:2px;
   right:2px;
-
   top:30px;
   height:29px;
-
   border-radius:5px;
-
   background:#f4cbd0;
-
   transition:.8s var(--ease);
+}
+
+.gift.open .gift-lid{
+  transform:translateY(-55px) rotate(-4deg);
 }
 
 .ribbon-v{
   position:absolute;
-
   width:13px;
-
   top:0;
   bottom:0;
   left:50%;
-
   transform:translateX(-50%);
-
   background:#f0d481;
 }
 
 .ribbon-h{
   position:absolute;
-
   height:9px;
-
   left:0;
   right:0;
   top:50%;
-
   transform:translateY(-50%);
-
   background:#f0d481;
 }
-
-.gift.open .gift-lid{
-  transform:
-    translateY(-55px)
-    rotate(-4deg);
-}
-
 
 /* CHOICE */
 
 .choice{
-  height:105px;
-
+  height:100px;
   display:flex;
   justify-content:center;
-
   gap:14px;
-
   position:relative;
 }
 
-.no{
-  position:relative;
-}
-
-
-/* =========================
-   CAKE
-========================= */
+/* CAKE */
 
 .cake-stage{
   width:360px;
-  height:330px;
-
+  height:325px;
   margin:0 auto;
-
   position:relative;
-
   touch-action:none;
   user-select:none;
 }
 
 .plate{
   position:absolute;
-
-  width:270px;
+  width:275px;
   height:24px;
-
   left:50%;
   bottom:14px;
-
   transform:translateX(-50%);
-
   border-radius:50%;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f7f1ef,
-      #e5d9d7
-    );
-
-  box-shadow:
-    0 10px 18px rgba(70,50,55,.13);
+  background:linear-gradient(#f7f1ef,#e3d8d6);
+  box-shadow:0 10px 18px rgba(70,50,55,.13);
 }
 
 .cake{
   position:absolute;
-
   width:220px;
   height:145px;
-
   left:50%;
   bottom:31px;
-
   transform:translateX(-50%);
-
-  transition:
-    transform .5s var(--ease);
 }
 
 .cake-body{
   position:absolute;
-
   left:0;
   right:0;
   bottom:0;
-
   height:95px;
-
+  border-radius:10px 10px 12px 12px;
+  background:linear-gradient(#eab5bc,#e5aab3);
   overflow:hidden;
-
-  border-radius:
-    10px 10px 12px 12px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #eab5bc 0%,
-      #e5aab3 100%
-    );
-
-  box-shadow:
-    inset 0 8px 14px rgba(255,255,255,.25),
-    inset 0 -8px 12px rgba(130,65,75,.08);
+  box-shadow:inset 0 8px 14px rgba(255,255,255,.25);
 }
 
 .cake-body:before{
   content:"";
-
   position:absolute;
-
   left:0;
   right:0;
   top:30px;
-
   height:5px;
-
   background:#f8d9c9;
-
-  box-shadow:
-    0 26px 0 #f8d9c9;
+  box-shadow:0 26px 0 #f8d9c9;
 }
 
 .top-cake{
   position:absolute;
-
   width:180px;
   height:45px;
-
   left:20px;
   top:14px;
-
-  border-radius:
-    50% 50% 38% 38%;
-
-  background:
-    linear-gradient(
-      180deg,
-      #fff5e9,
-      #f9e6d9
-    );
-
-  box-shadow:
-    inset 0 7px 8px rgba(255,255,255,.7);
+  border-radius:50%;
+  background:linear-gradient(#fff6ea,#f9e6d9);
 }
 
-.frosting-drip{
+.frosting{
   position:absolute;
-
   width:190px;
   height:28px;
-
   left:15px;
   top:35px;
-
-  border-radius:
-    0 0 50% 50%;
-
+  border-radius:0 0 50% 50%;
   background:#fff2e6;
-
-  box-shadow:
-    0 3px 5px rgba(130,90,80,.06);
 }
 
 .drip{
   position:absolute;
-
   width:14px;
-
   background:#fff2e6;
-
   border-radius:0 0 10px 10px;
 }
 
-.drip.one{
-  height:24px;
-  left:40px;
-}
-
-.drip.two{
-  height:17px;
-  left:84px;
-}
-
-.drip.three{
-  height:27px;
-  left:130px;
-}
-
-
-/* candles */
+.drip.a{height:23px;left:40px}
+.drip.b{height:17px;left:84px}
+.drip.c{height:27px;left:130px}
 
 .candle{
   position:absolute;
-
-  z-index:5;
-
+  z-index:6;
   bottom:110px;
-
   width:9px;
   height:39px;
-
   border-radius:5px;
-
-  background:
-    repeating-linear-gradient(
-      135deg,
-      #d6b8dc 0 5px,
-      #ecd9ee 5px 10px
-    );
+  background:repeating-linear-gradient(135deg,#d6b8dc 0 5px,#ecd9ee 5px 10px);
 }
 
 .c1{left:74px}
@@ -1010,158 +749,63 @@ p{
 
 .flame{
   position:absolute;
-
   width:12px;
   height:18px;
-
   left:-1.5px;
   top:-17px;
-
-  border-radius:
-    50% 50% 50% 50%;
-
-  background:
-    radial-gradient(
-      circle at 50% 65%,
-      #fff4b0 0 22%,
-      #efc762 23% 62%,
-      transparent 63%
-    );
-
-  animation:
-    flame .55s ease-in-out infinite alternate;
+  border-radius:50%;
+  background:radial-gradient(circle at 50% 65%,#fff5b0 0 22%,#efc762 23% 62%,transparent 63%);
+  animation:flame .55s ease-in-out infinite alternate;
 }
 
 @keyframes flame{
-  from{
-    transform:
-      rotate(-3deg)
-      scale(.92);
-  }
-
-  to{
-    transform:
-      rotate(4deg)
-      scale(1.08);
-  }
+  from{transform:rotate(-3deg) scale(.92)}
+  to{transform:rotate(4deg) scale(1.08)}
 }
-
-
-/* cut */
 
 .cut-line{
   position:absolute;
-
-  z-index:7;
-
+  z-index:8;
   width:4px;
   height:93px;
-
   left:106px;
   top:53px;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(160,90,95,.35),
-      rgba(160,90,95,.12)
-    );
-
+  background:rgba(150,80,90,.2);
   opacity:0;
-
-  transform:
-    rotate(4deg)
-    scaleY(.1);
-
+  transform:rotate(4deg) scaleY(.05);
   transform-origin:top;
-
-  transition:
-    transform .7s var(--ease),
-    opacity .3s ease;
+  transition:transform .7s var(--ease),opacity .3s;
 }
 
 .cake.cut .cut-line{
   opacity:1;
-
-  transform:
-    rotate(4deg)
-    scaleY(1);
+  transform:rotate(4deg) scaleY(1);
 }
-
-
-/* cake split illusion */
-
-.cake.cut .cake-body{
-  animation:
-    cakeSplit .8s var(--ease) forwards;
-}
-
-@keyframes cakeSplit{
-  50%{
-    transform:
-      scaleX(1.015)
-      translateX(0);
-  }
-
-  to{
-    transform:
-      scaleX(1)
-      translateX(0);
-  }
-}
-
-
-/* KNIFE */
 
 .knife{
   position:absolute;
-
   z-index:30;
-
   width:132px;
   height:12px;
-
   right:2px;
   top:143px;
-
   border-radius:8px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f8f8f8,
-      #bbb
-    );
-
+  background:linear-gradient(#fafafa,#b9b9b9);
   transform:rotate(-42deg);
-
   transform-origin:100% 50%;
-
   cursor:grab;
-
-  box-shadow:
-    0 5px 11px rgba(60,50,50,.2);
+  box-shadow:0 5px 11px rgba(60,50,50,.2);
 }
 
 .knife:after{
   content:"";
-
   position:absolute;
-
   right:-35px;
   top:-3px;
-
   width:40px;
   height:18px;
-
   border-radius:4px;
-
-  background:
-    linear-gradient(
-      180deg,
-      #96757b,
-      #73565c
-    );
+  background:linear-gradient(#96757b,#73565c);
 }
 
 .knife.dragging{
@@ -1173,44 +817,25 @@ p{
   color:#998d91;
 }
 
-
-/* crumbs */
-
 .crumb{
   position:absolute;
-
   z-index:40;
-
   width:5px;
   height:5px;
-
   border-radius:50%;
-
   background:#e8b7ad;
-
   pointer-events:none;
-
-  animation:
-    crumbFall .9s ease-out forwards;
+  animation:crumb .9s ease-out forwards;
 }
 
-@keyframes crumbFall{
+@keyframes crumb{
   to{
-    transform:
-      translate(
-        var(--cx),
-        var(--cy)
-      )
-      rotate(160deg);
-
+    transform:translate(var(--x),var(--y)) rotate(180deg);
     opacity:0;
   }
 }
 
-
-/* =========================
-   FINAL SECTION
-========================= */
+/* FINAL */
 
 .final-content{
   width:min(94vw,700px);
@@ -1222,189 +847,103 @@ p{
 }
 
 .scene.active .final-intro{
-  animation:
-    finalReveal .8s .15s var(--ease) forwards;
+  animation:up .8s .1s var(--ease) forwards;
 }
-
-@keyframes finalReveal{
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-
-/* MEMORY WALL */
 
 .final-photos{
   display:flex;
-
   justify-content:center;
   align-items:flex-start;
-
   gap:12px;
-
-  margin:19px auto 21px;
+  margin:20px auto 21px;
 }
 
 .mini-photo{
   width:88px;
   height:111px;
-
   padding:5px 5px 16px;
-
-  background:#fff;
-
-  box-shadow:
-    0 12px 28px rgba(70,50,55,.14);
-
+  background:white;
+  box-shadow:0 12px 28px rgba(70,50,55,.14);
   opacity:0;
-
-  transform:
-    translateY(30px)
-    rotate(0deg);
-
-  transition:
-    opacity .65s ease,
-    transform .8s var(--ease);
 }
 
 .scene.active .mini-photo:nth-child(1){
-  animation:
-    photoOne .8s .45s var(--ease) forwards;
+  animation:photo1 .8s .4s var(--ease) forwards;
 }
 
 .scene.active .mini-photo:nth-child(2){
-  animation:
-    photoTwo .8s .62s var(--ease) forwards;
+  animation:photo2 .8s .57s var(--ease) forwards;
 }
 
 .scene.active .mini-photo:nth-child(3){
-  animation:
-    photoThree .8s .79s var(--ease) forwards;
+  animation:photo3 .8s .74s var(--ease) forwards;
 }
 
-@keyframes photoOne{
-  to{
-    opacity:1;
-    transform:
-      rotate(-6deg);
-  }
+@keyframes photo1{
+  to{opacity:1;transform:rotate(-6deg)}
 }
 
-@keyframes photoTwo{
-  to{
-    opacity:1;
-    transform:
-      translateY(-7px)
-      rotate(2deg);
-  }
+@keyframes photo2{
+  to{opacity:1;transform:translateY(-7px) rotate(2deg)}
 }
 
-@keyframes photoThree{
-  to{
-    opacity:1;
-    transform:
-      rotate(5deg);
-  }
+@keyframes photo3{
+  to{opacity:1;transform:rotate(5deg)}
 }
 
 .mini-photo img{
   width:100%;
   height:78px;
-
-  display:block;
-
   object-fit:cover;
+  display:block;
 }
 
 .mini-empty{
   width:100%;
   height:78px;
-
   display:flex;
   flex-direction:column;
-
   justify-content:center;
   align-items:center;
-
   text-align:center;
-
-  background:
-    linear-gradient(
-      145deg,
-      #fffdf9,
-      #fff5ef
-    );
-
-  border:
-    1px dashed
-    rgba(184,109,124,.28);
-}
-
-.small-camera{
-  font-size:16px;
-  opacity:.6;
+  background:linear-gradient(145deg,#fffdf9,#fff5ef);
+  border:1px dashed rgba(184,109,124,.28);
 }
 
 .mini-empty span{
   margin-top:4px;
-
   font-family:"Playfair Display",serif;
   font-style:italic;
-
+  color:var(--rose);
   font-size:10px;
   line-height:1.25;
-
-  color:var(--rose);
 }
-
-
-/* MEMORY TAGS */
 
 .photo-tag{
   margin-top:5px;
-
   font-family:"Playfair Display",serif;
   font-style:italic;
-
   font-size:8px;
-
   color:#7e7074;
 }
 
-
-/* FRIEND CARD */
-
 .friend-card{
   width:min(530px,90vw);
-
-  margin:0 auto;
-
+  margin:auto;
   padding:23px 21px;
-
-  background:
-    rgba(255,255,255,.78);
-
-  border:
-    1px solid var(--line);
-
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
   border-radius:23px;
-
   box-shadow:var(--shadow);
-
   opacity:0;
-  transform:
-    translateY(20px)
-    scale(.97);
+  transform:translateY(20px) scale(.97);
 }
 
 .scene.active .friend-card{
-  animation:
-    cardReveal .85s 1.02s var(--ease) forwards;
+  animation:friend .85s 1s var(--ease) forwards;
 }
 
-@keyframes cardReveal{
+@keyframes friend{
   to{
     opacity:1;
     transform:none;
@@ -1423,136 +962,57 @@ p{
 
 .friend-line{
   margin-top:13px;
-
   font-family:"Playfair Display",serif;
   font-style:italic;
-
   font-size:20px;
-
   color:var(--rose);
 }
 
 .friend-mini{
   margin-top:10px;
-
   color:#817477;
-
   font-size:11px;
   line-height:1.7;
 }
 
-
-/* FINAL MESSAGE */
-
 .final-note{
   margin-top:16px;
-
   font-family:"Playfair Display",serif;
   font-style:italic;
-
   font-size:20px;
-
   color:var(--rose);
-
   opacity:0;
 }
 
 .scene.active .final-note{
-  animation:
-    fadeUp .7s 1.45s var(--ease) forwards;
+  animation:up .7s 1.45s var(--ease) forwards;
 }
 
 .final-small{
   margin-top:7px;
-
   font-size:9px;
-
   color:#9b8d90;
-
   opacity:0;
 }
 
 .scene.active .final-small{
-  animation:
-    fadeUp .7s 1.75s var(--ease) forwards;
+  animation:up .7s 1.7s var(--ease) forwards;
 }
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-
-/* FINAL GLOW */
-
-.final-glow{
-  position:absolute;
-
-  left:50%;
-  top:48%;
-
-  width:160px;
-  height:160px;
-
-  transform:translate(-50%,-50%);
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(241,203,209,.32),
-      transparent 70%
-    );
-
-  filter:blur(10px);
-
-  opacity:0;
-
-  pointer-events:none;
-}
-
-.scene.active .final-glow{
-  animation:
-    glowIn 2s 1s ease forwards;
-}
-
-@keyframes glowIn{
-  from{opacity:0}
-  50%{opacity:1}
-  to{opacity:.45}
-}
-
 
 /* CONFETTI */
 
 .confetti{
   position:fixed;
-
   top:-20px;
-
   width:6px;
   height:10px;
-
   z-index:100;
-
-  animation:
-    fall 3.5s linear forwards;
+  animation:fall 3.5s linear forwards;
 }
 
 @keyframes fall{
   to{
-    transform:
-      translate(var(--x),110vh)
-      rotate(700deg);
-
+    transform:translate(var(--x),110vh) rotate(700deg);
     opacity:0;
   }
 }
@@ -1560,16 +1020,11 @@ p{
 #flash{
   position:fixed;
   inset:0;
-
-  background:#fff;
-
-  opacity:0;
-
   z-index:150;
-
+  background:white;
+  opacity:0;
   pointer-events:none;
 }
-
 
 /* MOBILE */
 
@@ -1595,7 +1050,7 @@ p{
   .cake-stage{
     transform:scale(.88);
     transform-origin:center;
-    margin-top:-4px;
+    margin-top:-5px;
   }
 
   .mini-photo{
@@ -1631,63 +1086,59 @@ p{
 
 <div id="app">
 
-<div class="blob one"></div>
-<div class="blob two"></div>
-
+<div class="glow a"></div>
+<div class="glow b"></div>
 
 <!-- PARTICLES -->
 
 <script>
-for(let i=0;i<32;i++){
-
+for(let i=0;i<30;i++){
   const p=document.createElement("div");
-
   p.className="particle";
-
   p.style.left=Math.random()*100+"%";
   p.style.animationDuration=(8+Math.random()*9)+"s";
   p.style.animationDelay=(Math.random()*8)+"s";
-
   document.getElementById("app").appendChild(p);
 }
 </script>
 
 
-<!-- 1 OPENING -->
+<!-- 01 OPENING -->
 
 <section class="scene active" id="s1">
 
 <div class="content">
 
-<div class="open-dot"></div>
+<div class="opening-light"></div>
 
-<div class="eyebrow opening-small">
+<div class="eyebrow opening-line">
 Ek minute…
 </div>
 
-<h1 class="opening-main">
-Ye <span class="accent">Pallavi</span><br>
-aapke liye hai.
+<h1 class="opening-line">
+Kuch cheezein<br>
+<span class="accent">bas kehne ke liye</span><br>
+nahi hoti.
 </h1>
 
-<p class="opening-main">
-Bas thoda sa waqt nikaaliye.
+<p class="opening-line">
+Unhe thoda feel bhi karna padta hai. ✦
 </p>
 
 <div
-class="open-card"
+class="opening-card"
 onclick="go(2)">
 
-<div class="card-label">
+<div class="card-small">
 A little surprise
 </div>
 
 <div class="card-title">
-Aapke liye kuch hai
+Aapke liye kuch banaya hai.
 </div>
 
 <div class="card-sub">
-Open this when you're ready ✦
+Tap to begin
 </div>
 
 </div>
@@ -1696,101 +1147,102 @@ Open this when you're ready ✦
 </section>
 
 
-<!-- 2 ENVELOPE -->
+<!-- 02 BOX -->
 
 <section class="scene" id="s2">
 
 <div class="content">
 
 <div class="eyebrow">
-A little note
+Something inside
 </div>
 
 <h2>
-Ek chhota sa<br>
-<span class="accent">letter…</span>
+Isse open<br>
+<span class="accent">kijiye.</span>
 </h2>
 
-<div class="envelope-wrap">
+<div class="box-stage">
 
 <div
-class="envelope"
-id="envelope"
-onclick="openEnvelope()">
+class="memory-box"
+id="memoryBox"
+onclick="openBox()">
 
-<div class="env-back"></div>
+<div class="box-light"></div>
 
-<div class="letter">
-Pallavi,<br>
-bas ek chhoti si<br>
-baat aapke liye ✦
+<div class="box-card">
+<div class="box-card-text">
+Aapke liye<br>
+ek chhoti si<br>
+birthday story ✦
+</div>
 </div>
 
-<div class="flap"></div>
-
-<div class="seal">✦</div>
-
-</div>
+<div class="box-base"></div>
+<div class="box-lid"></div>
+<div class="box-ribbon"></div>
 
 </div>
 
-<p>
-Seal par tap kijiye.
-</p>
+</div>
+
+<div class="box-hint">
+Box par tap kijiye.
+</div>
 
 </div>
 </section>
 
 
-<!-- 3 NOTE -->
+<!-- 03 INTRO -->
 
 <section class="scene" id="s3">
 
 <div class="content">
 
 <div class="eyebrow">
-A little thought
+And it begins…
 </div>
 
 <h2>
-Kuch log bas<br>
-<span class="accent">yaad reh jaate hain.</span>
+Har birthday<br>
+<span class="accent">ek memory deserve karta hai.</span>
 </h2>
 
 <p>
-Aur kuch memories bina kisi reason ke bhi
-smile karwa deti hain. 😄
+Toh socha is baar ek simple wish ke bajay
+thoda sa effort karte hain. 😄
 </p>
 
-<div
-class="serif"
-style="font-size:20px;margin-top:20px;color:var(--rose)">
-Bas isi liye ye chhoti si surprise.
+<div class="serif"
+style="font-size:21px;margin-top:21px;color:var(--rose)">
+Chaliye memories dekhte hain…
 </div>
 
 <button
 class="btn primary"
 onclick="go(4)">
-Memories dekhein →
+Memories →
 </button>
 
 </div>
 </section>
 
 
-<!-- 4 MEMORIES -->
+<!-- 04 MEMORIES -->
 
 <section class="scene" id="s4">
 
 <div class="content">
 
 <div class="eyebrow">
-Kuch memories
+A few memories
 </div>
 
 <h2>
-Teen photos.<br>
-<span class="accent">Teen moments.</span>
+Kuch photos,<br>
+<span class="accent">kuch yaadein.</span>
 </h2>
 
 <div class="memory-area">
@@ -1803,7 +1255,7 @@ memory ✦
 
 <img
 src="1000244923.png"
-alt="Pallavi memory">
+alt="Memory">
 
 <div class="memory-caption">
 Ek khoobsurat memory.
@@ -1820,7 +1272,7 @@ another one ✦
 
 <img
 src="1000244922.png"
-alt="Pallavi memory">
+alt="Memory">
 
 <div class="memory-caption">
 Ek aur pyari si yaad…
@@ -1837,7 +1289,7 @@ hmm… 👀
 
 <div class="no-photo-card">
 
-<div class="camera-icon">
+<div class="camera">
 📷
 </div>
 
@@ -1846,8 +1298,8 @@ Humari saath mein photo toh hai hi nahi 😅
 </div>
 
 <div class="no-photo-text">
-Lagta hai ye frame abhi kisi photo ka
-wait kar raha hai…
+Lagta hai ye frame abhi kisi
+future memory ka wait kar raha hai…
 </div>
 
 <div class="no-photo-small">
@@ -1862,13 +1314,10 @@ Maybe someday. :)
 
 </div>
 
-
 <div class="dots">
-
 <span class="dot active" id="d1"></span>
 <span class="dot" id="d2"></span>
 <span class="dot" id="d3"></span>
-
 </div>
 
 </div>
@@ -1884,7 +1333,7 @@ NEXT MEMORY →
 </section>
 
 
-<!-- 5 GIFT -->
+<!-- 05 GIFT -->
 
 <section class="scene" id="s5">
 
@@ -1922,24 +1371,24 @@ Box par tap kijiye.
 </section>
 
 
-<!-- 6 GIFT MESSAGE -->
+<!-- 06 GIFT MESSAGE -->
 
 <section class="scene" id="s6">
 
 <div class="content">
 
 <div class="eyebrow">
-Inside the box
+Inside
 </div>
 
 <h2>
-Ek aur?
+Abhi ek<br>
+<span class="accent">cheez aur baaki hai.</span>
 </h2>
 
-<div
-class="serif"
-style="font-size:25px;margin-top:20px;color:var(--rose)">
-Haan… abhi ek cheez baaki hai. 😌
+<div class="serif"
+style="font-size:24px;margin-top:20px;color:var(--rose)">
+Aur woh thodi important hai. 😌
 </div>
 
 <button
@@ -1952,19 +1401,19 @@ Aage →
 </section>
 
 
-<!-- 7 CHOICE -->
+<!-- 07 CHOICE -->
 
 <section class="scene" id="s7">
 
 <div class="content">
 
 <div class="eyebrow">
-Ek question
+Ek chhota sa question
 </div>
 
 <h2>
-Ek aur surprise ke liye<br>
-<span class="accent">rukengi?</span>
+Surprise ke liye<br>
+<span class="accent">ready?</span>
 </h2>
 
 <div class="choice">
@@ -1976,7 +1425,7 @@ HAAN 🩵
 </button>
 
 <button
-class="btn no"
+class="btn"
 id="noBtn"
 onclick="noAnswer()">
 NAHI
@@ -1988,39 +1437,37 @@ NAHI
 </section>
 
 
-<!-- 8 FAKE END -->
+<!-- 08 FAKE END -->
 
 <section class="scene" id="s8">
 
 <div class="content">
 
 <div class="eyebrow">
-The end…?
+The end…
 </div>
 
 <h1>
-Okay…<br>
-<span class="accent">bas itna hi.</span>
+Bas itna hi.
 </h1>
 
-<div
-class="serif"
-style="font-size:23px;margin-top:18px;color:var(--rose)">
-thoda rukna…
+<div class="serif"
+style="font-size:22px;margin-top:20px;color:var(--rose)">
+…shayad. 👀
 </div>
 
 </div>
 </section>
 
 
-<!-- 9 REAL SURPRISE -->
+<!-- 09 REAL SURPRISE -->
 
 <section class="scene" id="s9">
 
 <div class="content">
 
 <div class="eyebrow">
-Wait…
+Wait.
 </div>
 
 <h1>
@@ -2029,7 +1476,7 @@ Aapko laga<br>
 </h1>
 
 <p>
-Itni jaldi toh nahi.
+Nahi ji. Abhi main part baaki hai.
 </p>
 
 <button
@@ -2049,7 +1496,7 @@ ASLI SURPRISE ✦
 <div class="content">
 
 <div class="eyebrow">
-Ab important kaam
+The important part
 </div>
 
 <h2>
@@ -2069,10 +1516,10 @@ id="cakeStage">
 
 <div class="top-cake"></div>
 
-<div class="frosting-drip">
-<div class="drip one"></div>
-<div class="drip two"></div>
-<div class="drip three"></div>
+<div class="frosting">
+<div class="drip a"></div>
+<div class="drip b"></div>
+<div class="drip c"></div>
 </div>
 
 <div class="cut-line"></div>
@@ -2123,10 +1570,9 @@ Happy Birthday,<br>
 <span class="accent">Pallavi! 🎉</span>
 </h1>
 
-<div
-class="serif"
-style="font-size:24px;margin-top:20px;color:var(--rose)">
-Ab birthday properly celebrate ho gaya. ✨
+<div class="serif"
+style="font-size:23px;margin-top:20px;color:var(--rose)">
+Aaj ka cake officially cut ho gaya. ✨
 </div>
 
 <button
@@ -2142,8 +1588,6 @@ Ek last baat…
 <!-- 12 FINAL -->
 
 <section class="scene" id="s12">
-
-<div class="final-glow"></div>
 
 <div class="content final-content">
 
@@ -2167,7 +1611,7 @@ Kuch friendships<br>
 
 <img
 src="1000244923.png"
-alt="Pallavi memory">
+alt="Memory">
 
 <div class="photo-tag">
 one little memory
@@ -2180,7 +1624,7 @@ one little memory
 
 <img
 src="1000244922.png"
-alt="Pallavi memory">
+alt="Memory">
 
 <div class="photo-tag">
 another one
@@ -2193,7 +1637,7 @@ another one
 
 <div class="mini-empty">
 
-<div class="small-camera">
+<div>
 📷
 </div>
 
@@ -2245,72 +1689,74 @@ Ab jaaiye… birthday enjoy kijiye 😌🎂
 
 </div>
 
-
 <div id="flash"></div>
 
 
 <script>
 
-/* =========================
+/* ==============================
    NAVIGATION
-========================= */
+============================== */
 
-let changing=false;
+let busy=false;
 
-function go(number){
+function go(n){
 
-  if(changing)return;
+  if(busy)return;
 
-  changing=true;
+  busy=true;
 
   document
     .querySelectorAll(".scene")
-    .forEach(s=>s.classList.remove("active"));
+    .forEach(scene=>{
+      scene.classList.remove("active");
+    });
 
   setTimeout(()=>{
 
-    const target=
-      document.getElementById("s"+number);
+    const target=document.getElementById("s"+n);
 
     if(target){
       target.classList.add("active");
     }
 
     setTimeout(()=>{
-      changing=false;
+      busy=false;
     },850);
 
   },70);
 }
 
 
-/* =========================
-   ENVELOPE
-========================= */
+/* ==============================
+   BOX
+============================== */
 
-let envelopeOpened=false;
+let boxOpened=false;
 
-function openEnvelope(){
+function openBox(){
 
-  if(envelopeOpened)return;
+  if(boxOpened)return;
 
-  envelopeOpened=true;
+  boxOpened=true;
 
-  document
-    .getElementById("envelope")
-    .classList.add("open");
+  const box=document.getElementById("memoryBox");
 
-  setTimeout(flash,650);
+  box.classList.add("open");
+
+  setTimeout(()=>{
+    flash();
+  },700);
 
   setTimeout(()=>{
     go(3);
-  },1400);
+  },1550);
 }
 
 
-/* =========================
-   MEMORY
-========================= */
+/* ==============================
+   MEMORY SLIDER
+============================== */
 
 let memory=1;
 
@@ -2337,9 +1783,7 @@ function nextMemory(){
       .classList.add("active");
 
     if(memory===3){
-
-      document
-        .getElementById("memoryBtn")
+      document.getElementById("memoryBtn")
         .textContent="AAGE CHALEIN ✦";
     }
 
@@ -2351,9 +1795,9 @@ function nextMemory(){
 }
 
 
-/* =========================
+/* ==============================
    GIFT
-========================= */
+============================== */
 
 let giftOpened=false;
 
@@ -2368,49 +1812,38 @@ function openGift(){
     .classList.add("open");
 
   setTimeout(()=>{
-    makeConfetti(18);
+    confetti(18);
   },450);
 
   setTimeout(()=>{
     go(6);
-  },1000);
+  },1100);
 }
 
 
-/* =========================
+/* ==============================
    CHOICE
-========================= */
+============================== */
 
 let noCount=0;
 
 function noAnswer(){
 
-  const btn=
-    document.getElementById("noBtn");
+  const btn=document.getElementById("noBtn");
 
   noCount++;
 
   if(noCount===1){
 
-    btn.style.transform=
-      "translate(40px,-5px)";
+    btn.style.transform="translate(42px,-5px)";
+    btn.textContent="Sochiye 😌";
 
-    btn.textContent=
-      "Sochiye 😌";
+  }else if(noCount===2){
 
-  }
+    btn.style.transform="translate(-38px,13px)";
+    btn.textContent="Pakka? 😂";
 
-  else if(noCount===2){
-
-    btn.style.transform=
-      "translate(-40px,15px)";
-
-    btn.textContent=
-      "Pakka? 😂";
-
-  }
-
-  else{
+  }else{
 
     btn.style.opacity="0";
     btn.style.pointerEvents="none";
@@ -2420,41 +1853,35 @@ function noAnswer(){
 
 function yesAnswer(){
 
-  makeConfetti(12);
+  confetti(12);
 
   go(8);
 
   setTimeout(()=>{
     go(9);
-  },2200);
+  },2300);
 }
 
 
-/* =========================
+/* ==============================
    CAKE CUTTING
-========================= */
+============================== */
 
-const knife=
-  document.getElementById("knife");
-
-const cake=
-  document.getElementById("cake");
+const knife=document.getElementById("knife");
+const cake=document.getElementById("cake");
 
 let dragging=false;
 let cutDone=false;
-
 let startX=0;
 let startY=0;
 
-function getPoint(e){
+function point(e){
 
   if(e.touches && e.touches.length){
-
     return{
       x:e.touches[0].clientX,
       y:e.touches[0].clientY
     };
-
   }
 
   return{
@@ -2463,12 +1890,11 @@ function getPoint(e){
   };
 }
 
-
 function knifeDown(e){
 
   if(cutDone)return;
 
-  const p=getPoint(e);
+  const p=point(e);
 
   dragging=true;
 
@@ -2480,46 +1906,27 @@ function knifeDown(e){
   e.preventDefault();
 }
 
-
 function knifeMove(e){
 
   if(!dragging || cutDone)return;
 
-  const p=getPoint(e);
+  const p=point(e);
 
   const dx=p.x-startX;
   const dy=p.y-startY;
 
-  /*
-    Knife should travel mostly
-    horizontally across the cake.
-  */
-
-  const moveX=
-    Math.max(-82,Math.min(8,dx));
-
-  const moveY=
-    Math.max(-8,Math.min(40,dy));
+  const x=Math.max(-78,Math.min(8,dx));
+  const y=Math.max(-8,Math.min(38,dy));
 
   knife.style.transform=
-    `rotate(-42deg)
-     translate(${moveX}px,${moveY}px)`;
-
-
-  /*
-    Realistic cutting threshold:
-    user must drag sufficiently
-    across the cake.
-  */
+    `rotate(-42deg) translate(${x}px,${y}px)`;
 
   if(dx < -58){
-
     cutCake();
   }
 
   e.preventDefault();
 }
-
 
 function knifeUp(){
 
@@ -2542,7 +1949,6 @@ function knifeUp(){
     },500);
   }
 }
-
 
 knife.addEventListener(
   "mousedown",
@@ -2577,7 +1983,7 @@ window.addEventListener(
 );
 
 
-/* CAKE CUT */
+/* CUT */
 
 function cutCake(){
 
@@ -2586,15 +1992,10 @@ function cutCake(){
   cutDone=true;
   dragging=false;
 
-  knife.classList.remove("dragging");
-
   cake.classList.add("cut");
 
-  document
-    .getElementById("cutHint")
-    .textContent=
-    "Perfect! 🎂✨";
-
+  document.getElementById("cutHint")
+    .textContent="Perfect! 🎂✨";
 
   knife.style.transition=
     "transform .55s var(--ease)";
@@ -2603,9 +2004,7 @@ function cutCake(){
     "rotate(-42deg) translate(-70px,28px)";
 
 
-  /*
-    Candles fade naturally.
-  */
+  /* candles */
 
   setTimeout(()=>{
 
@@ -2620,7 +2019,7 @@ function cutCake(){
               transform:"scale(1)"
             },
             {
-              opacity:.7,
+              opacity:.6,
               transform:
                 "translateY(-5px) scale(.7)"
             },
@@ -2639,12 +2038,10 @@ function cutCake(){
 
       });
 
-  },200);
+  },220);
 
 
-  /*
-    Tiny cake crumbs.
-  */
+  /* crumbs */
 
   setTimeout(()=>{
 
@@ -2653,56 +2050,50 @@ function cutCake(){
 
     for(let i=0;i<12;i++){
 
-      const crumb=
-        document.createElement("div");
+      const c=document.createElement("div");
 
-      crumb.className="crumb";
+      c.className="crumb";
 
-      crumb.style.left=
+      c.style.left=
         (120+Math.random()*100)+"px";
 
-      crumb.style.top=
+      c.style.top=
         (145+Math.random()*25)+"px";
 
-      crumb.style.setProperty(
-        "--cx",
-        ((Math.random()-.5)*80)+"px"
+      c.style.setProperty(
+        "--x",
+        ((Math.random()-.5)*90)+"px"
       );
 
-      crumb.style.setProperty(
-        "--cy",
+      c.style.setProperty(
+        "--y",
         (25+Math.random()*55)+"px"
       );
 
-      stage.appendChild(crumb);
+      stage.appendChild(c);
 
       setTimeout(()=>{
-        crumb.remove();
+        c.remove();
       },1000);
     }
 
   },350);
 
 
-  /*
-    Tiny cake movement.
-  */
+  /* subtle cake movement */
 
   setTimeout(()=>{
 
     cake.animate(
       [
         {
-          transform:
-            "translateX(-50%)"
+          transform:"translateX(-50%)"
         },
         {
-          transform:
-            "translateX(-50%) scale(1.025)"
+          transform:"translateX(-50%) scale(1.025)"
         },
         {
-          transform:
-            "translateX(-50%) scale(1)"
+          transform:"translateX(-50%) scale(1)"
         }
       ],
       {
@@ -2716,29 +2107,28 @@ function cutCake(){
 
   setTimeout(()=>{
     flash();
-    makeConfetti(42);
+    confetti(40);
   },850);
 
 
   setTimeout(()=>{
     go(11);
-  },2100);
+  },2150);
 }
 
 
-/* =========================
+/* ==============================
    FLASH
-========================= */
+============================== */
 
 function flash(){
 
-  const f=
-    document.getElementById("flash");
+  const f=document.getElementById("flash");
 
   f.animate(
     [
       {opacity:0},
-      {opacity:.42},
+      {opacity:.4},
       {opacity:0}
     ],
     {
@@ -2749,24 +2139,23 @@ function flash(){
 }
 
 
-/* =========================
+/* ==============================
    CONFETTI
-========================= */
+============================== */
 
-function makeConfetti(amount){
+function confetti(amount){
 
   const colors=[
-    "#f1c8ce",
-    "#f4d98c",
-    "#ded9ee",
-    "#f6d7c1",
+    "#efcbd0",
+    "#e5c56e",
+    "#dfd9eb",
+    "#f3d8c6",
     "#b86d7c"
   ];
 
   for(let i=0;i<amount;i++){
 
-    const c=
-      document.createElement("div");
+    const c=document.createElement("div");
 
     c.className="confetti";
 
@@ -2775,9 +2164,7 @@ function makeConfetti(amount){
 
     c.style.background=
       colors[
-        Math.floor(
-          Math.random()*colors.length
-        )
+        Math.floor(Math.random()*colors.length)
       ];
 
     c.style.setProperty(
@@ -2797,29 +2184,29 @@ function makeConfetti(amount){
 }
 
 
-/* PRELOAD PHOTOS */
+/* ==============================
+   PRELOAD PHOTOS
+============================== */
 
 [
   "1000244923.png",
   "1000244922.png"
 ].forEach(src=>{
-
   const img=new Image();
   img.src=src;
-
 });
 
 
-/* BLOCK NORMAL PAGE SCROLL */
+/* ==============================
+   PREVENT NORMAL SCROLL
+============================== */
 
 document.addEventListener(
   "touchmove",
   e=>{
-
     if(!e.target.closest(".cake-stage")){
       e.preventDefault();
     }
-
   },
   {passive:false}
 );
