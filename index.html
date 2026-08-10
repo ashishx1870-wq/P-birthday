@@ -7,21 +7,22 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#faf6f2;
+  --bg:#faf6f3;
   --paper:#fffdf9;
-  --text:#393236;
-  --muted:#817579;
-  --rose:#b86d7c;
-  --rose2:#efcbd0;
-  --gold:#d9b968;
-  --lav:#dfd9eb;
-  --peach:#f3d8c6;
-  --line:rgba(65,45,52,.12);
-  --shadow:0 25px 70px rgba(72,49,57,.14);
+  --ink:#3b3437;
+  --muted:#887b80;
+  --rose:#b96e7c;
+  --rose-light:#e9c5cb;
+  --gold:#d9bd72;
+  --lav:#ddd8e8;
+  --peach:#f1d7c8;
+  --line:rgba(70,50,57,.12);
+  --shadow:0 25px 75px rgba(66,45,53,.14);
   --ease:cubic-bezier(.22,.75,.18,1);
 }
 
@@ -39,13 +40,13 @@ html,body{
 }
 
 body{
-  font-family:"Manrope",sans-serif;
-  color:var(--text);
+  font-family:"DM Sans",sans-serif;
+  color:var(--ink);
   background:var(--bg);
 }
 
 button{
-  font:inherit;
+  font-family:inherit;
 }
 
 #app{
@@ -53,9 +54,9 @@ button{
   inset:0;
   overflow:hidden;
   background:
-    radial-gradient(circle at 10% 10%,rgba(239,203,208,.55),transparent 28%),
-    radial-gradient(circle at 92% 88%,rgba(223,217,235,.62),transparent 32%),
-    radial-gradient(circle at 50% 110%,rgba(243,216,198,.5),transparent 35%),
+    radial-gradient(circle at 8% 12%,rgba(233,197,203,.48),transparent 29%),
+    radial-gradient(circle at 92% 88%,rgba(221,216,232,.58),transparent 33%),
+    radial-gradient(circle at 50% 115%,rgba(241,215,200,.45),transparent 35%),
     var(--bg);
 }
 
@@ -65,48 +66,52 @@ button{
   inset:0;
   pointer-events:none;
   opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.glow{
+.ambient{
   position:absolute;
-  width:250px;
-  height:250px;
   border-radius:50%;
-  filter:blur(65px);
-  opacity:.28;
+  filter:blur(70px);
   pointer-events:none;
-  animation:drift 15s ease-in-out infinite alternate;
+  opacity:.25;
+  animation:ambientMove 16s ease-in-out infinite alternate;
 }
 
-.glow.a{
-  background:var(--rose2);
-  left:-120px;
-  top:0;
+.ambient.one{
+  width:270px;
+  height:270px;
+  background:var(--rose-light);
+  left:-130px;
+  top:-70px;
 }
 
-.glow.b{
+.ambient.two{
+  width:290px;
+  height:290px;
   background:var(--lav);
-  right:-130px;
-  bottom:-80px;
+  right:-140px;
+  bottom:-100px;
   animation-delay:-5s;
 }
 
-@keyframes drift{
+@keyframes ambientMove{
   to{
     transform:translate(35px,25px) scale(1.08);
   }
 }
 
-/* SCENES */
+/* ---------------- SCENES ---------------- */
 
 .scene{
   position:absolute;
   inset:0;
   z-index:5;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   padding:18px;
 
   opacity:0;
@@ -116,9 +121,9 @@ button{
   transform:translateY(22px) scale(.985);
 
   transition:
-    opacity .7s ease,
-    transform .9s var(--ease),
-    visibility 0s linear .9s;
+    opacity .8s ease,
+    transform 1s var(--ease),
+    visibility 0s linear 1s;
 }
 
 .scene.active{
@@ -128,12 +133,12 @@ button{
   transform:none;
 
   transition:
-    opacity .7s ease,
-    transform .9s var(--ease);
+    opacity .8s ease,
+    transform 1s var(--ease);
 }
 
 .content{
-  width:min(92vw,680px);
+  width:min(92vw,700px);
   text-align:center;
   position:relative;
 }
@@ -143,31 +148,31 @@ button{
   font-weight:700;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:#9a8d91;
-  margin-bottom:15px;
+  color:#988a8f;
+  margin-bottom:17px;
 }
 
 h1,h2{
-  font-weight:600;
-  letter-spacing:-1.8px;
+  font-weight:500;
+  letter-spacing:-1.5px;
 }
 
 h1{
-  font-size:clamp(39px,10vw,70px);
-  line-height:1.04;
+  font-size:clamp(40px,10vw,72px);
+  line-height:1.03;
 }
 
 h2{
-  font-size:clamp(29px,7.5vw,52px);
+  font-size:clamp(30px,7.5vw,52px);
   line-height:1.08;
 }
 
 p{
-  max-width:510px;
-  margin:15px auto 0;
+  max-width:500px;
+  margin:17px auto 0;
   color:var(--muted);
   font-size:12px;
-  line-height:1.8;
+  line-height:1.85;
 }
 
 .accent{
@@ -175,295 +180,494 @@ p{
 }
 
 .serif{
-  font-family:"Playfair Display",serif;
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
+}
+
+.bodoni{
+  font-family:"Bodoni Moda",serif;
 }
 
 .btn{
   border:1px solid var(--line);
-  background:rgba(255,255,255,.8);
-  color:var(--text);
+  background:rgba(255,255,255,.78);
+  color:var(--ink);
   border-radius:100px;
   padding:12px 21px;
-  margin-top:23px;
-  font-size:10px;
+  margin-top:25px;
+  font-size:9px;
   font-weight:700;
-  letter-spacing:.5px;
+  letter-spacing:1px;
   cursor:pointer;
-  box-shadow:0 10px 30px rgba(70,50,55,.07);
-  transition:transform .25s ease,box-shadow .25s ease;
+  box-shadow:0 10px 32px rgba(70,50,55,.07);
+
+  opacity:0;
+  transform:translateY(9px);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    background .3s ease;
 }
 
-.btn:active{
-  transform:scale(.94);
+.scene.active .btn{
+  animation:buttonIn .8s 1s var(--ease) forwards;
 }
 
 .btn.primary{
-  background:var(--rose2);
+  background:var(--rose-light);
   border-color:transparent;
 }
 
-/* PARTICLES */
+.btn:active{
+  transform:scale(.95);
+}
+
+@keyframes buttonIn{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* ---------------- PARTICLES ---------------- */
 
 .particle{
   position:absolute;
-  width:4px;
-  height:4px;
+  width:3px;
+  height:3px;
   border-radius:50%;
   background:var(--gold);
-  opacity:.3;
+  opacity:0;
   pointer-events:none;
-  animation:float linear infinite;
+  animation:particleFloat linear infinite;
 }
 
-@keyframes float{
-  from{
+@keyframes particleFloat{
+  0%{
     transform:translateY(110vh);
     opacity:0;
   }
-  15%{opacity:.35}
-  85%{opacity:.15}
-  to{
+
+  18%{
+    opacity:.22;
+  }
+
+  80%{
+    opacity:.1;
+  }
+
+  100%{
     transform:translateY(-10vh);
     opacity:0;
   }
 }
 
-/* OPENING */
+/* ---------------- NEW OPENING ---------------- */
 
-.opening-light{
-  width:12px;
-  height:12px;
-  border-radius:50%;
-  margin:0 auto 30px;
-  background:#e1c57d;
-  box-shadow:0 0 0 0 rgba(217,185,104,.3);
-  animation:lightPulse 2.2s ease-out infinite;
+.opening-wrap{
+  position:relative;
+  min-height:400px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
-@keyframes lightPulse{
-  70%{
-    box-shadow:0 0 0 28px rgba(217,185,104,0);
-  }
+.date-mark{
+  font-size:8px;
+  letter-spacing:4px;
+  color:#a19397;
+  opacity:0;
+  transform:translateY(12px);
+}
+
+.scene.active .date-mark{
+  animation:slowUp 1s .7s var(--ease) forwards;
 }
 
 .opening-line{
+  margin-top:27px;
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(28px,7vw,44px);
+  line-height:1.15;
+  color:#4c4246;
+
   opacity:0;
-  transform:translateY(15px);
+  transform:translateY(18px);
 }
 
 .scene.active .opening-line{
-  animation:up .9s var(--ease) forwards;
+  animation:slowUp 1.2s 2s var(--ease) forwards;
 }
 
-.scene.active .opening-line:nth-child(2){
-  animation-delay:.35s;
-}
-
-.scene.active .opening-line:nth-child(3){
-  animation-delay:.7s;
-}
-
-@keyframes up{
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.opening-card{
-  width:min(350px,84vw);
-  margin:30px auto 0;
-  padding:22px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  background:rgba(255,255,255,.74);
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  opacity:0;
-  transform:translateY(25px) scale(.96);
-}
-
-.scene.active .opening-card{
-  animation:cardIn 1s 1.05s var(--ease) forwards;
-}
-
-@keyframes cardIn{
-  to{
-    opacity:1;
-    transform:none;
-  }
-}
-
-.card-small{
-  font-size:8px;
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:#998d91;
-}
-
-.card-title{
+.opening-line.second{
   margin-top:9px;
-  font-size:19px;
-  font-weight:600;
-}
-
-.card-sub{
-  margin-top:5px;
   color:var(--rose);
-  font-family:"Playfair Display",serif;
   font-style:italic;
-  font-size:15px;
 }
 
-/* SURPRISE BOX */
+.scene.active .opening-line.second{
+  animation:slowUp 1.2s 3.25s var(--ease) forwards;
+}
 
-.box-stage{
-  height:310px;
+.opening-divider{
+  width:0;
+  height:1px;
+  background:var(--gold);
+  margin-top:25px;
+  opacity:.7;
+}
+
+.scene.active .opening-divider{
+  animation:lineGrow 1.1s 4.5s var(--ease) forwards;
+}
+
+@keyframes lineGrow{
+  to{
+    width:100px;
+  }
+}
+
+.opening-sub{
+  margin-top:20px;
+  font-size:10px;
+  color:#8d8084;
+  letter-spacing:.3px;
+
+  opacity:0;
+  transform:translateY(10px);
+}
+
+.scene.active .opening-sub{
+  animation:slowUp 1s 4.9s var(--ease) forwards;
+}
+
+@keyframes slowUp{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+/* ---------------- ENVELOPE ---------------- */
+
+.envelope-stage{
+  height:340px;
   display:grid;
   place-items:center;
-  perspective:1000px;
+  perspective:1100px;
 }
 
-.memory-box{
-  width:260px;
-  height:175px;
+.envelope{
+  width:min(330px,84vw);
+  height:215px;
   position:relative;
   cursor:pointer;
   transform-style:preserve-3d;
-  filter:drop-shadow(0 25px 30px rgba(72,49,57,.16));
-}
 
-.box-base{
-  position:absolute;
-  left:10px;
-  right:10px;
-  bottom:0;
-  height:125px;
-  border-radius:7px;
-  background:linear-gradient(135deg,#e7adb7,#d995a3);
-  box-shadow:inset 0 8px 15px rgba(255,255,255,.18);
-}
+  opacity:0;
+  transform:translateY(25px) scale(.94);
 
-.box-base:after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:0;
-  bottom:0;
-  width:15px;
-  transform:translateX(-50%);
-  background:#e5c56e;
-  opacity:.9;
-}
-
-.box-lid{
-  position:absolute;
-  z-index:5;
-  left:0;
-  right:0;
-  top:25px;
-  height:42px;
-  border-radius:7px;
-  background:linear-gradient(135deg,#f0c5cb,#e4a8b2);
-  transform-origin:50% 100%;
   transition:transform 1s var(--ease);
 }
 
-.box-lid:after{
+.scene.active .envelope{
+  animation:envelopeIn 1.2s .2s var(--ease) forwards;
+}
+
+@keyframes envelopeIn{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.envelope-shadow{
+  position:absolute;
+  left:8%;
+  right:8%;
+  bottom:2px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(66,45,53,.15);
+  filter:blur(17px);
+}
+
+.envelope-back{
+  position:absolute;
+  inset:0;
+  border-radius:8px;
+  background:linear-gradient(145deg,#fffdf9,#f4e9e1);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.envelope-back:after{
   content:"";
   position:absolute;
-  left:50%;
+  inset:0;
+  background:
+    linear-gradient(32deg,transparent 49.5%,rgba(184,109,124,.12) 50%,transparent 50.5%),
+    linear-gradient(-32deg,transparent 49.5%,rgba(184,109,124,.1) 50%,transparent 50.5%);
+}
+
+.flap{
+  position:absolute;
+  z-index:8;
+  left:0;
   top:0;
-  bottom:0;
-  width:15px;
-  transform:translateX(-50%);
-  background:#e5c56e;
+  width:100%;
+  height:58%;
+  background:linear-gradient(145deg,#f6e8df,#ead2ce);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:50% 0;
+  transition:transform 1.25s var(--ease);
+  backface-visibility:hidden;
 }
 
-.box-ribbon{
-  position:absolute;
-  z-index:7;
-  width:36px;
-  height:36px;
-  left:50%;
-  top:8px;
-  transform:translateX(-50%) rotate(45deg);
-  border-radius:6px 6px 3px 6px;
-  background:#e5c56e;
-  transition:opacity .35s;
+.envelope.open .flap{
+  transform:rotateX(180deg);
 }
 
-.box-light{
+.letter{
   position:absolute;
-  z-index:1;
-  left:50%;
-  top:58px;
-  width:120px;
-  height:100px;
-  transform:translateX(-50%);
-  border-radius:50%;
-  background:radial-gradient(circle,#fff9d8,rgba(255,244,194,0));
-  opacity:0;
-  filter:blur(7px);
-  transition:opacity .8s;
-}
+  z-index:6;
+  left:7%;
+  width:86%;
+  height:178px;
+  bottom:10px;
 
-.box-card{
-  position:absolute;
-  z-index:4;
-  left:50%;
-  top:68px;
-  width:180px;
-  height:105px;
-  transform:translate(-50%,35px) scale(.9);
-  background:var(--paper);
-  border-radius:5px;
-  display:grid;
-  place-items:center;
-  padding:18px;
-  box-shadow:0 12px 30px rgba(60,40,45,.16);
-  opacity:0;
+  padding:25px 22px;
+
+  background:
+    linear-gradient(rgba(255,255,255,.92),rgba(255,253,249,.97)),
+    var(--paper);
+
+  border-radius:4px;
+
+  box-shadow:
+    0 10px 30px rgba(60,40,45,.12);
+
+  transform:translateY(0);
   transition:
-    transform 1s .2s var(--ease),
-    opacity .5s .15s ease;
+    transform 1.3s .18s var(--ease),
+    box-shadow .8s ease;
 }
 
-.box-card-text{
-  font-family:"Playfair Display",serif;
+.envelope.open .letter{
+  transform:translateY(-105px);
+  box-shadow:0 25px 60px rgba(60,40,45,.16);
+}
+
+.letter:after{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border:1px solid rgba(184,109,124,.12);
+  pointer-events:none;
+}
+
+.letter-name{
+  font-family:"Bodoni Moda",serif;
+  font-size:20px;
+  color:var(--rose);
+  margin-bottom:10px;
+}
+
+.letter-preview{
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
   font-size:17px;
-  line-height:1.45;
-  color:var(--rose);
+  line-height:1.3;
+  color:#66585d;
 }
 
-.memory-box.open .box-lid{
-  transform:rotateX(-115deg) translateY(-8px);
+.seal{
+  position:absolute;
+  z-index:14;
+  left:50%;
+  top:54%;
+  width:42px;
+  height:42px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+
+  display:grid;
+  place-items:center;
+
+  background:
+    radial-gradient(circle at 35% 30%,#d88d99,#a75d6c);
+
+  color:#fff;
+  font-family:"Bodoni Moda",serif;
+  font-size:16px;
+
+  box-shadow:
+    0 7px 17px rgba(100,55,65,.2),
+    inset 0 1px 3px rgba(255,255,255,.3);
+
+  transition:
+    transform .6s var(--ease),
+    opacity .5s ease;
 }
 
-.memory-box.open .box-ribbon{
+.envelope.open .seal{
+  transform:translate(-50%,-50%) scale(.65) rotate(-18deg);
   opacity:0;
 }
 
-.memory-box.open .box-light{
+.letter-glow{
+  position:absolute;
+  z-index:3;
+  width:130px;
+  height:100px;
+  left:50%;
+  top:52%;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(255,245,206,.8),transparent 70%);
+  filter:blur(8px);
+  opacity:0;
+  transition:opacity 1s;
+}
+
+.envelope.open .letter-glow{
   opacity:1;
 }
 
-.memory-box.open .box-card{
-  opacity:1;
-  transform:translate(-50%,-40px) scale(1);
+.envelope-hint{
+  position:absolute;
+  left:50%;
+  bottom:-32px;
+  transform:translateX(-50%);
+  white-space:nowrap;
+  font-size:9px;
+  letter-spacing:1px;
+  color:#9a8b90;
+  opacity:0;
 }
 
-.box-hint{
-  font-size:10px;
-  color:#988b8f;
+.scene.active .envelope-hint{
+  animation:hintIn 1s 1.6s var(--ease) forwards;
 }
 
-/* MEMORY */
+@keyframes hintIn{
+  to{opacity:1}
+}
+
+/* ---------------- LETTER MESSAGE ---------------- */
+
+.message-card{
+  width:min(580px,91vw);
+  padding:30px 25px;
+
+  background:rgba(255,253,249,.86);
+  border:1px solid rgba(100,70,78,.1);
+  box-shadow:var(--shadow);
+  border-radius:4px;
+
+  position:relative;
+}
+
+.message-card:before,
+.message-card:after{
+  content:"";
+  position:absolute;
+  width:38px;
+  height:38px;
+  border-color:rgba(184,109,124,.25);
+}
+
+.message-card:before{
+  left:13px;
+  top:13px;
+  border-left:1px solid;
+  border-top:1px solid;
+}
+
+.message-card:after{
+  right:13px;
+  bottom:13px;
+  border-right:1px solid;
+  border-bottom:1px solid;
+}
+
+.message-label{
+  font-size:8px;
+  letter-spacing:3px;
+  color:#9b8b90;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+
+.message-title{
+  font-family:"Bodoni Moda",serif;
+  font-size:26px;
+  color:var(--rose);
+  margin-bottom:18px;
+}
+
+.message-text{
+  font-family:"Cormorant Garamond",serif;
+  font-size:20px;
+  line-height:1.55;
+  color:#564a4e;
+}
+
+.message-text span{
+  display:block;
+  opacity:0;
+  transform:translateY(10px);
+}
+
+.scene.active .message-text span:nth-child(1){
+  animation:messageIn .9s .8s var(--ease) forwards;
+}
+
+.scene.active .message-text span:nth-child(2){
+  animation:messageIn .9s 1.7s var(--ease) forwards;
+}
+
+.scene.active .message-text span:nth-child(3){
+  animation:messageIn .9s 2.7s var(--ease) forwards;
+}
+
+.scene.active .message-text span:nth-child(4){
+  animation:messageIn .9s 3.7s var(--ease) forwards;
+}
+
+@keyframes messageIn{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.message-sign{
+  margin-top:22px;
+  font-family:"Bodoni Moda",serif;
+  font-style:italic;
+  font-size:16px;
+  color:var(--rose);
+  opacity:0;
+}
+
+.scene.active .message-sign{
+  animation:messageIn .9s 4.6s var(--ease) forwards;
+}
+
+.message-next{
+  opacity:0;
+}
+
+.scene.active .message-next{
+  animation:buttonIn .9s 5.3s var(--ease) forwards;
+}
+
+/* ---------------- MEMORIES ---------------- */
 
 .memory-area{
-  height:380px;
+  height:375px;
   position:relative;
   display:grid;
   place-items:center;
@@ -472,13 +676,18 @@ p{
 .memory-card{
   position:absolute;
   width:min(275px,76vw);
-  padding:9px 9px 14px;
+  padding:9px 9px 15px;
+
   background:#fff;
-  border-radius:5px;
+  border-radius:4px;
   box-shadow:var(--shadow);
+
   opacity:0;
-  transform:translateY(35px) scale(.93) rotate(3deg);
-  transition:opacity .65s ease,transform .8s var(--ease);
+  transform:translateY(30px) scale(.94) rotate(4deg);
+
+  transition:
+    opacity .9s ease,
+    transform 1s var(--ease);
 }
 
 .memory-card.active{
@@ -489,70 +698,71 @@ p{
 .memory-card img{
   display:block;
   width:100%;
-  height:230px;
+  height:225px;
   object-fit:cover;
-  background:#eee;
 }
 
 .memory-caption{
-  margin-top:7px;
-  font-family:"Playfair Display",serif;
+  margin-top:8px;
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
-  font-size:14px;
-  color:#5d5053;
+  font-size:17px;
+  color:#67595e;
 }
 
 .memory-note{
   position:absolute;
   right:-18px;
-  top:-17px;
-  padding:6px 9px;
+  top:-18px;
+  padding:6px 10px;
   background:#fff1a9;
-  font-family:"Playfair Display",serif;
+  color:#6a6047;
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
-  font-size:11px;
-  color:#655e45;
+  font-size:13px;
   transform:rotate(7deg);
-  box-shadow:0 5px 12px rgba(50,40,20,.08);
+  box-shadow:0 5px 13px rgba(50,40,20,.08);
 }
 
 .no-photo-card{
-  height:230px;
+  height:225px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
   padding:20px;
+
   background:linear-gradient(145deg,#fffdf9,#fff5ef);
-  border:1px dashed rgba(184,109,124,.28);
+  border:1px dashed rgba(184,109,124,.3);
 }
 
 .camera{
-  font-size:27px;
-  opacity:.65;
+  font-size:28px;
+  opacity:.6;
 }
 
 .no-photo-title{
   margin-top:10px;
-  font-size:14px;
-  line-height:1.4;
+  font-size:13px;
+  line-height:1.45;
   font-weight:600;
 }
 
 .no-photo-text{
   margin-top:9px;
   color:var(--rose);
-  font-family:"Playfair Display",serif;
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
-  font-size:14px;
-  line-height:1.4;
+  font-size:16px;
+  line-height:1.35;
 }
 
 .no-photo-small{
   margin-top:9px;
-  font-size:9px;
+  font-size:8px;
   color:#9a8d91;
+  letter-spacing:.4px;
 }
 
 .dots{
@@ -567,50 +777,67 @@ p{
   height:6px;
   border-radius:50%;
   background:#d8ced1;
-  transition:.3s;
+  transition:.4s;
 }
 
 .dot.active{
   background:var(--rose);
-  transform:scale(1.4);
+  transform:scale(1.35);
 }
 
-/* GIFT */
+/* ---------------- SMALL GIFT ---------------- */
 
 .gift{
   width:150px;
-  height:135px;
+  height:145px;
   margin:30px auto;
   position:relative;
   cursor:pointer;
-  animation:giftFloat 2.7s ease-in-out infinite;
+
+  opacity:0;
+  transform:translateY(15px);
+
+  animation:giftFloat 3s ease-in-out infinite;
+}
+
+.scene.active .gift{
+  animation:
+    giftIn 1s .7s var(--ease) forwards,
+    giftFloat 3s 1.7s ease-in-out infinite;
+}
+
+@keyframes giftIn{
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 @keyframes giftFloat{
-  50%{transform:translateY(-8px)}
+  50%{transform:translateY(-7px)}
 }
 
 .gift-body{
   position:absolute;
-  left:9px;
-  right:9px;
+  left:8px;
+  right:8px;
   bottom:0;
-  height:85px;
+  height:87px;
   border-radius:5px;
-  background:linear-gradient(135deg,#efb9c2,#e6a6b1);
-  box-shadow:0 22px 40px rgba(100,55,65,.18);
+  background:linear-gradient(135deg,#edb6bf,#dc98a5);
+  box-shadow:0 22px 40px rgba(100,55,65,.17);
 }
 
 .gift-lid{
   position:absolute;
   z-index:4;
-  left:2px;
-  right:2px;
+  left:1px;
+  right:1px;
   top:30px;
-  height:29px;
+  height:30px;
   border-radius:5px;
-  background:#f4cbd0;
-  transition:.8s var(--ease);
+  background:#f2cbd0;
+  transition:.9s var(--ease);
 }
 
 .gift.open .gift-lid{
@@ -624,7 +851,7 @@ p{
   bottom:0;
   left:50%;
   transform:translateX(-50%);
-  background:#f0d481;
+  background:#e7c66f;
 }
 
 .ribbon-h{
@@ -634,24 +861,31 @@ p{
   right:0;
   top:50%;
   transform:translateY(-50%);
-  background:#f0d481;
+  background:#e7c66f;
 }
 
-/* CHOICE */
+/* ---------------- CHOICE ---------------- */
 
 .choice{
-  height:100px;
+  height:105px;
   display:flex;
   justify-content:center;
+  align-items:flex-start;
   gap:14px;
   position:relative;
 }
 
-/* CAKE */
+.choice .btn{
+  animation:none!important;
+  opacity:1;
+  transform:none;
+}
+
+/* ---------------- CAKE ---------------- */
 
 .cake-stage{
   width:360px;
-  height:325px;
+  height:320px;
   margin:0 auto;
   position:relative;
   touch-action:none;
@@ -663,7 +897,7 @@ p{
   width:275px;
   height:24px;
   left:50%;
-  bottom:14px;
+  bottom:13px;
   transform:translateX(-50%);
   border-radius:50%;
   background:linear-gradient(#f7f1ef,#e3d8d6);
@@ -675,7 +909,7 @@ p{
   width:220px;
   height:145px;
   left:50%;
-  bottom:31px;
+  bottom:30px;
   transform:translateX(-50%);
 }
 
@@ -686,7 +920,7 @@ p{
   bottom:0;
   height:95px;
   border-radius:10px 10px 12px 12px;
-  background:linear-gradient(#eab5bc,#e5aab3);
+  background:linear-gradient(#eab5bc,#e3a7b1);
   overflow:hidden;
   box-shadow:inset 0 8px 14px rgba(255,255,255,.25);
 }
@@ -740,7 +974,11 @@ p{
   width:9px;
   height:39px;
   border-radius:5px;
-  background:repeating-linear-gradient(135deg,#d6b8dc 0 5px,#ecd9ee 5px 10px);
+  background:repeating-linear-gradient(
+    135deg,
+    #d6b8dc 0 5px,
+    #ecd9ee 5px 10px
+  );
 }
 
 .c1{left:74px}
@@ -754,13 +992,25 @@ p{
   left:-1.5px;
   top:-17px;
   border-radius:50%;
-  background:radial-gradient(circle at 50% 65%,#fff5b0 0 22%,#efc762 23% 62%,transparent 63%);
+  background:
+    radial-gradient(
+      circle at 50% 65%,
+      #fff5b0 0 22%,
+      #efc762 23% 62%,
+      transparent 63%
+    );
+
   animation:flame .55s ease-in-out infinite alternate;
 }
 
 @keyframes flame{
-  from{transform:rotate(-3deg) scale(.92)}
-  to{transform:rotate(4deg) scale(1.08)}
+  from{
+    transform:rotate(-3deg) scale(.92);
+  }
+
+  to{
+    transform:rotate(4deg) scale(1.08);
+  }
 }
 
 .cut-line{
@@ -774,7 +1024,10 @@ p{
   opacity:0;
   transform:rotate(4deg) scaleY(.05);
   transform-origin:top;
-  transition:transform .7s var(--ease),opacity .3s;
+
+  transition:
+    transform .7s var(--ease),
+    opacity .3s;
 }
 
 .cake.cut .cut-line{
@@ -790,9 +1043,12 @@ p{
   right:2px;
   top:143px;
   border-radius:8px;
+
   background:linear-gradient(#fafafa,#b9b9b9);
+
   transform:rotate(-42deg);
   transform-origin:100% 50%;
+
   cursor:grab;
   box-shadow:0 5px 11px rgba(60,50,50,.2);
 }
@@ -817,25 +1073,7 @@ p{
   color:#998d91;
 }
 
-.crumb{
-  position:absolute;
-  z-index:40;
-  width:5px;
-  height:5px;
-  border-radius:50%;
-  background:#e8b7ad;
-  pointer-events:none;
-  animation:crumb .9s ease-out forwards;
-}
-
-@keyframes crumb{
-  to{
-    transform:translate(var(--x),var(--y)) rotate(180deg);
-    opacity:0;
-  }
-}
-
-/* FINAL */
+/* ---------------- FINAL ---------------- */
 
 .final-content{
   width:min(94vw,700px);
@@ -847,7 +1085,7 @@ p{
 }
 
 .scene.active .final-intro{
-  animation:up .8s .1s var(--ease) forwards;
+  animation:slowUp .95s .3s var(--ease) forwards;
 }
 
 .final-photos{
@@ -855,95 +1093,109 @@ p{
   justify-content:center;
   align-items:flex-start;
   gap:12px;
-  margin:20px auto 21px;
+  margin:22px auto;
 }
 
 .mini-photo{
   width:88px;
-  height:111px;
+  height:112px;
   padding:5px 5px 16px;
-  background:white;
+  background:#fff;
   box-shadow:0 12px 28px rgba(70,50,55,.14);
   opacity:0;
 }
 
 .scene.active .mini-photo:nth-child(1){
-  animation:photo1 .8s .4s var(--ease) forwards;
+  animation:photoOne 1s 1.2s var(--ease) forwards;
 }
 
 .scene.active .mini-photo:nth-child(2){
-  animation:photo2 .8s .57s var(--ease) forwards;
+  animation:photoTwo 1s 1.55s var(--ease) forwards;
 }
 
 .scene.active .mini-photo:nth-child(3){
-  animation:photo3 .8s .74s var(--ease) forwards;
+  animation:photoThree 1s 1.9s var(--ease) forwards;
 }
 
-@keyframes photo1{
-  to{opacity:1;transform:rotate(-6deg)}
+@keyframes photoOne{
+  to{
+    opacity:1;
+    transform:rotate(-6deg);
+  }
 }
 
-@keyframes photo2{
-  to{opacity:1;transform:translateY(-7px) rotate(2deg)}
+@keyframes photoTwo{
+  to{
+    opacity:1;
+    transform:translateY(-7px) rotate(2deg);
+  }
 }
 
-@keyframes photo3{
-  to{opacity:1;transform:rotate(5deg)}
+@keyframes photoThree{
+  to{
+    opacity:1;
+    transform:rotate(5deg);
+  }
 }
 
 .mini-photo img{
   width:100%;
-  height:78px;
+  height:79px;
   object-fit:cover;
   display:block;
 }
 
 .mini-empty{
   width:100%;
-  height:78px;
+  height:79px;
+
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
+
   background:linear-gradient(145deg,#fffdf9,#fff5ef);
   border:1px dashed rgba(184,109,124,.28);
 }
 
 .mini-empty span{
   margin-top:4px;
-  font-family:"Playfair Display",serif;
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
   color:var(--rose);
-  font-size:10px;
+  font-size:11px;
   line-height:1.25;
 }
 
 .photo-tag{
   margin-top:5px;
-  font-family:"Playfair Display",serif;
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
-  font-size:8px;
+  font-size:9px;
   color:#7e7074;
 }
 
 .friend-card{
   width:min(530px,90vw);
   margin:auto;
-  padding:23px 21px;
-  background:rgba(255,255,255,.78);
+  padding:25px 21px;
+
+  background:rgba(255,255,255,.8);
   border:1px solid var(--line);
-  border-radius:23px;
+  border-radius:22px;
+
   box-shadow:var(--shadow);
+
   opacity:0;
   transform:translateY(20px) scale(.97);
 }
 
 .scene.active .friend-card{
-  animation:friend .85s 1s var(--ease) forwards;
+  animation:friendIn 1s 2.6s var(--ease) forwards;
 }
 
-@keyframes friend{
+@keyframes friendIn{
   to{
     opacity:1;
     transform:none;
@@ -951,9 +1203,9 @@ p{
 }
 
 .friend-main{
+  font-family:"Bodoni Moda",serif;
   font-size:23px;
-  line-height:1.3;
-  font-weight:600;
+  line-height:1.4;
 }
 
 .friend-main span{
@@ -961,10 +1213,10 @@ p{
 }
 
 .friend-line{
-  margin-top:13px;
-  font-family:"Playfair Display",serif;
+  margin-top:15px;
+  font-family:"Cormorant Garamond",serif;
   font-style:italic;
-  font-size:20px;
+  font-size:21px;
   color:var(--rose);
 }
 
@@ -976,30 +1228,42 @@ p{
 }
 
 .final-note{
-  margin-top:16px;
-  font-family:"Playfair Display",serif;
+  margin-top:17px;
+
+  font-family:"Bodoni Moda",serif;
   font-style:italic;
   font-size:20px;
   color:var(--rose);
+
   opacity:0;
 }
 
 .scene.active .final-note{
-  animation:up .7s 1.45s var(--ease) forwards;
+  animation:slowUp 1s 3.8s var(--ease) forwards;
 }
 
 .final-small{
   margin-top:7px;
   font-size:9px;
   color:#9b8d90;
+
   opacity:0;
 }
 
 .scene.active .final-small{
-  animation:up .7s 1.7s var(--ease) forwards;
+  animation:slowUp 1s 4.3s var(--ease) forwards;
 }
 
-/* CONFETTI */
+/* ---------------- EFFECTS ---------------- */
+
+#flash{
+  position:fixed;
+  inset:0;
+  z-index:150;
+  background:white;
+  opacity:0;
+  pointer-events:none;
+}
 
 .confetti{
   position:fixed;
@@ -1012,26 +1276,68 @@ p{
 
 @keyframes fall{
   to{
-    transform:translate(var(--x),110vh) rotate(700deg);
+    transform:
+      translate(var(--x),110vh)
+      rotate(700deg);
     opacity:0;
   }
 }
 
-#flash{
-  position:fixed;
-  inset:0;
-  z-index:150;
-  background:white;
-  opacity:0;
+.crumb{
+  position:absolute;
+  z-index:40;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#e8b7ad;
   pointer-events:none;
+
+  animation:crumb .9s ease-out forwards;
 }
 
-/* MOBILE */
+@keyframes crumb{
+  to{
+    transform:
+      translate(var(--x),var(--y))
+      rotate(180deg);
+    opacity:0;
+  }
+}
+
+/* ---------------- MOBILE ---------------- */
 
 @media(max-width:600px){
 
   .scene{
     padding:14px;
+  }
+
+  .opening-wrap{
+    min-height:360px;
+  }
+
+  .opening-line{
+    font-size:29px;
+  }
+
+  .envelope-stage{
+    height:325px;
+  }
+
+  .letter{
+    height:170px;
+  }
+
+  .envelope.open .letter{
+    transform:translateY(-95px);
+  }
+
+  .message-card{
+    padding:27px 20px;
+  }
+
+  .message-text{
+    font-size:19px;
   }
 
   .memory-area{
@@ -1044,18 +1350,18 @@ p{
 
   .memory-card img,
   .no-photo-card{
-    height:220px;
+    height:215px;
   }
 
   .cake-stage{
-    transform:scale(.88);
+    transform:scale(.87);
     transform-origin:center;
-    margin-top:-5px;
+    margin-top:-3px;
   }
 
   .mini-photo{
     width:78px;
-    height:99px;
+    height:100px;
   }
 
   .mini-photo img,
@@ -1063,20 +1369,20 @@ p{
     height:68px;
   }
 
+  .final-photos{
+    gap:7px;
+  }
+
   .friend-card{
     padding:20px 17px;
   }
 
   .friend-main{
-    font-size:21px;
+    font-size:20px;
   }
 
   .friend-line{
-    font-size:18px;
-  }
-
-  .final-photos{
-    gap:7px;
+    font-size:19px;
   }
 }
 </style>
@@ -1086,151 +1392,190 @@ p{
 
 <div id="app">
 
-<div class="glow a"></div>
-<div class="glow b"></div>
-
-<!-- PARTICLES -->
+<div class="ambient one"></div>
+<div class="ambient two"></div>
 
 <script>
-for(let i=0;i<30;i++){
+for(let i=0;i<28;i++){
   const p=document.createElement("div");
+
   p.className="particle";
+
   p.style.left=Math.random()*100+"%";
-  p.style.animationDuration=(8+Math.random()*9)+"s";
-  p.style.animationDelay=(Math.random()*8)+"s";
+  p.style.animationDuration=(9+Math.random()*10)+"s";
+  p.style.animationDelay=(Math.random()*9)+"s";
+
   document.getElementById("app").appendChild(p);
 }
 </script>
 
 
-<!-- 01 OPENING -->
+<!-- ==================================================
+     01 — CINEMATIC OPENING
+================================================== -->
 
 <section class="scene active" id="s1">
 
 <div class="content">
 
-<div class="opening-light"></div>
+<div class="opening-wrap">
 
-<div class="eyebrow opening-line">
-Ek minute…
+<div class="date-mark">
+A LITTLE SOMETHING · 2026
 </div>
 
-<h1 class="opening-line">
-Kuch cheezein<br>
-<span class="accent">bas kehne ke liye</span><br>
-nahi hoti.
-</h1>
-
-<p class="opening-line">
-Unhe thoda feel bhi karna padta hai. ✦
-</p>
-
-<div
-class="opening-card"
-onclick="go(2)">
-
-<div class="card-small">
-A little surprise
+<div class="opening-line">
+Aaj kuch alag sa<br>
+karne ka mann tha…
 </div>
 
-<div class="card-title">
-Aapke liye kuch banaya hai.
+<div class="opening-line second">
+Toh socha… ek chhoti si yaad bana dete hain. ✦
 </div>
 
-<div class="card-sub">
-Tap to begin
+<div class="opening-divider"></div>
+
+<div class="opening-sub">
+Bas thoda sa waqt dijiye…
 </div>
 
-</div>
-
-</div>
-</section>
-
-
-<!-- 02 BOX -->
-
-<section class="scene" id="s2">
-
-<div class="content">
-
-<div class="eyebrow">
-Something inside
-</div>
-
-<h2>
-Isse open<br>
-<span class="accent">kijiye.</span>
-</h2>
-
-<div class="box-stage">
-
-<div
-class="memory-box"
-id="memoryBox"
-onclick="openBox()">
-
-<div class="box-light"></div>
-
-<div class="box-card">
-<div class="box-card-text">
-Aapke liye<br>
-ek chhoti si<br>
-birthday story ✦
-</div>
-</div>
-
-<div class="box-base"></div>
-<div class="box-lid"></div>
-<div class="box-ribbon"></div>
-
-</div>
-
-</div>
-
-<div class="box-hint">
-Box par tap kijiye.
-</div>
-
-</div>
-</section>
-
-
-<!-- 03 INTRO -->
-
-<section class="scene" id="s3">
-
-<div class="content">
-
-<div class="eyebrow">
-And it begins…
-</div>
-
-<h2>
-Har birthday<br>
-<span class="accent">ek memory deserve karta hai.</span>
-</h2>
-
-<p>
-Toh socha is baar ek simple wish ke bajay
-thoda sa effort karte hain. 😄
-</p>
-
-<div class="serif"
-style="font-size:21px;margin-top:21px;color:var(--rose)">
-Chaliye memories dekhte hain…
 </div>
 
 <button
 class="btn primary"
-onclick="go(4)">
-Memories →
+onclick="go(2)"
+style="margin-top:8px">
+AAGE BADHEIN →
 </button>
 
 </div>
 </section>
 
 
-<!-- 04 MEMORIES -->
+<!-- ==================================================
+     02 — LETTER
+================================================== -->
+
+<section class="scene" id="s2">
+
+<div class="content">
+
+<div class="eyebrow">
+A letter for you
+</div>
+
+<h2>
+Kuch likha hai,<br>
+<span class="accent">sirf aapke liye.</span>
+</h2>
+
+<div class="envelope-stage">
+
+<div
+class="envelope"
+id="envelope"
+onclick="openLetter()">
+
+<div class="envelope-shadow"></div>
+
+<div class="envelope-back"></div>
+
+<div class="letter-glow"></div>
+
+<div class="letter">
+
+<div class="letter-name">
+For Pallavi,
+</div>
+
+<div class="letter-preview">
+“Ek chhoti si baat kehni thi…”
+</div>
+
+</div>
+
+<div class="flap"></div>
+
+<div class="seal">
+P
+</div>
+
+<div class="envelope-hint">
+TAP TO OPEN
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ==================================================
+     03 — LETTER MESSAGE
+================================================== -->
+
+<section class="scene" id="s3">
+
+<div class="content">
+
+<div class="message-card">
+
+<div class="message-label">
+A little note
+</div>
+
+<div class="message-title">
+Dear Pallavi,
+</div>
+
+<div class="message-text">
+
+<span>
+Aaj aapka birthday hai,
+toh sirf “Happy Birthday” kehkar
+baat khatam karna thoda boring laga.
+</span>
+
+<span>
+Isliye socha kuch aisa banaya jaye
+jo aap thoda ruk kar dekhein…
+</span>
+
+<span>
+Kuch photos, kuch chhoti si memories,
+aur thoda sa woh jo words mein
+properly explain nahi hota.
+</span>
+
+<span>
+Bas itna hi kehna tha —
+aaj ka din achha ho,
+aur aap hamesha khush rahen. 🩵
+</span>
+
+</div>
+
+<div class="message-sign">
+— from someone who remembers :)
+</div>
+
+<button
+class="btn primary message-next"
+onclick="go(4)">
+MEMORIES DEKHEIN ✦
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ==================================================
+     04 — MEMORIES
+================================================== -->
 
 <section class="scene" id="s4">
 
@@ -1255,7 +1600,7 @@ memory ✦
 
 <img
 src="1000244923.png"
-alt="Memory">
+alt="Memory 1">
 
 <div class="memory-caption">
 Ek khoobsurat memory.
@@ -1272,7 +1617,7 @@ another one ✦
 
 <img
 src="1000244922.png"
-alt="Memory">
+alt="Memory 2">
 
 <div class="memory-caption">
 Ek aur pyari si yaad…
@@ -1323,7 +1668,7 @@ Maybe someday. :)
 </div>
 
 <button
-class="btn"
+class="btn primary"
 id="memoryBtn"
 onclick="nextMemory()">
 NEXT MEMORY →
@@ -1333,7 +1678,9 @@ NEXT MEMORY →
 </section>
 
 
-<!-- 05 GIFT -->
+<!-- ==================================================
+     05 — SMALL GIFT
+================================================== -->
 
 <section class="scene" id="s5">
 
@@ -1364,14 +1711,16 @@ onclick="openGift()">
 </div>
 
 <p>
-Box par tap kijiye.
+Is baar thoda aur patience. 😌
 </p>
 
 </div>
 </section>
 
 
-<!-- 06 GIFT MESSAGE -->
+<!-- ==================================================
+     06 — GIFT MESSAGE
+================================================== -->
 
 <section class="scene" id="s6">
 
@@ -1386,22 +1735,25 @@ Abhi ek<br>
 <span class="accent">cheez aur baaki hai.</span>
 </h2>
 
-<div class="serif"
-style="font-size:24px;margin-top:20px;color:var(--rose)">
-Aur woh thodi important hai. 😌
+<div
+class="serif"
+style="font-size:25px;margin-top:22px;color:var(--rose)">
+Aur woh thodi important hai…
 </div>
 
 <button
 class="btn primary"
 onclick="go(7)">
-Aage →
+AAGE →
 </button>
 
 </div>
 </section>
 
 
-<!-- 07 CHOICE -->
+<!-- ==================================================
+     07 — QUESTION
+================================================== -->
 
 <section class="scene" id="s7">
 
@@ -1437,7 +1789,9 @@ NAHI
 </section>
 
 
-<!-- 08 FAKE END -->
+<!-- ==================================================
+     08 — FAKE END
+================================================== -->
 
 <section class="scene" id="s8">
 
@@ -1451,8 +1805,9 @@ The end…
 Bas itna hi.
 </h1>
 
-<div class="serif"
-style="font-size:22px;margin-top:20px;color:var(--rose)">
+<div
+class="serif"
+style="font-size:23px;margin-top:21px;color:var(--rose)">
 …shayad. 👀
 </div>
 
@@ -1460,7 +1815,9 @@ style="font-size:22px;margin-top:20px;color:var(--rose)">
 </section>
 
 
-<!-- 09 REAL SURPRISE -->
+<!-- ==================================================
+     09 — REAL SURPRISE
+================================================== -->
 
 <section class="scene" id="s9">
 
@@ -1489,7 +1846,9 @@ ASLI SURPRISE ✦
 </section>
 
 
-<!-- 10 CAKE -->
+<!-- ==================================================
+     10 — CAKE
+================================================== -->
 
 <section class="scene" id="s10">
 
@@ -1517,9 +1876,11 @@ id="cakeStage">
 <div class="top-cake"></div>
 
 <div class="frosting">
+
 <div class="drip a"></div>
 <div class="drip b"></div>
 <div class="drip c"></div>
+
 </div>
 
 <div class="cut-line"></div>
@@ -1555,7 +1916,9 @@ Knife ko cake ke across smoothly drag kijiye ✦
 </section>
 
 
-<!-- 11 BIRTHDAY -->
+<!-- ==================================================
+     11 — BIRTHDAY
+================================================== -->
 
 <section class="scene" id="s11">
 
@@ -1570,22 +1933,25 @@ Happy Birthday,<br>
 <span class="accent">Pallavi! 🎉</span>
 </h1>
 
-<div class="serif"
-style="font-size:23px;margin-top:20px;color:var(--rose)">
+<div
+class="serif"
+style="font-size:24px;margin-top:21px;color:var(--rose)">
 Aaj ka cake officially cut ho gaya. ✨
 </div>
 
 <button
 class="btn primary"
 onclick="go(12)">
-Ek last baat…
+EK LAST BAAT…
 </button>
 
 </div>
 </section>
 
 
-<!-- 12 FINAL -->
+<!-- ==================================================
+     12 — FINAL FRIENDSHIP
+================================================== -->
 
 <section class="scene" id="s12">
 
@@ -1637,9 +2003,7 @@ another one
 
 <div class="mini-empty">
 
-<div>
-📷
-</div>
+<div>📷</div>
 
 <span>
 Our photo<br>
@@ -1689,18 +2053,19 @@ Ab jaaiye… birthday enjoy kijiye 😌🎂
 
 </div>
 
+
 <div id="flash"></div>
 
 
 <script>
 
-/* ==============================
+/* ==================================================
    NAVIGATION
-============================== */
+================================================== */
 
 let busy=false;
 
-function go(n){
+function go(number){
 
   if(busy)return;
 
@@ -1714,7 +2079,8 @@ function go(n){
 
   setTimeout(()=>{
 
-    const target=document.getElementById("s"+n);
+    const target=
+      document.getElementById("s"+number);
 
     if(target){
       target.classList.add("active");
@@ -1722,41 +2088,44 @@ function go(n){
 
     setTimeout(()=>{
       busy=false;
-    },850);
+    },1000);
 
-  },70);
+  },100);
+
 }
 
 
-/* ==============================
-   BOX
-============================== */
+/* ==================================================
+   LETTER
+================================================== */
 
-let boxOpened=false;
+let letterOpened=false;
 
-function openBox(){
+function openLetter(){
 
-  if(boxOpened)return;
+  if(letterOpened)return;
 
-  boxOpened=true;
+  letterOpened=true;
 
-  const box=document.getElementById("memoryBox");
+  const envelope=
+    document.getElementById("envelope");
 
-  box.classList.add("open");
+  envelope.classList.add("open");
 
   setTimeout(()=>{
     flash();
-  },700);
+  },900);
 
   setTimeout(()=>{
     go(3);
-  },1550);
+  },2200);
+
 }
 
 
-/* ==============================
+/* ==================================================
    MEMORY SLIDER
-============================== */
+================================================== */
 
 let memory=1;
 
@@ -1783,8 +2152,11 @@ function nextMemory(){
       .classList.add("active");
 
     if(memory===3){
-      document.getElementById("memoryBtn")
+
+      document
+        .getElementById("memoryBtn")
         .textContent="AAGE CHALEIN ✦";
+
     }
 
   }else{
@@ -1792,12 +2164,13 @@ function nextMemory(){
     go(5);
 
   }
+
 }
 
 
-/* ==============================
+/* ==================================================
    GIFT
-============================== */
+================================================== */
 
 let giftOpened=false;
 
@@ -1812,36 +2185,44 @@ function openGift(){
     .classList.add("open");
 
   setTimeout(()=>{
-    confetti(18);
-  },450);
+    confetti(16);
+  },500);
 
   setTimeout(()=>{
     go(6);
-  },1100);
+  },1350);
+
 }
 
 
-/* ==============================
-   CHOICE
-============================== */
+/* ==================================================
+   QUESTION
+================================================== */
 
 let noCount=0;
 
 function noAnswer(){
 
-  const btn=document.getElementById("noBtn");
+  const btn=
+    document.getElementById("noBtn");
 
   noCount++;
 
   if(noCount===1){
 
-    btn.style.transform="translate(42px,-5px)";
-    btn.textContent="Sochiye 😌";
+    btn.style.transform=
+      "translate(42px,-5px)";
+
+    btn.textContent=
+      "Sochiye 😌";
 
   }else if(noCount===2){
 
-    btn.style.transform="translate(-38px,13px)";
-    btn.textContent="Pakka? 😂";
+    btn.style.transform=
+      "translate(-38px,13px)";
+
+    btn.textContent=
+      "Pakka? 😂";
 
   }else{
 
@@ -1849,7 +2230,9 @@ function noAnswer(){
     btn.style.pointerEvents="none";
 
   }
+
 }
+
 
 function yesAnswer(){
 
@@ -1859,42 +2242,51 @@ function yesAnswer(){
 
   setTimeout(()=>{
     go(9);
-  },2300);
+  },2500);
+
 }
 
 
-/* ==============================
-   CAKE CUTTING
-============================== */
+/* ==================================================
+   CAKE
+================================================== */
 
-const knife=document.getElementById("knife");
-const cake=document.getElementById("cake");
+const knife=
+  document.getElementById("knife");
+
+const cake=
+  document.getElementById("cake");
 
 let dragging=false;
 let cutDone=false;
 let startX=0;
 let startY=0;
 
-function point(e){
+function pointer(e){
 
   if(e.touches && e.touches.length){
+
     return{
       x:e.touches[0].clientX,
       y:e.touches[0].clientY
     };
+
   }
 
   return{
     x:e.clientX,
     y:e.clientY
   };
+
 }
+
 
 function knifeDown(e){
 
   if(cutDone)return;
 
-  const p=point(e);
+  const p=
+    pointer(e);
 
   dragging=true;
 
@@ -1904,29 +2296,42 @@ function knifeDown(e){
   knife.classList.add("dragging");
 
   e.preventDefault();
+
 }
+
 
 function knifeMove(e){
 
   if(!dragging || cutDone)return;
 
-  const p=point(e);
+  const p=
+    pointer(e);
 
-  const dx=p.x-startX;
-  const dy=p.y-startY;
+  const dx=
+    p.x-startX;
 
-  const x=Math.max(-78,Math.min(8,dx));
-  const y=Math.max(-8,Math.min(38,dy));
+  const dy=
+    p.y-startY;
+
+  const x=
+    Math.max(-78,Math.min(8,dx));
+
+  const y=
+    Math.max(-8,Math.min(38,dy));
 
   knife.style.transform=
     `rotate(-42deg) translate(${x}px,${y}px)`;
 
   if(dx < -58){
+
     cutCake();
+
   }
 
   e.preventDefault();
+
 }
+
 
 function knifeUp(){
 
@@ -1939,16 +2344,19 @@ function knifeUp(){
   if(!cutDone){
 
     knife.style.transition=
-      "transform .45s var(--ease)";
+      "transform .5s var(--ease)";
 
     knife.style.transform=
       "rotate(-42deg)";
 
     setTimeout(()=>{
       knife.style.transition="";
-    },500);
+    },550);
+
   }
+
 }
+
 
 knife.addEventListener(
   "mousedown",
@@ -1983,7 +2391,9 @@ window.addEventListener(
 );
 
 
-/* CUT */
+/* ==================================================
+   CAKE CUT RESULT
+================================================== */
 
 function cutCake(){
 
@@ -1994,17 +2404,11 @@ function cutCake(){
 
   cake.classList.add("cut");
 
-  document.getElementById("cutHint")
-    .textContent="Perfect! 🎂✨";
+  document
+    .getElementById("cutHint")
+    .textContent=
+      "Perfect! 🎂✨";
 
-  knife.style.transition=
-    "transform .55s var(--ease)";
-
-  knife.style.transform=
-    "rotate(-42deg) translate(-70px,28px)";
-
-
-  /* candles */
 
   setTimeout(()=>{
 
@@ -2019,18 +2423,18 @@ function cutCake(){
               transform:"scale(1)"
             },
             {
-              opacity:.6,
+              opacity:.5,
               transform:
                 "translateY(-5px) scale(.7)"
             },
             {
               opacity:0,
               transform:
-                "translateY(-12px) scale(.1)"
+                "translateY(-13px) scale(.1)"
             }
           ],
           {
-            duration:650,
+            duration:700,
             fill:"forwards",
             easing:"ease-out"
           }
@@ -2038,49 +2442,47 @@ function cutCake(){
 
       });
 
-  },220);
+  },250);
 
-
-  /* crumbs */
 
   setTimeout(()=>{
 
     const stage=
       document.getElementById("cakeStage");
 
-    for(let i=0;i<12;i++){
+    for(let i=0;i<13;i++){
 
-      const c=document.createElement("div");
+      const crumb=
+        document.createElement("div");
 
-      c.className="crumb";
+      crumb.className="crumb";
 
-      c.style.left=
+      crumb.style.left=
         (120+Math.random()*100)+"px";
 
-      c.style.top=
+      crumb.style.top=
         (145+Math.random()*25)+"px";
 
-      c.style.setProperty(
+      crumb.style.setProperty(
         "--x",
-        ((Math.random()-.5)*90)+"px"
+        ((Math.random()-.5)*100)+"px"
       );
 
-      c.style.setProperty(
+      crumb.style.setProperty(
         "--y",
-        (25+Math.random()*55)+"px"
+        (25+Math.random()*60)+"px"
       );
 
-      stage.appendChild(c);
+      stage.appendChild(crumb);
 
       setTimeout(()=>{
-        c.remove();
+        crumb.remove();
       },1000);
+
     }
 
-  },350);
+  },400);
 
-
-  /* subtle cake movement */
 
   setTimeout(()=>{
 
@@ -2090,58 +2492,63 @@ function cutCake(){
           transform:"translateX(-50%)"
         },
         {
-          transform:"translateX(-50%) scale(1.025)"
+          transform:
+            "translateX(-50%) scale(1.025)"
         },
         {
-          transform:"translateX(-50%) scale(1)"
+          transform:
+            "translateX(-50%) scale(1)"
         }
       ],
       {
-        duration:600,
+        duration:650,
         easing:"ease-out"
       }
     );
 
-  },400);
+  },450);
 
 
   setTimeout(()=>{
     flash();
     confetti(40);
-  },850);
+  },950);
 
 
   setTimeout(()=>{
     go(11);
-  },2150);
+  },2300);
+
 }
 
 
-/* ==============================
+/* ==================================================
    FLASH
-============================== */
+================================================== */
 
 function flash(){
 
-  const f=document.getElementById("flash");
+  const element=
+    document.getElementById("flash");
 
-  f.animate(
+  element.animate(
     [
       {opacity:0},
-      {opacity:.4},
+      {opacity:.35},
       {opacity:0}
     ],
     {
-      duration:650,
+      duration:700,
       easing:"ease-out"
     }
   );
+
 }
 
 
-/* ==============================
+/* ==================================================
    CONFETTI
-============================== */
+================================================== */
 
 function confetti(amount){
 
@@ -2155,7 +2562,8 @@ function confetti(amount){
 
   for(let i=0;i<amount;i++){
 
-    const c=document.createElement("div");
+    const c=
+      document.createElement("div");
 
     c.className="confetti";
 
@@ -2164,7 +2572,9 @@ function confetti(amount){
 
     c.style.background=
       colors[
-        Math.floor(Math.random()*colors.length)
+        Math.floor(
+          Math.random()*colors.length
+        )
       ];
 
     c.style.setProperty(
@@ -2180,33 +2590,41 @@ function confetti(amount){
     setTimeout(()=>{
       c.remove();
     },5000);
+
   }
+
 }
 
 
-/* ==============================
-   PRELOAD PHOTOS
-============================== */
+/* ==================================================
+   PRELOAD
+================================================== */
 
 [
   "1000244923.png",
   "1000244922.png"
 ].forEach(src=>{
-  const img=new Image();
+
+  const img=
+    new Image();
+
   img.src=src;
+
 });
 
 
-/* ==============================
-   PREVENT NORMAL SCROLL
-============================== */
+/* ==================================================
+   MOBILE — KEEP EXPERIENCE FIXED
+================================================== */
 
 document.addEventListener(
   "touchmove",
   e=>{
+
     if(!e.target.closest(".cake-stage")){
       e.preventDefault();
     }
+
   },
   {passive:false}
 );
