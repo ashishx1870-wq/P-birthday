@@ -1160,4 +1160,1671 @@ p{
     linear-gradient(
       180deg,
       #96757b,
-      #735
+      #73565c
+    );
+}
+
+.knife.dragging{
+  cursor:grabbing;
+}
+
+.cut-hint{
+  font-size:10px;
+  color:#998d91;
+}
+
+
+/* crumbs */
+
+.crumb{
+  position:absolute;
+
+  z-index:40;
+
+  width:5px;
+  height:5px;
+
+  border-radius:50%;
+
+  background:#e8b7ad;
+
+  pointer-events:none;
+
+  animation:
+    crumbFall .9s ease-out forwards;
+}
+
+@keyframes crumbFall{
+  to{
+    transform:
+      translate(
+        var(--cx),
+        var(--cy)
+      )
+      rotate(160deg);
+
+    opacity:0;
+  }
+}
+
+
+/* =========================
+   FINAL SECTION
+========================= */
+
+.final-content{
+  width:min(94vw,700px);
+}
+
+.final-intro{
+  opacity:0;
+  transform:translateY(14px);
+}
+
+.scene.active .final-intro{
+  animation:
+    finalReveal .8s .15s var(--ease) forwards;
+}
+
+@keyframes finalReveal{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+
+/* MEMORY WALL */
+
+.final-photos{
+  display:flex;
+
+  justify-content:center;
+  align-items:flex-start;
+
+  gap:12px;
+
+  margin:19px auto 21px;
+}
+
+.mini-photo{
+  width:88px;
+  height:111px;
+
+  padding:5px 5px 16px;
+
+  background:#fff;
+
+  box-shadow:
+    0 12px 28px rgba(70,50,55,.14);
+
+  opacity:0;
+
+  transform:
+    translateY(30px)
+    rotate(0deg);
+
+  transition:
+    opacity .65s ease,
+    transform .8s var(--ease);
+}
+
+.scene.active .mini-photo:nth-child(1){
+  animation:
+    photoOne .8s .45s var(--ease) forwards;
+}
+
+.scene.active .mini-photo:nth-child(2){
+  animation:
+    photoTwo .8s .62s var(--ease) forwards;
+}
+
+.scene.active .mini-photo:nth-child(3){
+  animation:
+    photoThree .8s .79s var(--ease) forwards;
+}
+
+@keyframes photoOne{
+  to{
+    opacity:1;
+    transform:
+      rotate(-6deg);
+  }
+}
+
+@keyframes photoTwo{
+  to{
+    opacity:1;
+    transform:
+      translateY(-7px)
+      rotate(2deg);
+  }
+}
+
+@keyframes photoThree{
+  to{
+    opacity:1;
+    transform:
+      rotate(5deg);
+  }
+}
+
+.mini-photo img{
+  width:100%;
+  height:78px;
+
+  display:block;
+
+  object-fit:cover;
+}
+
+.mini-empty{
+  width:100%;
+  height:78px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf9,
+      #fff5ef
+    );
+
+  border:
+    1px dashed
+    rgba(184,109,124,.28);
+}
+
+.small-camera{
+  font-size:16px;
+  opacity:.6;
+}
+
+.mini-empty span{
+  margin-top:4px;
+
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+
+  font-size:10px;
+  line-height:1.25;
+
+  color:var(--rose);
+}
+
+
+/* MEMORY TAGS */
+
+.photo-tag{
+  margin-top:5px;
+
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+
+  font-size:8px;
+
+  color:#7e7074;
+}
+
+
+/* FRIEND CARD */
+
+.friend-card{
+  width:min(530px,90vw);
+
+  margin:0 auto;
+
+  padding:23px 21px;
+
+  background:
+    rgba(255,255,255,.78);
+
+  border:
+    1px solid var(--line);
+
+  border-radius:23px;
+
+  box-shadow:var(--shadow);
+
+  opacity:0;
+  transform:
+    translateY(20px)
+    scale(.97);
+}
+
+.scene.active .friend-card{
+  animation:
+    cardReveal .85s 1.02s var(--ease) forwards;
+}
+
+@keyframes cardReveal{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.friend-main{
+  font-size:23px;
+  line-height:1.3;
+  font-weight:600;
+}
+
+.friend-main span{
+  color:var(--rose);
+}
+
+.friend-line{
+  margin-top:13px;
+
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+
+  font-size:20px;
+
+  color:var(--rose);
+}
+
+.friend-mini{
+  margin-top:10px;
+
+  color:#817477;
+
+  font-size:11px;
+  line-height:1.7;
+}
+
+
+/* FINAL MESSAGE */
+
+.final-note{
+  margin-top:16px;
+
+  font-family:"Playfair Display",serif;
+  font-style:italic;
+
+  font-size:20px;
+
+  color:var(--rose);
+
+  opacity:0;
+}
+
+.scene.active .final-note{
+  animation:
+    fadeUp .7s 1.45s var(--ease) forwards;
+}
+
+.final-small{
+  margin-top:7px;
+
+  font-size:9px;
+
+  color:#9b8d90;
+
+  opacity:0;
+}
+
+.scene.active .final-small{
+  animation:
+    fadeUp .7s 1.75s var(--ease) forwards;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+
+/* FINAL GLOW */
+
+.final-glow{
+  position:absolute;
+
+  left:50%;
+  top:48%;
+
+  width:160px;
+  height:160px;
+
+  transform:translate(-50%,-50%);
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(241,203,209,.32),
+      transparent 70%
+    );
+
+  filter:blur(10px);
+
+  opacity:0;
+
+  pointer-events:none;
+}
+
+.scene.active .final-glow{
+  animation:
+    glowIn 2s 1s ease forwards;
+}
+
+@keyframes glowIn{
+  from{opacity:0}
+  50%{opacity:1}
+  to{opacity:.45}
+}
+
+
+/* CONFETTI */
+
+.confetti{
+  position:fixed;
+
+  top:-20px;
+
+  width:6px;
+  height:10px;
+
+  z-index:100;
+
+  animation:
+    fall 3.5s linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:
+      translate(var(--x),110vh)
+      rotate(700deg);
+
+    opacity:0;
+  }
+}
+
+#flash{
+  position:fixed;
+  inset:0;
+
+  background:#fff;
+
+  opacity:0;
+
+  z-index:150;
+
+  pointer-events:none;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .scene{
+    padding:14px;
+  }
+
+  .memory-area{
+    height:360px;
+  }
+
+  .memory-card{
+    width:76vw;
+  }
+
+  .memory-card img,
+  .no-photo-card{
+    height:220px;
+  }
+
+  .cake-stage{
+    transform:scale(.88);
+    transform-origin:center;
+    margin-top:-4px;
+  }
+
+  .mini-photo{
+    width:78px;
+    height:99px;
+  }
+
+  .mini-photo img,
+  .mini-empty{
+    height:68px;
+  }
+
+  .friend-card{
+    padding:20px 17px;
+  }
+
+  .friend-main{
+    font-size:21px;
+  }
+
+  .friend-line{
+    font-size:18px;
+  }
+
+  .final-photos{
+    gap:7px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<div class="blob one"></div>
+<div class="blob two"></div>
+
+
+<!-- PARTICLES -->
+
+<script>
+for(let i=0;i<32;i++){
+
+  const p=document.createElement("div");
+
+  p.className="particle";
+
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDuration=(8+Math.random()*9)+"s";
+  p.style.animationDelay=(Math.random()*8)+"s";
+
+  document.getElementById("app").appendChild(p);
+}
+</script>
+
+
+<!-- 1 OPENING -->
+
+<section class="scene active" id="s1">
+
+<div class="content">
+
+<div class="open-dot"></div>
+
+<div class="eyebrow opening-small">
+Ek minute…
+</div>
+
+<h1 class="opening-main">
+Ye <span class="accent">Pallavi</span><br>
+aapke liye hai.
+</h1>
+
+<p class="opening-main">
+Bas thoda sa waqt nikaaliye.
+</p>
+
+<div
+class="open-card"
+onclick="go(2)">
+
+<div class="card-label">
+A little surprise
+</div>
+
+<div class="card-title">
+Aapke liye kuch hai
+</div>
+
+<div class="card-sub">
+Open this when you're ready ✦
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- 2 ENVELOPE -->
+
+<section class="scene" id="s2">
+
+<div class="content">
+
+<div class="eyebrow">
+A little note
+</div>
+
+<h2>
+Ek chhota sa<br>
+<span class="accent">letter…</span>
+</h2>
+
+<div class="envelope-wrap">
+
+<div
+class="envelope"
+id="envelope"
+onclick="openEnvelope()">
+
+<div class="env-back"></div>
+
+<div class="letter">
+Pallavi,<br>
+bas ek chhoti si<br>
+baat aapke liye ✦
+</div>
+
+<div class="flap"></div>
+
+<div class="seal">✦</div>
+
+</div>
+
+</div>
+
+<p>
+Seal par tap kijiye.
+</p>
+
+</div>
+</section>
+
+
+<!-- 3 NOTE -->
+
+<section class="scene" id="s3">
+
+<div class="content">
+
+<div class="eyebrow">
+A little thought
+</div>
+
+<h2>
+Kuch log bas<br>
+<span class="accent">yaad reh jaate hain.</span>
+</h2>
+
+<p>
+Aur kuch memories bina kisi reason ke bhi
+smile karwa deti hain. 😄
+</p>
+
+<div
+class="serif"
+style="font-size:20px;margin-top:20px;color:var(--rose)">
+Bas isi liye ye chhoti si surprise.
+</div>
+
+<button
+class="btn primary"
+onclick="go(4)">
+Memories dekhein →
+</button>
+
+</div>
+</section>
+
+
+<!-- 4 MEMORIES -->
+
+<section class="scene" id="s4">
+
+<div class="content">
+
+<div class="eyebrow">
+Kuch memories
+</div>
+
+<h2>
+Teen photos.<br>
+<span class="accent">Teen moments.</span>
+</h2>
+
+<div class="memory-area">
+
+<div class="memory-card active" id="m1">
+
+<div class="memory-note">
+memory ✦
+</div>
+
+<img
+src="1000244923.png"
+alt="Pallavi memory">
+
+<div class="memory-caption">
+Ek khoobsurat memory.
+</div>
+
+</div>
+
+
+<div class="memory-card" id="m2">
+
+<div class="memory-note">
+another one ✦
+</div>
+
+<img
+src="1000244922.png"
+alt="Pallavi memory">
+
+<div class="memory-caption">
+Ek aur pyari si yaad…
+</div>
+
+</div>
+
+
+<div class="memory-card" id="m3">
+
+<div class="memory-note">
+hmm… 👀
+</div>
+
+<div class="no-photo-card">
+
+<div class="camera-icon">
+📷
+</div>
+
+<div class="no-photo-title">
+Humari saath mein photo toh hai hi nahi 😅
+</div>
+
+<div class="no-photo-text">
+Lagta hai ye frame abhi kisi photo ka
+wait kar raha hai…
+</div>
+
+<div class="no-photo-small">
+Ek photo abhi baaki hai. ✦
+</div>
+
+</div>
+
+<div class="memory-caption">
+Maybe someday. :)
+</div>
+
+</div>
+
+
+<div class="dots">
+
+<span class="dot active" id="d1"></span>
+<span class="dot" id="d2"></span>
+<span class="dot" id="d3"></span>
+
+</div>
+
+</div>
+
+<button
+class="btn"
+id="memoryBtn"
+onclick="nextMemory()">
+NEXT MEMORY →
+</button>
+
+</div>
+</section>
+
+
+<!-- 5 GIFT -->
+
+<section class="scene" id="s5">
+
+<div class="content">
+
+<div class="eyebrow">
+One more thing
+</div>
+
+<h2>
+Ye bhi<br>
+<span class="accent">open kijiye. 🎁</span>
+</h2>
+
+<div
+class="gift"
+id="gift"
+onclick="openGift()">
+
+<div class="gift-body">
+<div class="ribbon-v"></div>
+</div>
+
+<div class="gift-lid">
+<div class="ribbon-h"></div>
+</div>
+
+</div>
+
+<p>
+Box par tap kijiye.
+</p>
+
+</div>
+</section>
+
+
+<!-- 6 GIFT MESSAGE -->
+
+<section class="scene" id="s6">
+
+<div class="content">
+
+<div class="eyebrow">
+Inside the box
+</div>
+
+<h2>
+Ek aur?
+</h2>
+
+<div
+class="serif"
+style="font-size:25px;margin-top:20px;color:var(--rose)">
+Haan… abhi ek cheez baaki hai. 😌
+</div>
+
+<button
+class="btn primary"
+onclick="go(7)">
+Aage →
+</button>
+
+</div>
+</section>
+
+
+<!-- 7 CHOICE -->
+
+<section class="scene" id="s7">
+
+<div class="content">
+
+<div class="eyebrow">
+Ek question
+</div>
+
+<h2>
+Ek aur surprise ke liye<br>
+<span class="accent">rukengi?</span>
+</h2>
+
+<div class="choice">
+
+<button
+class="btn primary"
+onclick="yesAnswer()">
+HAAN 🩵
+</button>
+
+<button
+class="btn no"
+id="noBtn"
+onclick="noAnswer()">
+NAHI
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- 8 FAKE END -->
+
+<section class="scene" id="s8">
+
+<div class="content">
+
+<div class="eyebrow">
+The end…?
+</div>
+
+<h1>
+Okay…<br>
+<span class="accent">bas itna hi.</span>
+</h1>
+
+<div
+class="serif"
+style="font-size:23px;margin-top:18px;color:var(--rose)">
+thoda rukna…
+</div>
+
+</div>
+</section>
+
+
+<!-- 9 REAL SURPRISE -->
+
+<section class="scene" id="s9">
+
+<div class="content">
+
+<div class="eyebrow">
+Wait…
+</div>
+
+<h1>
+Aapko laga<br>
+<span class="accent">khatam ho gaya? 😂</span>
+</h1>
+
+<p>
+Itni jaldi toh nahi.
+</p>
+
+<button
+class="btn primary"
+onclick="go(10)">
+ASLI SURPRISE ✦
+</button>
+
+</div>
+</section>
+
+
+<!-- 10 CAKE -->
+
+<section class="scene" id="s10">
+
+<div class="content">
+
+<div class="eyebrow">
+Ab important kaam
+</div>
+
+<h2>
+Cake cut karein,<br>
+<span class="accent">Pallavi? 🎂</span>
+</h2>
+
+<div
+class="cake-stage"
+id="cakeStage">
+
+<div class="plate"></div>
+
+<div class="cake" id="cake">
+
+<div class="cake-body"></div>
+
+<div class="top-cake"></div>
+
+<div class="frosting-drip">
+<div class="drip one"></div>
+<div class="drip two"></div>
+<div class="drip three"></div>
+</div>
+
+<div class="cut-line"></div>
+
+<div class="candle c1">
+<div class="flame"></div>
+</div>
+
+<div class="candle c2">
+<div class="flame"></div>
+</div>
+
+<div class="candle c3">
+<div class="flame"></div>
+</div>
+
+</div>
+
+<div
+class="knife"
+id="knife">
+</div>
+
+</div>
+
+<div
+class="cut-hint"
+id="cutHint">
+Knife ko cake ke across smoothly drag kijiye ✦
+</div>
+
+</div>
+</section>
+
+
+<!-- 11 BIRTHDAY -->
+
+<section class="scene" id="s11">
+
+<div class="content">
+
+<div class="eyebrow">
+And finally…
+</div>
+
+<h1>
+Happy Birthday,<br>
+<span class="accent">Pallavi! 🎉</span>
+</h1>
+
+<div
+class="serif"
+style="font-size:24px;margin-top:20px;color:var(--rose)">
+Ab birthday properly celebrate ho gaya. ✨
+</div>
+
+<button
+class="btn primary"
+onclick="go(12)">
+Ek last baat…
+</button>
+
+</div>
+</section>
+
+
+<!-- 12 FINAL -->
+
+<section class="scene" id="s12">
+
+<div class="final-glow"></div>
+
+<div class="content final-content">
+
+<div class="final-intro">
+
+<div class="eyebrow">
+Aur ek last baat…
+</div>
+
+<h2>
+Kuch friendships<br>
+<span class="accent">bas bani rehni chahiye.</span>
+</h2>
+
+</div>
+
+
+<div class="final-photos">
+
+<div class="mini-photo">
+
+<img
+src="1000244923.png"
+alt="Pallavi memory">
+
+<div class="photo-tag">
+one little memory
+</div>
+
+</div>
+
+
+<div class="mini-photo">
+
+<img
+src="1000244922.png"
+alt="Pallavi memory">
+
+<div class="photo-tag">
+another one
+</div>
+
+</div>
+
+
+<div class="mini-photo">
+
+<div class="mini-empty">
+
+<div class="small-camera">
+📷
+</div>
+
+<span>
+Our photo<br>
+is still missing :)
+</span>
+
+</div>
+
+<div class="photo-tag">
+maybe someday
+</div>
+
+</div>
+
+</div>
+
+
+<div class="friend-card">
+
+<div class="friend-main">
+Aap meri life ki<br>
+<span>first friend hain.</span>
+</div>
+
+<div class="friend-line">
+Aur bas ek wish hai…
+</div>
+
+<div class="friend-mini">
+Humari friendship aise hi rahe,
+chahe kuch bhi ho. 🩵
+</div>
+
+</div>
+
+
+<div class="final-note">
+Happy Birthday once again, Pallavi. ✦
+</div>
+
+<div class="final-small">
+Ab jaaiye… birthday enjoy kijiye 😌🎂
+</div>
+
+</div>
+</section>
+
+</div>
+
+
+<div id="flash"></div>
+
+
+<script>
+
+/* =========================
+   NAVIGATION
+========================= */
+
+let changing=false;
+
+function go(number){
+
+  if(changing)return;
+
+  changing=true;
+
+  document
+    .querySelectorAll(".scene")
+    .forEach(s=>s.classList.remove("active"));
+
+  setTimeout(()=>{
+
+    const target=
+      document.getElementById("s"+number);
+
+    if(target){
+      target.classList.add("active");
+    }
+
+    setTimeout(()=>{
+      changing=false;
+    },850);
+
+  },70);
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+let envelopeOpened=false;
+
+function openEnvelope(){
+
+  if(envelopeOpened)return;
+
+  envelopeOpened=true;
+
+  document
+    .getElementById("envelope")
+    .classList.add("open");
+
+  setTimeout(flash,650);
+
+  setTimeout(()=>{
+    go(3);
+  },1400);
+}
+
+
+/* =========================
+   MEMORY
+========================= */
+
+let memory=1;
+
+function nextMemory(){
+
+  if(memory<3){
+
+    document
+      .getElementById("m"+memory)
+      .classList.remove("active");
+
+    document
+      .getElementById("d"+memory)
+      .classList.remove("active");
+
+    memory++;
+
+    document
+      .getElementById("m"+memory)
+      .classList.add("active");
+
+    document
+      .getElementById("d"+memory)
+      .classList.add("active");
+
+    if(memory===3){
+
+      document
+        .getElementById("memoryBtn")
+        .textContent="AAGE CHALEIN ✦";
+    }
+
+  }else{
+
+    go(5);
+
+  }
+}
+
+
+/* =========================
+   GIFT
+========================= */
+
+let giftOpened=false;
+
+function openGift(){
+
+  if(giftOpened)return;
+
+  giftOpened=true;
+
+  document
+    .getElementById("gift")
+    .classList.add("open");
+
+  setTimeout(()=>{
+    makeConfetti(18);
+  },450);
+
+  setTimeout(()=>{
+    go(6);
+  },1000);
+}
+
+
+/* =========================
+   CHOICE
+========================= */
+
+let noCount=0;
+
+function noAnswer(){
+
+  const btn=
+    document.getElementById("noBtn");
+
+  noCount++;
+
+  if(noCount===1){
+
+    btn.style.transform=
+      "translate(40px,-5px)";
+
+    btn.textContent=
+      "Sochiye 😌";
+
+  }
+
+  else if(noCount===2){
+
+    btn.style.transform=
+      "translate(-40px,15px)";
+
+    btn.textContent=
+      "Pakka? 😂";
+
+  }
+
+  else{
+
+    btn.style.opacity="0";
+    btn.style.pointerEvents="none";
+
+  }
+}
+
+function yesAnswer(){
+
+  makeConfetti(12);
+
+  go(8);
+
+  setTimeout(()=>{
+    go(9);
+  },2200);
+}
+
+
+/* =========================
+   CAKE CUTTING
+========================= */
+
+const knife=
+  document.getElementById("knife");
+
+const cake=
+  document.getElementById("cake");
+
+let dragging=false;
+let cutDone=false;
+
+let startX=0;
+let startY=0;
+
+function getPoint(e){
+
+  if(e.touches && e.touches.length){
+
+    return{
+      x:e.touches[0].clientX,
+      y:e.touches[0].clientY
+    };
+
+  }
+
+  return{
+    x:e.clientX,
+    y:e.clientY
+  };
+}
+
+
+function knifeDown(e){
+
+  if(cutDone)return;
+
+  const p=getPoint(e);
+
+  dragging=true;
+
+  startX=p.x;
+  startY=p.y;
+
+  knife.classList.add("dragging");
+
+  e.preventDefault();
+}
+
+
+function knifeMove(e){
+
+  if(!dragging || cutDone)return;
+
+  const p=getPoint(e);
+
+  const dx=p.x-startX;
+  const dy=p.y-startY;
+
+  /*
+    Knife should travel mostly
+    horizontally across the cake.
+  */
+
+  const moveX=
+    Math.max(-82,Math.min(8,dx));
+
+  const moveY=
+    Math.max(-8,Math.min(40,dy));
+
+  knife.style.transform=
+    `rotate(-42deg)
+     translate(${moveX}px,${moveY}px)`;
+
+
+  /*
+    Realistic cutting threshold:
+    user must drag sufficiently
+    across the cake.
+  */
+
+  if(dx < -58){
+
+    cutCake();
+  }
+
+  e.preventDefault();
+}
+
+
+function knifeUp(){
+
+  if(!dragging)return;
+
+  dragging=false;
+
+  knife.classList.remove("dragging");
+
+  if(!cutDone){
+
+    knife.style.transition=
+      "transform .45s var(--ease)";
+
+    knife.style.transform=
+      "rotate(-42deg)";
+
+    setTimeout(()=>{
+      knife.style.transition="";
+    },500);
+  }
+}
+
+
+knife.addEventListener(
+  "mousedown",
+  knifeDown
+);
+
+window.addEventListener(
+  "mousemove",
+  knifeMove
+);
+
+window.addEventListener(
+  "mouseup",
+  knifeUp
+);
+
+knife.addEventListener(
+  "touchstart",
+  knifeDown,
+  {passive:false}
+);
+
+window.addEventListener(
+  "touchmove",
+  knifeMove,
+  {passive:false}
+);
+
+window.addEventListener(
+  "touchend",
+  knifeUp
+);
+
+
+/* CAKE CUT */
+
+function cutCake(){
+
+  if(cutDone)return;
+
+  cutDone=true;
+  dragging=false;
+
+  knife.classList.remove("dragging");
+
+  cake.classList.add("cut");
+
+  document
+    .getElementById("cutHint")
+    .textContent=
+    "Perfect! 🎂✨";
+
+
+  knife.style.transition=
+    "transform .55s var(--ease)";
+
+  knife.style.transform=
+    "rotate(-42deg) translate(-70px,28px)";
+
+
+  /*
+    Candles fade naturally.
+  */
+
+  setTimeout(()=>{
+
+    document
+      .querySelectorAll(".flame")
+      .forEach(flame=>{
+
+        flame.animate(
+          [
+            {
+              opacity:1,
+              transform:"scale(1)"
+            },
+            {
+              opacity:.7,
+              transform:
+                "translateY(-5px) scale(.7)"
+            },
+            {
+              opacity:0,
+              transform:
+                "translateY(-12px) scale(.1)"
+            }
+          ],
+          {
+            duration:650,
+            fill:"forwards",
+            easing:"ease-out"
+          }
+        );
+
+      });
+
+  },200);
+
+
+  /*
+    Tiny cake crumbs.
+  */
+
+  setTimeout(()=>{
+
+    const stage=
+      document.getElementById("cakeStage");
+
+    for(let i=0;i<12;i++){
+
+      const crumb=
+        document.createElement("div");
+
+      crumb.className="crumb";
+
+      crumb.style.left=
+        (120+Math.random()*100)+"px";
+
+      crumb.style.top=
+        (145+Math.random()*25)+"px";
+
+      crumb.style.setProperty(
+        "--cx",
+        ((Math.random()-.5)*80)+"px"
+      );
+
+      crumb.style.setProperty(
+        "--cy",
+        (25+Math.random()*55)+"px"
+      );
+
+      stage.appendChild(crumb);
+
+      setTimeout(()=>{
+        crumb.remove();
+      },1000);
+    }
+
+  },350);
+
+
+  /*
+    Tiny cake movement.
+  */
+
+  setTimeout(()=>{
+
+    cake.animate(
+      [
+        {
+          transform:
+            "translateX(-50%)"
+        },
+        {
+          transform:
+            "translateX(-50%) scale(1.025)"
+        },
+        {
+          transform:
+            "translateX(-50%) scale(1)"
+        }
+      ],
+      {
+        duration:600,
+        easing:"ease-out"
+      }
+    );
+
+  },400);
+
+
+  setTimeout(()=>{
+    flash();
+    makeConfetti(42);
+  },850);
+
+
+  setTimeout(()=>{
+    go(11);
+  },2100);
+}
+
+
+/* =========================
+   FLASH
+========================= */
+
+function flash(){
+
+  const f=
+    document.getElementById("flash");
+
+  f.animate(
+    [
+      {opacity:0},
+      {opacity:.42},
+      {opacity:0}
+    ],
+    {
+      duration:650,
+      easing:"ease-out"
+    }
+  );
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function makeConfetti(amount){
+
+  const colors=[
+    "#f1c8ce",
+    "#f4d98c",
+    "#ded9ee",
+    "#f6d7c1",
+    "#b86d7c"
+  ];
+
+  for(let i=0;i<amount;i++){
+
+    const c=
+      document.createElement("div");
+
+    c.className="confetti";
+
+    c.style.left=
+      Math.random()*100+"%";
+
+    c.style.background=
+      colors[
+        Math.floor(
+          Math.random()*colors.length
+        )
+      ];
+
+    c.style.setProperty(
+      "--x",
+      ((Math.random()-.5)*180)+"px"
+    );
+
+    c.style.animationDuration=
+      (2.5+Math.random()*1.8)+"s";
+
+    document.body.appendChild(c);
+
+    setTimeout(()=>{
+      c.remove();
+    },5000);
+  }
+}
+
+
+/* PRELOAD PHOTOS */
+
+[
+  "1000244923.png",
+  "1000244922.png"
+].forEach(src=>{
+
+  const img=new Image();
+  img.src=src;
+
+});
+
+
+/* BLOCK NORMAL PAGE SCROLL */
+
+document.addEventListener(
+  "touchmove",
+  e=>{
+
+    if(!e.target.closest(".cake-stage")){
+      e.preventDefault();
+    }
+
+  },
+  {passive:false}
+);
+
+</script>
+
+</body>
+</html>
