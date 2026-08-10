@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
 <title>For Pallavi ✨</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,13 +17,13 @@
   --paper:#fffdf9;
   --pink:#f4cdd2;
   --peach:#f6d7c1;
-  --lavender:#ded9ee;
-  --yellow:#f4d98c;
+  --lav:#ded9ee;
+  --gold:#e7c873;
   --text:#393437;
-  --muted:#777074;
+  --muted:#7b7074;
   --accent:#b86d7c;
-  --line:rgba(72,55,61,.12);
-  --shadow:0 22px 60px rgba(88,57,62,.13);
+  --line:rgba(70,50,55,.12);
+  --shadow:0 20px 55px rgba(80,55,60,.13);
   --ease:cubic-bezier(.22,.75,.18,1);
 }
 
@@ -44,54 +46,73 @@ body{
   background:var(--cream);
 }
 
+button{
+  font-family:"DM Sans",sans-serif;
+}
+
 #app{
   position:fixed;
   inset:0;
   overflow:hidden;
+
   background:
-    radial-gradient(circle at 12% 15%,rgba(244,205,210,.5),transparent 25%),
-    radial-gradient(circle at 90% 80%,rgba(222,217,238,.55),transparent 28%),
-    radial-gradient(circle at 50% 110%,rgba(246,215,193,.45),transparent 35%),
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(244,205,210,.62),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 90% 82%,
+      rgba(222,217,238,.62),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 110%,
+      rgba(246,215,193,.48),
+      transparent 35%
+    ),
     var(--cream);
 }
 
-#app::after{
+#app:after{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
   opacity:.025;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .blob{
   position:absolute;
   border-radius:50%;
-  filter:blur(45px);
+  filter:blur(50px);
   pointer-events:none;
-  opacity:.55;
-  animation:blobMove 14s ease-in-out infinite alternate;
+  opacity:.45;
+  animation:blobMove 15s ease-in-out infinite alternate;
 }
 
 .blob.one{
-  width:180px;
-  height:180px;
+  width:190px;
+  height:190px;
+  left:-80px;
+  top:8%;
   background:var(--pink);
-  left:-70px;
-  top:5%;
 }
 
 .blob.two{
-  width:220px;
-  height:220px;
-  background:var(--lavender);
-  right:-90px;
-  bottom:0;
+  width:230px;
+  height:230px;
+  right:-100px;
+  bottom:-20px;
+  background:var(--lav);
   animation-delay:-5s;
 }
 
 @keyframes blobMove{
-  to{transform:translate(35px,25px) scale(1.08)}
+  to{
+    transform:translate(35px,25px) scale(1.08);
+  }
 }
 
 .spark{
@@ -99,37 +120,46 @@ body{
   width:4px;
   height:4px;
   border-radius:50%;
-  background:#e7c96e;
+  background:var(--gold);
   opacity:.35;
-  pointer-events:none;
   animation:rise linear infinite;
 }
 
 @keyframes rise{
   from{
-    transform:translateY(105vh) scale(.5);
+    transform:translateY(105vh);
     opacity:0;
   }
   15%{opacity:.4}
-  85%{opacity:.2}
+  85%{opacity:.18}
   to{
-    transform:translateY(-10vh) scale(1);
+    transform:translateY(-10vh);
     opacity:0;
   }
 }
+
+
+/* =========================
+   SCENES
+========================= */
 
 .scene{
   position:absolute;
   inset:0;
   z-index:5;
+
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:22px;
+  align-items:center;
+
+  padding:20px;
+
   opacity:0;
   visibility:hidden;
   pointer-events:none;
+
   transform:translateY(20px) scale(.985);
+
   transition:
     opacity .6s ease,
     transform .8s var(--ease),
@@ -141,6 +171,7 @@ body{
   visibility:visible;
   pointer-events:auto;
   transform:none;
+
   transition:
     opacity .6s ease,
     transform .8s var(--ease);
@@ -150,15 +181,16 @@ body{
   width:min(92vw,650px);
   text-align:center;
   position:relative;
-  z-index:2;
 }
 
 .eyebrow{
+  margin-bottom:16px;
+
   font-size:9px;
   letter-spacing:3px;
   text-transform:uppercase;
-  color:#9b8d90;
-  margin-bottom:17px;
+
+  color:#9c9094;
 }
 
 h1,h2{
@@ -169,17 +201,18 @@ h1,h2{
 
 h1{
   font-size:clamp(38px,10vw,68px);
-  line-height:1.02;
+  line-height:1.04;
 }
 
 h2{
-  font-size:clamp(29px,7.5vw,52px);
+  font-size:clamp(29px,7.5vw,51px);
   line-height:1.08;
 }
 
 p{
   max-width:500px;
-  margin:17px auto 0;
+  margin:16px auto 0;
+
   color:var(--muted);
   font-size:13px;
   line-height:1.8;
@@ -197,22 +230,22 @@ p{
 
 .btn{
   border:1px solid var(--line);
-  background:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.75);
   color:var(--text);
+
   border-radius:100px;
   padding:12px 21px;
   margin-top:25px;
-  font:600 11px "DM Sans",sans-serif;
-  cursor:pointer;
-  box-shadow:0 8px 25px rgba(70,50,55,.07);
-  transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    background .25s ease;
-}
 
-.btn:hover{
-  box-shadow:0 12px 30px rgba(70,50,55,.12);
+  font-size:11px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 8px 25px rgba(70,50,55,.07);
+
+  transition:.25s ease;
 }
 
 .btn:active{
@@ -224,94 +257,41 @@ p{
   border-color:transparent;
 }
 
-/* OPENING */
+
+/* =========================
+   OPENING
+========================= */
 
 .open-dot{
   width:12px;
   height:12px;
-  margin:0 auto 26px;
+  margin:0 auto 25px;
+
   border-radius:50%;
-  background:#e5c773;
-  box-shadow:0 0 0 0 rgba(229,199,115,.5);
-  animation:dotPulse 2s infinite;
+  background:var(--gold);
+
+  animation:pulse 2s infinite;
 }
 
-@keyframes dotPulse{
+@keyframes pulse{
   70%{
-    box-shadow:0 0 0 22px rgba(229,199,115,0);
+    box-shadow:
+      0 0 0 22px rgba(231,200,115,0);
   }
 }
 
 .opening-small{
   opacity:0;
   transform:translateY(12px);
-  animation:reveal .8s .4s var(--ease) forwards;
+
+  animation:reveal .8s .35s var(--ease) forwards;
 }
 
 .opening-main{
   opacity:0;
   transform:translateY(18px);
-  animation:reveal .9s 1s var(--ease) forwards;
-}
 
-.open-card{
-  width:min(350px,84vw);
-  margin:28px auto 0;
-  padding:23px;
-  background:rgba(255,255,255,.76);
-  border:1px solid rgba(72,55,61,.09);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  transform:translateY(35px) scale(.94);
-  opacity:0;
-  animation:cardIn 1s 1.7s var(--ease) forwards;
-  position:relative;
-  cursor:pointer;
-}
-
-.open-card::before,
-.open-card::after{
-  content:"✦";
-  position:absolute;
-  color:#d8b96a;
-  font-size:13px;
-}
-
-.open-card::before{
-  top:12px;
-  left:15px;
-}
-
-.open-card::after{
-  right:15px;
-  bottom:12px;
-}
-
-.card-label{
-  font-size:9px;
-  letter-spacing:2px;
-  color:#a09396;
-  text-transform:uppercase;
-}
-
-.card-title{
-  margin-top:9px;
-  font-size:20px;
-  font-weight:600;
-}
-
-.card-sub{
-  margin-top:6px;
-  font-family:"Caveat",cursive;
-  color:#a96876;
-  font-size:20px;
-}
-
-@keyframes cardIn{
-  to{
-    transform:none;
-    opacity:1;
-  }
+  animation:reveal .9s .9s var(--ease) forwards;
 }
 
 @keyframes reveal{
@@ -321,7 +301,77 @@ p{
   }
 }
 
-/* ENVELOPE */
+.open-card{
+  width:min(350px,84vw);
+
+  margin:27px auto 0;
+  padding:23px;
+
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
+
+  border-radius:20px;
+
+  box-shadow:var(--shadow);
+
+  cursor:pointer;
+
+  opacity:0;
+  transform:translateY(30px) scale(.95);
+
+  animation:
+    cardIn 1s 1.6s var(--ease) forwards;
+
+  position:relative;
+}
+
+.open-card:before,
+.open-card:after{
+  content:"✦";
+  position:absolute;
+  color:#d6b86b;
+}
+
+.open-card:before{
+  top:11px;
+  left:15px;
+}
+
+.open-card:after{
+  right:15px;
+  bottom:11px;
+}
+
+@keyframes cardIn{
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.card-label{
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:#9b8e91;
+}
+
+.card-title{
+  margin-top:8px;
+  font-size:20px;
+  font-weight:600;
+}
+
+.card-sub{
+  margin-top:5px;
+  font:21px "Caveat",cursive;
+  color:#a96876;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
 
 .envelope-wrap{
   height:260px;
@@ -333,91 +383,128 @@ p{
   width:280px;
   height:175px;
   position:relative;
+
   cursor:pointer;
-  filter:drop-shadow(0 22px 30px rgba(74,50,55,.15));
+
+  filter:
+    drop-shadow(
+      0 22px 30px rgba(74,50,55,.15)
+    );
+
   perspective:900px;
 }
 
 .env-back{
   position:absolute;
   inset:0;
+
   background:#f4d7d2;
   border-radius:7px;
-  z-index:1;
 }
 
-.env-back::before,
-.env-back::after{
+.env-back:before,
+.env-back:after{
   content:"";
   position:absolute;
   bottom:0;
+
   width:0;
   height:0;
+
   border-style:solid;
 }
 
-.env-back::before{
+.env-back:before{
   left:0;
   border-width:0 140px 98px 0;
-  border-color:transparent #e9c5c6 transparent transparent;
+  border-color:
+    transparent #e9c5c6
+    transparent transparent;
 }
 
-.env-back::after{
+.env-back:after{
   right:0;
   border-width:98px 140px 0 0;
-  border-color:#e5bdc0 transparent transparent transparent;
+  border-color:
+    #e5bdc0 transparent transparent;
 }
 
 .letter{
   position:absolute;
+
   left:29px;
   top:17px;
+
   width:222px;
   height:145px;
+
   z-index:2;
+
   background:var(--paper);
-  border-radius:4px;
-  box-shadow:0 10px 25px rgba(70,50,55,.13);
+
   display:grid;
   place-items:center;
+
   padding:20px;
+
+  border-radius:4px;
+
+  box-shadow:
+    0 10px 25px rgba(70,50,55,.13);
+
   color:#5e5053;
+
   font:25px "Caveat",cursive;
-  line-height:1.15;
-  transition:transform 1s var(--ease);
+
+  transition:
+    transform 1s var(--ease);
 }
 
 .flap{
   position:absolute;
+
   top:0;
   left:0;
+
   z-index:4;
+
   width:0;
   height:0;
+
   border-left:140px solid transparent;
   border-right:140px solid transparent;
   border-top:102px solid #f7dfd9;
+
   transform-origin:50% 0;
-  transition:transform .95s var(--ease);
+
+  transition:
+    transform .95s var(--ease);
+
   backface-visibility:hidden;
 }
 
 .seal{
   position:absolute;
+
   z-index:6;
+
   left:50%;
   top:70px;
+
   transform:translateX(-50%);
+
   width:34px;
   height:34px;
+
   border-radius:50%;
+
   background:#e4bd70;
   color:white;
+
   display:grid;
   place-items:center;
-  font-size:13px;
-  box-shadow:0 5px 15px rgba(120,80,40,.2);
-  transition:opacity .35s;
+
+  transition:.35s;
 }
 
 .envelope.open .flap{
@@ -432,24 +519,39 @@ p{
   opacity:0;
 }
 
-/* MEMORY */
+
+/* =========================
+   MEMORY
+========================= */
 
 .memory-area{
-  height:410px;
+  height:390px;
   position:relative;
+
   display:grid;
   place-items:center;
 }
 
 .memory-card{
   position:absolute;
+
   width:min(275px,76vw);
-  padding:9px 9px 16px;
+
+  padding:9px 9px 15px;
+
   background:white;
+
   border-radius:5px;
+
   box-shadow:var(--shadow);
+
   opacity:0;
-  transform:translateY(35px) scale(.93) rotate(3deg);
+
+  transform:
+    translateY(35px)
+    scale(.93)
+    rotate(3deg);
+
   transition:
     opacity .7s ease,
     transform .9s var(--ease);
@@ -457,48 +559,113 @@ p{
 
 .memory-card.active{
   opacity:1;
-  transform:translateY(0) scale(1) rotate(-2deg);
+
+  transform:
+    translateY(0)
+    scale(1)
+    rotate(-2deg);
 }
 
 .memory-card img{
   width:100%;
-  height:245px;
+  height:235px;
+
   object-fit:cover;
+
   display:block;
+
   background:#eee;
 }
 
 .memory-caption{
   margin-top:8px;
+
   color:#4c4143;
+
   font:21px "Caveat",cursive;
 }
 
 .memory-note{
   position:absolute;
-  right:-23px;
+
+  right:-22px;
   top:-18px;
+
   padding:6px 10px;
+
   background:#fff0a8;
+
   color:#655b3c;
+
   font:16px "Caveat",cursive;
+
   transform:rotate(7deg);
-  box-shadow:0 4px 10px rgba(50,40,20,.08);
+
+  box-shadow:
+    0 4px 10px rgba(50,40,20,.08);
 }
 
-.third-note{
-  margin-top:7px;
-  color:#5c5052;
-  font:17px/1.3 "Caveat",cursive;
+
+/* THIRD PHOTO — CUSTOM */
+
+.no-photo-card{
+  height:235px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf9,
+      #fff6f1
+    );
+
+  border:
+    1px dashed
+    rgba(184,109,124,.28);
 }
 
-.third-note strong{
-  color:#ad6675;
+.camera-icon{
+  font-size:27px;
+  margin-bottom:13px;
+  opacity:.72;
+}
+
+.no-photo-title{
+  font-size:16px;
+  line-height:1.35;
+  font-weight:600;
+  color:#66575b;
+}
+
+.no-photo-text{
+  margin-top:10px;
+
+  font:20px/1.2 "Caveat",cursive;
+
+  color:#a96876;
+}
+
+.no-photo-small{
+  margin-top:10px;
+
+  font-size:10px;
+
+  color:#9b8d90;
 }
 
 .dots{
   position:absolute;
   bottom:0;
+
   display:flex;
   gap:7px;
 }
@@ -506,8 +673,11 @@ p{
 .dot{
   width:6px;
   height:6px;
+
   border-radius:50%;
+
   background:#d7cdd0;
+
   transition:.3s;
 }
 
@@ -516,76 +686,118 @@ p{
   transform:scale(1.4);
 }
 
-/* GIFT */
+
+/* =========================
+   GIFT
+========================= */
 
 .gift{
   width:150px;
   height:135px;
-  margin:28px auto;
+
+  margin:30px auto;
+
   position:relative;
+
   cursor:pointer;
-  animation:giftFloat 2.6s ease-in-out infinite;
+
+  animation:
+    giftFloat 2.6s ease-in-out infinite;
 }
 
 @keyframes giftFloat{
-  50%{transform:translateY(-8px)}
+  50%{
+    transform:translateY(-8px);
+  }
 }
 
 .gift-body{
   position:absolute;
+
   bottom:0;
   left:9px;
   right:9px;
+
   height:85px;
-  background:linear-gradient(135deg,#efb9c2,#e6a6b1);
+
+  background:
+    linear-gradient(
+      135deg,
+      #efb9c2,
+      #e6a6b1
+    );
+
   border-radius:5px;
-  box-shadow:0 22px 40px rgba(100,55,65,.18);
+
+  box-shadow:
+    0 22px 40px rgba(100,55,65,.18);
 }
 
 .gift-lid{
   position:absolute;
+
   z-index:4;
+
   left:2px;
   right:2px;
+
   top:30px;
   height:29px;
+
   border-radius:5px;
+
   background:#f4cbd0;
+
   transition:.8s var(--ease);
 }
 
 .ribbon-v{
   position:absolute;
+
   width:13px;
+
   top:0;
   bottom:0;
   left:50%;
+
   transform:translateX(-50%);
+
   background:#f0d481;
 }
 
 .ribbon-h{
   position:absolute;
+
   height:9px;
+
   left:0;
   right:0;
   top:50%;
+
   transform:translateY(-50%);
+
   background:#f0d481;
 }
 
 .gift.open .gift-lid{
-  transform:translateY(-55px) rotate(-4deg);
+  transform:
+    translateY(-55px)
+    rotate(-4deg);
 }
 
-/* CHOICE */
+
+/* =========================
+   CHOICE
+========================= */
 
 .choice{
   height:105px;
+
   display:flex;
   justify-content:center;
-  align-items:flex-start;
+
   gap:14px;
+
   position:relative;
 }
 
@@ -593,44 +805,62 @@ p{
   position:relative;
 }
 
-/* CAKE */
+
+/* =========================
+   CAKE
+========================= */
 
 .cake-stage{
   width:340px;
   height:315px;
+
   margin:4px auto 0;
+
   position:relative;
+
   touch-action:none;
   user-select:none;
 }
 
 .cake{
   position:absolute;
+
   width:210px;
   height:120px;
+
   left:50%;
   bottom:34px;
+
   transform:translateX(-50%);
-  transition:transform .35s ease;
 }
 
 .plate{
   position:absolute;
+
   width:255px;
   height:22px;
+
   left:50%;
   bottom:0;
+
   transform:translateX(-50%);
+
   border-radius:50%;
+
   background:#eee3e0;
-  box-shadow:0 7px 14px rgba(80,50,55,.12);
+
+  box-shadow:
+    0 7px 14px rgba(80,50,55,.12);
 }
 
 .layer{
   position:absolute;
+
   left:0;
   right:0;
+
   height:48px;
+
   border-radius:10px 10px 7px 7px;
 }
 
@@ -641,36 +871,51 @@ p{
 
 .layer.middle{
   bottom:49px;
+
   width:190px;
   left:10px;
+
   background:#f7d0ba;
 }
 
 .layer.top{
   bottom:88px;
+
   width:166px;
   left:22px;
+
   height:40px;
+
   background:#fff0e6;
-  border-radius:50% 50% 9px 9px;
+
+  border-radius:
+    50% 50% 9px 9px;
 }
 
 .frosting{
   position:absolute;
+
   width:174px;
   height:22px;
+
   left:18px;
   bottom:72px;
+
   background:#fff8ef;
+
   border-radius:50%;
 }
 
 .candle{
   position:absolute;
+
   bottom:126px;
+
   width:9px;
   height:40px;
+
   border-radius:4px;
+
   background:#d8b7dd;
 }
 
@@ -680,48 +925,74 @@ p{
 
 .flame{
   position:absolute;
+
   width:13px;
   height:19px;
+
   left:-2px;
   top:-18px;
+
   border-radius:50%;
+
   background:#f1c861;
+
   transform-origin:50% 100%;
-  animation:flame .6s infinite alternate;
-  transition:
-    opacity .45s ease,
-    transform .45s ease;
+
+  animation:
+    flame .6s infinite alternate;
 }
 
 @keyframes flame{
-  to{transform:scale(.82) rotate(4deg)}
+  to{
+    transform:
+      scale(.82)
+      rotate(4deg);
+  }
 }
 
 .knife{
   position:absolute;
+
   z-index:30;
+
   width:125px;
   height:12px;
+
   right:7px;
   top:145px;
+
   border-radius:8px;
-  background:linear-gradient(90deg,#c9c7c6,#eee);
+
+  background:
+    linear-gradient(
+      90deg,
+      #c9c7c6,
+      #eee
+    );
+
   transform:rotate(-42deg);
+
   transform-origin:100% 50%;
+
   cursor:grab;
-  touch-action:none;
-  box-shadow:0 4px 10px rgba(60,50,50,.18);
-  will-change:transform;
+
+  box-shadow:
+    0 4px 10px rgba(60,50,50,.18);
 }
 
-.knife::after{
+.knife:after{
   content:"";
+
   position:absolute;
+
   right:-35px;
   top:-3px;
+
   width:40px;
   height:18px;
+
   border-radius:4px;
+
   background:#8e6c71;
 }
 
@@ -729,86 +1000,127 @@ p{
   cursor:grabbing;
 }
 
-.cake-piece{
-  position:absolute;
-  bottom:39px;
-  width:105px;
-  height:80px;
-  border-radius:9px;
-  background:#efb6bf;
-  opacity:0;
-  z-index:15;
-}
-
-.piece-left{left:55px}
-.piece-right{right:55px}
-
-.cake.cut .piece-left{
-  animation:pieceLeft 1.15s var(--ease) forwards;
-}
-
-.cake.cut .piece-right{
-  animation:pieceRight 1.15s var(--ease) forwards;
-}
-
-@keyframes pieceLeft{
-  0%{opacity:0}
-  30%{opacity:1}
-  100%{
-    opacity:1;
-    transform:translateX(-38px) rotate(-4deg);
-  }
-}
-
-@keyframes pieceRight{
-  0%{opacity:0}
-  30%{opacity:1}
-  100%{
-    opacity:1;
-    transform:translateX(38px) rotate(4deg);
-  }
-}
-
 .cut-hint{
   font-size:11px;
   color:#9b8d90;
-  transition:opacity .3s;
 }
 
-/* FINAL */
+
+/* =========================
+   FINAL FRIENDSHIP
+========================= */
+
+.final-content{
+  width:min(94vw,680px);
+}
 
 .final-photos{
   display:flex;
+
   justify-content:center;
-  gap:10px;
-  margin:22px auto;
+  align-items:flex-start;
+
+  gap:11px;
+
+  margin:20px auto 23px;
 }
 
 .mini-photo{
-  width:67px;
-  height:78px;
-  padding:5px 5px 10px;
+  width:86px;
+  height:103px;
+
+  padding:5px 5px 14px;
+
   background:#fff;
-  box-shadow:0 7px 18px rgba(80,55,60,.12);
+
+  box-shadow:
+    0 9px 22px rgba(80,55,60,.13);
+
+  transition:
+    transform .35s ease;
 }
 
-.mini-photo:nth-child(1){transform:rotate(-6deg)}
-.mini-photo:nth-child(2){transform:translateY(-6px) rotate(2deg)}
-.mini-photo:nth-child(3){transform:rotate(5deg)}
+.mini-photo:nth-child(1){
+  transform:rotate(-6deg);
+}
+
+.mini-photo:nth-child(2){
+  transform:
+    translateY(-7px)
+    rotate(2deg);
+}
+
+.mini-photo:nth-child(3){
+  transform:rotate(5deg);
+}
 
 .mini-photo img{
   width:100%;
-  height:55px;
+  height:76px;
+
   object-fit:cover;
+
+  display:block;
 }
 
+
+/* Third final frame */
+
+.mini-empty{
+  width:100%;
+  height:76px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf9,
+      #fff5ef
+    );
+
+  border:
+    1px dashed
+    rgba(184,109,124,.28);
+}
+
+.mini-empty .small-camera{
+  font-size:16px;
+  opacity:.6;
+}
+
+.mini-empty span{
+  margin-top:4px;
+
+  font:13px "Caveat",cursive;
+
+  color:#a96876;
+}
+
+
+/* FRIEND CARD */
+
 .friend-card{
-  margin:25px auto 0;
-  width:min(500px,88vw);
-  padding:27px 23px;
-  background:rgba(255,255,255,.75);
-  border:1px solid var(--line);
+  width:min(520px,90vw);
+
+  margin:0 auto;
+
+  padding:25px 22px 23px;
+
+  background:
+    rgba(255,255,255,.78);
+
+  border:
+    1px solid var(--line);
+
   border-radius:22px;
+
   box-shadow:var(--shadow);
 }
 
@@ -823,69 +1135,108 @@ p{
 }
 
 .friend-line{
-  margin-top:22px;
-  font:27px/1.25 "Caveat",cursive;
+  margin-top:17px;
+
+  font:28px/1.2 "Caveat",cursive;
+
   color:#a96876;
 }
 
 .friend-mini{
-  margin-top:20px;
+  margin-top:15px;
+
   color:#817477;
+
   font-size:12px;
   line-height:1.7;
 }
 
 .final-note{
-  margin-top:20px;
-  font:26px "Caveat",cursive;
+  margin-top:18px;
+
+  font:27px "Caveat",cursive;
+
   color:#a96876;
 }
 
 .final-small{
-  margin-top:18px;
-  font-size:11px;
+  margin-top:11px;
+
+  font-size:10px;
+
   color:#9b8d90;
 }
 
-/* FLASH / CONFETTI */
 
-#flash{
-  position:fixed;
-  inset:0;
-  background:#fff;
-  opacity:0;
-  z-index:100;
-  pointer-events:none;
-}
+/* =========================
+   CONFETTI
+========================= */
 
 .confetti{
   position:fixed;
+
   top:-20px;
+
   width:6px;
   height:10px;
-  z-index:101;
-  animation:fall 3.5s linear forwards;
+
+  z-index:100;
+
+  animation:
+    fall 3.5s linear forwards;
 }
 
 @keyframes fall{
   to{
-    transform:translate(var(--x),110vh) rotate(700deg);
+    transform:
+      translate(var(--x),110vh)
+      rotate(700deg);
+
     opacity:0;
   }
 }
 
+
+/* =========================
+   FLASH
+========================= */
+
+#flash{
+  position:fixed;
+
+  inset:0;
+
+  background:white;
+
+  opacity:0;
+
+  z-index:150;
+
+  pointer-events:none;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:600px){
 
+  .scene{
+    padding:17px;
+  }
+
   .memory-area{
-    height:390px;
+    height:370px;
   }
 
   .memory-card{
     width:76vw;
   }
 
-  .memory-card img{
-    height:235px;
+  .memory-card img,
+  .no-photo-card{
+    height:225px;
   }
 
   .cake-stage{
@@ -894,12 +1245,30 @@ p{
     margin-top:-5px;
   }
 
-  .open-card{
-    margin-top:23px;
+  .final-photos{
+    gap:7px;
   }
 
-  p{
-    font-size:12px;
+  .mini-photo{
+    width:78px;
+    height:94px;
+  }
+
+  .mini-photo img,
+  .mini-empty{
+    height:68px;
+  }
+
+  .friend-card{
+    padding:22px 18px;
+  }
+
+  .friend-main{
+    font-size:23px;
+  }
+
+  .friend-line{
+    font-size:26px;
   }
 }
 </style>
@@ -909,999 +1278,1255 @@ p{
 
 <div id="app">
 
-  <div class="blob one"></div>
-  <div class="blob two"></div>
+<div class="blob one"></div>
+<div class="blob two"></div>
 
-  <!-- OPENING -->
-  <section class="scene active" id="s1">
-    <div class="content">
 
-      <div class="open-dot"></div>
+<!-- =========================
+     1. OPENING
+========================= -->
 
-      <div class="eyebrow opening-small">
-        Ek minute…
-      </div>
+<section class="scene active" id="s1">
 
-      <h1 class="opening-main">
-        Ye <span class="accent">Pallavi</span><br>
-        aapke liye hai.
-      </h1>
+<div class="content">
 
-      <div class="reveal-line opening-main">
-        Bas thoda sa waqt nikaaliye. ✦
-      </div>
+<div class="open-dot"></div>
 
-      <div class="open-card" onclick="go(2)">
-        <div class="card-label">Tap to open</div>
+<div class="eyebrow opening-small">
+Ek minute…
+</div>
 
-        <div class="card-title">
-          Aapke liye kuch hai
-        </div>
+<h1 class="opening-main">
+Ye <span class="accent">Pallavi</span><br>
+aapke liye hai.
+</h1>
 
-        <div class="card-sub">
-          Open this when you're ready ✨
-        </div>
-      </div>
+<div
+class="hand opening-main"
+style="font-size:25px;margin-top:12px">
+Bas thoda sa waqt nikaaliye ✦
+</div>
 
-    </div>
-  </section>
+<div
+class="open-card"
+onclick="go(2)">
 
+<div class="card-label">
+Tap to open
+</div>
 
-  <!-- ENVELOPE -->
-  <section class="scene" id="s2">
-    <div class="content">
+<div class="card-title">
+Aapke liye kuch hai
+</div>
 
-      <div class="eyebrow">A little note</div>
-
-      <h2>
-        Ek chhota sa<br>
-        <span class="accent">letter…</span>
-      </h2>
-
-      <div class="envelope-wrap">
-
-        <div class="envelope" id="envelope" onclick="openEnvelope()">
-
-          <div class="env-back"></div>
-
-          <div class="letter">
-            Pallavi,<br>
-            bas ek chhoti si<br>
-            baat aapke liye ✦
-          </div>
-
-          <div class="flap"></div>
-
-          <div class="seal">✦</div>
-
-        </div>
-
-      </div>
-
-      <p>
-        Seal par tap kijiye.
-      </p>
-
-    </div>
-  </section>
-
-
-  <!-- LETTER -->
-  <section class="scene" id="s3">
-    <div class="content">
-
-      <div class="eyebrow">A little note</div>
-
-      <h2>
-        Kuch log bas<br>
-        <span class="accent">yaad reh jaate hain.</span>
-      </h2>
-
-      <p>
-        Aur kuch memories bina kisi reason ke bhi
-        smile karwa deti hain. 😄
-      </p>
-
-      <div class="hand" style="font-size:28px;margin-top:22px;">
-        Bas isi liye ye chhoti si surprise.
-      </div>
-
-      <button class="btn primary" onclick="go(4)">
-        Memories dekhein →
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- PHOTOS -->
-  <section class="scene" id="s4">
-    <div class="content">
-
-      <div class="eyebrow">Kuch memories</div>
-
-      <h2>
-        Teen photos.<br>
-        <span class="accent">Teen moments.</span>
-      </h2>
-
-      <div class="memory-area">
-
-        <div class="memory-card active" id="m1">
-
-          <div class="memory-note">memory ✦</div>
-
-          <img src="photo1.jpg" alt="Memory 1">
-
-          <div class="memory-caption">
-            Ek khoobsurat moment.
-          </div>
-
-        </div>
-
-        <div class="memory-card" id="m2">
-
-          <div class="memory-note">another one 😄</div>
-
-          <img src="photo2.jpg" alt="Memory 2">
-
-          <div class="memory-caption">
-            Ek aur yaad…
-          </div>
-
-        </div>
-
-        <div class="memory-card" id="m3">
-
-          <div class="memory-note">hmm… 👀</div>
-
-          <img src="photo3.jpg" alt="Memory 3">
-
-          <div class="third-note">
-            Humari saath mein photo toh hai hi nahi 😅<br>
-            Lagta hai ye frame abhi kisi photo ka wait kar raha hai…
-            <br>
-            <strong>Ek photo abhi baaki hai. ✨</strong>
-          </div>
-
-        </div>
-
-        <div class="dots">
-          <span class="dot active" id="d1"></span>
-          <span class="dot" id="d2"></span>
-          <span class="dot" id="d3"></span>
-        </div>
-
-      </div>
-
-      <button class="btn" id="memoryBtn" onclick="nextMemory()">
-        NEXT MEMORY →
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- GIFT -->
-  <section class="scene" id="s5">
-    <div class="content">
-
-      <div class="eyebrow">One more thing</div>
-
-      <h2>
-        Ye bhi<br>
-        <span class="accent">open kijiye. 🎁</span>
-      </h2>
-
-      <div class="gift" id="gift" onclick="openGift()">
-
-        <div class="gift-body">
-          <div class="ribbon-v"></div>
-        </div>
-
-        <div class="gift-lid">
-          <div class="ribbon-h"></div>
-        </div>
-
-      </div>
-
-      <p>
-        Box par tap kijiye.
-      </p>
-
-    </div>
-  </section>
-
-
-  <!-- MINI SURPRISE -->
-  <section class="scene" id="s6">
-    <div class="content">
-
-      <div class="eyebrow">Inside the box</div>
-
-      <h2>
-        Ek aur?
-      </h2>
-
-      <div class="hand" style="font-size:31px;margin-top:20px;">
-        Haan… abhi ek cheez baaki hai. 😌
-      </div>
-
-      <button class="btn primary" onclick="go(7)">
-        Aage →
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- CHOICE -->
-  <section class="scene" id="s7">
-    <div class="content">
-
-      <div class="eyebrow">Ek question</div>
-
-      <h2>
-        Ek aur surprise ke liye<br>
-        <span class="accent">rukengi?</span>
-      </h2>
-
-      <div class="choice">
-
-        <button class="btn primary" onclick="yesAnswer()">
-          HAAN 🩵
-        </button>
-
-        <button class="btn no" id="noBtn" onclick="noAnswer()">
-          NAHI
-        </button>
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- FAKE END -->
-  <section class="scene" id="s8">
-    <div class="content">
-
-      <div class="eyebrow">The end…?</div>
-
-      <h1>
-        Okay…<br>
-        <span class="accent">bas itna hi.</span>
-      </h1>
-
-      <div class="wait">
-        thoda rukna…
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- WAIT -->
-  <section class="scene" id="s9">
-    <div class="content">
-
-      <div class="eyebrow">Wait…</div>
-
-      <h1>
-        Aapko laga<br>
-        <span class="accent">khatam ho gaya? 😂</span>
-      </h1>
-
-      <p>
-        Itni jaldi toh nahi.
-      </p>
-
-      <button class="btn primary" onclick="go(10)">
-        AB ASLI SURPRISE ✦
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- CAKE -->
-  <section class="scene" id="s10">
-    <div class="content">
-
-      <div class="eyebrow">Ab important kaam</div>
-
-      <h2>
-        Cake cut karein, Pallavi? 🎂
-      </h2>
-
-      <div class="cake-stage" id="cakeStage">
-
-        <div class="cake" id="cake">
-
-          <div class="plate"></div>
-
-          <div class="layer bottom"></div>
-          <div class="layer middle"></div>
-          <div class="layer top"></div>
-
-          <div class="frosting"></div>
-
-          <div class="candle c1">
-            <div class="flame"></div>
-          </div>
-
-          <div class="candle c2">
-            <div class="flame"></div>
-          </div>
-
-          <div class="candle c3">
-            <div class="flame"></div>
-          </div>
-
-          <div class="cake-piece piece-left"></div>
-          <div class="cake-piece piece-right"></div>
-
-        </div>
-
-        <div class="knife" id="knife"></div>
-
-      </div>
-
-      <div class="cut-hint" id="cutHint">
-        Knife ko cake par smoothly drag kijiye ✦
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- BIRTHDAY -->
-  <section class="scene" id="s11">
-    <div class="content">
-
-      <div class="eyebrow">And finally…</div>
-
-      <h1>
-        Happy Birthday,<br>
-        <span class="accent">Pallavi! 🎉</span>
-      </h1>
-
-      <div class="hand" style="font-size:34px;margin-top:20px;">
-        Ab birthday properly celebrate ho gaya. ✨
-      </div>
-
-      <button class="btn primary" onclick="go(12)">
-        Ek last baat…
-      </button>
-
-    </div>
-  </section>
-
-
-  <!-- FINAL FRIENDSHIP -->
-  <section class="scene" id="s12">
-    <div class="content">
-
-      <div class="eyebrow">Aur ek last baat…</div>
-
-      <h2>
-        Kuch friendships<br>
-        <span class="accent">bas bani rehni chahiye.</span>
-      </h2>
-
-      <div class="final-photos">
-
-        <div class="mini-photo">
-          <img src="photo1.jpg" alt="">
-        </div>
-
-        <div class="mini-photo">
-          <img src="photo2.jpg" alt="">
-        </div>
-
-        <div class="mini-photo">
-          <img src="photo3.jpg" alt="">
-        </div>
-
-      </div>
-
-      <div class="friend-card">
-
-        <div class="friend-main">
-          Aap meri life ki<br>
-          <span>first friend hain.</span>
-        </div>
-
-        <div class="friend-line">
-          Aur bas ek wish hai…
-        </div>
-
-        <div class="friend-mini">
-          Humari friendship aise hi rahe,
-          chahe kuch bhi ho. 🩵
-        </div>
-
-      </div>
-
-      <div class="final-note">
-        Happy Birthday once again, Pallavi. ✨
-      </div>
-
-      <div class="final-small">
-        Ab jaaiye… birthday enjoy kijiye 😌🎂
-      </div>
-
-    </div>
-  </section>
+<div class="card-sub">
+Open this when you're ready ✨
+</div>
 
 </div>
 
+</div>
+
+</section>
+
+
+<!-- =========================
+     2. ENVELOPE
+========================= -->
+
+<section class="scene" id="s2">
+
+<div class="content">
+
+<div class="eyebrow">
+A little note
+</div>
+
+<h2>
+Ek chhota sa<br>
+<span class="accent">letter…</span>
+</h2>
+
+<div class="envelope-wrap">
+
+<div
+class="envelope"
+id="envelope"
+onclick="openEnvelope()">
+
+<div class="env-back"></div>
+
+<div class="letter">
+Pallavi,<br>
+bas ek chhoti si<br>
+baat aapke liye ✦
+</div>
+
+<div class="flap"></div>
+
+<div class="seal">✦</div>
+
+</div>
+
+</div>
+
+<p>
+Seal par tap kijiye.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     3. NOTE
+========================= -->
+
+<section class="scene" id="s3">
+
+<div class="content">
+
+<div class="eyebrow">
+A little note
+</div>
+
+<h2>
+Kuch log bas<br>
+<span class="accent">
+yaad reh jaate hain.
+</span>
+</h2>
+
+<p>
+Aur kuch memories bina kisi reason ke bhi
+smile karwa deti hain. 😄
+</p>
+
+<div
+class="hand"
+style="font-size:29px;margin-top:21px">
+Bas isi liye ye chhoti si surprise.
+</div>
+
+<button
+class="btn primary"
+onclick="go(4)">
+Memories dekhein →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     4. MEMORIES
+========================= -->
+
+<section class="scene" id="s4">
+
+<div class="content">
+
+<div class="eyebrow">
+Kuch memories
+</div>
+
+<h2>
+Teen photos.<br>
+<span class="accent">
+Teen moments.
+</span>
+</h2>
+
+<div class="memory-area">
+
+
+<!-- PHOTO 1 -->
+
+<div
+class="memory-card active"
+id="m1">
+
+<div class="memory-note">
+memory ✦
+</div>
+
+<img
+src="1000244923.png"
+alt="Pallavi memory">
+
+<div class="memory-caption">
+Ek khoobsurat memory. ✨
+</div>
+
+</div>
+
+
+<!-- PHOTO 2 -->
+
+<div
+class="memory-card"
+id="m2">
+
+<div class="memory-note">
+another one ✦
+</div>
+
+<img
+src="1000244922.png"
+alt="Pallavi memory">
+
+<div class="memory-caption">
+Ek aur pyari si yaad…
+</div>
+
+</div>
+
+
+<!-- CUSTOM THIRD -->
+
+<div
+class="memory-card"
+id="m3">
+
+<div class="memory-note">
+hmm… 👀
+</div>
+
+<div class="no-photo-card">
+
+<div class="camera-icon">
+📷
+</div>
+
+<div class="no-photo-title">
+Humari saath mein photo toh hai hi nahi 😅
+</div>
+
+<div class="no-photo-text">
+Lagta hai ye frame abhi kisi photo ka
+wait kar raha hai…
+</div>
+
+<div class="no-photo-small">
+Ek photo abhi baaki hai. ✨
+</div>
+
+</div>
+
+<div
+class="memory-caption">
+Maybe someday. :)
+</div>
+
+</div>
+
+
+<div class="dots">
+
+<span
+class="dot active"
+id="d1">
+</span>
+
+<span
+class="dot"
+id="d2">
+</span>
+
+<span
+class="dot"
+id="d3">
+</span>
+
+</div>
+
+</div>
+
+
+<button
+class="btn"
+id="memoryBtn"
+onclick="nextMemory()">
+NEXT MEMORY →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     5. GIFT
+========================= -->
+
+<section class="scene" id="s5">
+
+<div class="content">
+
+<div class="eyebrow">
+One more thing
+</div>
+
+<h2>
+Ye bhi<br>
+<span class="accent">
+open kijiye. 🎁
+</span>
+</h2>
+
+<div
+class="gift"
+id="gift"
+onclick="openGift()">
+
+<div class="gift-body">
+<div class="ribbon-v"></div>
+</div>
+
+<div class="gift-lid">
+<div class="ribbon-h"></div>
+</div>
+
+</div>
+
+<p>
+Box par tap kijiye.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     6. GIFT MESSAGE
+========================= -->
+
+<section class="scene" id="s6">
+
+<div class="content">
+
+<div class="eyebrow">
+Inside the box
+</div>
+
+<h2>
+Ek aur?
+</h2>
+
+<div
+class="hand"
+style="font-size:32px;margin-top:20px">
+Haan… abhi ek cheez baaki hai. 😌
+</div>
+
+<button
+class="btn primary"
+onclick="go(7)">
+Aage →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     7. CHOICE
+========================= -->
+
+<section class="scene" id="s7">
+
+<div class="content">
+
+<div class="eyebrow">
+Ek question
+</div>
+
+<h2>
+Ek aur surprise ke liye<br>
+<span class="accent">
+rukengi?
+</span>
+</h2>
+
+<div class="choice">
+
+<button
+class="btn primary"
+onclick="yesAnswer()">
+HAAN 🩵
+</button>
+
+<button
+class="btn no"
+id="noBtn"
+onclick="noAnswer()">
+NAHI
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     8. FAKE END
+========================= -->
+
+<section class="scene" id="s8">
+
+<div class="content">
+
+<div class="eyebrow">
+The end…?
+</div>
+
+<h1>
+Okay…<br>
+<span class="accent">
+bas itna hi.
+</span>
+</h1>
+
+<div
+class="hand"
+style="font-size:27px;margin-top:18px">
+thoda rukna…
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     9. REAL SURPRISE
+========================= -->
+
+<section class="scene" id="s9">
+
+<div class="content">
+
+<div class="eyebrow">
+Wait…
+</div>
+
+<h1>
+Aapko laga<br>
+<span class="accent">
+khatam ho gaya? 😂
+</span>
+</h1>
+
+<p>
+Itni jaldi toh nahi.
+</p>
+
+<button
+class="btn primary"
+onclick="go(10)">
+AB ASLI SURPRISE ✦
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     10. CAKE
+========================= -->
+
+<section class="scene" id="s10">
+
+<div class="content">
+
+<div class="eyebrow">
+Ab important kaam
+</div>
+
+<h2>
+Cake cut karein,<br>
+<span class="accent">
+Pallavi? 🎂
+</span>
+</h2>
+
+<div
+class="cake-stage"
+id="cakeStage">
+
+<div
+class="cake"
+id="cake">
+
+<div class="plate"></div>
+
+<div class="layer bottom"></div>
+
+<div class="layer middle"></div>
+
+<div class="layer top"></div>
+
+<div class="frosting"></div>
+
+<div class="candle c1">
+<div class="flame"></div>
+</div>
+
+<div class="candle c2">
+<div class="flame"></div>
+</div>
+
+<div class="candle c3">
+<div class="flame"></div>
+</div>
+
+</div>
+
+<div
+class="knife"
+id="knife">
+</div>
+
+</div>
+
+<div
+class="cut-hint"
+id="cutHint">
+Knife ko cake par smoothly drag kijiye ✦
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     11. BIRTHDAY
+========================= -->
+
+<section class="scene" id="s11">
+
+<div class="content">
+
+<div class="eyebrow">
+And finally…
+</div>
+
+<h1>
+Happy Birthday,<br>
+<span class="accent">
+Pallavi! 🎉
+</span>
+</h1>
+
+<div
+class="hand"
+style="font-size:34px;margin-top:20px">
+Ab birthday properly celebrate ho gaya. ✨
+</div>
+
+<button
+class="btn primary"
+onclick="go(12)">
+Ek last baat…
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     12. FINAL FRIENDSHIP
+========================= -->
+
+<section class="scene" id="s12">
+
+<div class="content final-content">
+
+<div class="eyebrow">
+Aur ek last baat…
+</div>
+
+<h2>
+Kuch friendships<br>
+<span class="accent">
+bas bani rehni chahiye.
+</span>
+</h2>
+
+
+<!-- FINAL PHOTOS -->
+
+<div class="final-photos">
+
+
+<!-- REAL PHOTO 1 -->
+
+<div class="mini-photo">
+
+<img
+src="1000244923.png"
+alt="Pallavi memory">
+
+</div>
+
+
+<!-- REAL PHOTO 2 -->
+
+<div class="mini-photo">
+
+<img
+src="1000244922.png"
+alt="Pallavi memory">
+
+</div>
+
+
+<!-- CUSTOM EMPTY PHOTO -->
+
+<div class="mini-photo">
+
+<div class="mini-empty">
+
+<div class="small-camera">
+📷
+</div>
+
+<span>
+Our photo<br>
+is still missing :)
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FRIENDSHIP MESSAGE -->
+
+<div class="friend-card">
+
+<div class="friend-main">
+
+Aap meri life ki<br>
+
+<span>
+first friend hain.
+</span>
+
+</div>
+
+
+<div class="friend-line">
+Aur bas ek wish hai…
+</div>
+
+
+<div class="friend-mini">
+
+Humari friendship aise hi rahe,
+chahe kuch bhi ho. 🩵
+
+</div>
+
+</div>
+
+
+<div class="final-note">
+Happy Birthday once again, Pallavi. ✨
+</div>
+
+<div class="final-small">
+Ab jaaiye… birthday enjoy kijiye 😌🎂
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
 <div id="flash"></div>
+
 
 <script>
 
-/* ===============================
-   BACKGROUND SPARKLES
-================================ */
+/* =========================
+   SPARKLES
+========================= */
 
-for(let i=0;i<32;i++){
+for(let i=0;i<30;i++){
 
-  const s=document.createElement("div");
+const s=document.createElement("div");
 
-  s.className="spark";
+s.className="spark";
 
-  s.style.left=Math.random()*100+"%";
-  s.style.animationDuration=(8+Math.random()*9)+"s";
-  s.style.animationDelay=(Math.random()*8)+"s";
+s.style.left=
+(Math.random()*100)+"%";
 
-  document.getElementById("app").appendChild(s);
+s.style.animationDuration=
+(8+Math.random()*9)+"s";
+
+s.style.animationDelay=
+(Math.random()*8)+"s";
+
+document.getElementById("app")
+.appendChild(s);
+
 }
 
 
-/* ===============================
-   SCENE SYSTEM
-================================ */
+/* =========================
+   SCENE NAVIGATION
+========================= */
 
-let busy=false;
+let changing=false;
 
 function go(number){
 
-  if(busy)return;
+if(changing)return;
 
-  busy=true;
+changing=true;
 
-  document
-    .querySelectorAll(".scene")
-    .forEach(scene=>{
-      scene.classList.remove("active");
-    });
+document
+.querySelectorAll(".scene")
+.forEach(scene=>{
+scene.classList.remove("active");
+});
 
-  setTimeout(()=>{
+setTimeout(()=>{
 
-    const target=document.getElementById("s"+number);
+const target=
+document.getElementById("s"+number);
 
-    if(target){
-      target.classList.add("active");
-    }
+if(target){
+target.classList.add("active");
+}
 
-    setTimeout(()=>{
-      busy=false;
-    },850);
+setTimeout(()=>{
+changing=false;
+},850);
 
-  },80);
+},70);
+
 }
 
 
-/* ===============================
+/* =========================
    ENVELOPE
-================================ */
+========================= */
 
 let envelopeOpened=false;
 
 function openEnvelope(){
 
-  if(envelopeOpened)return;
+if(envelopeOpened)return;
 
-  envelopeOpened=true;
+envelopeOpened=true;
 
-  const envelope=document.getElementById("envelope");
+document
+.getElementById("envelope")
+.classList.add("open");
 
-  envelope.classList.add("open");
+setTimeout(()=>{
+flash();
+},700);
 
-  setTimeout(()=>{
-    flash();
-  },750);
+setTimeout(()=>{
+go(3);
+},1400);
 
-  setTimeout(()=>{
-    go(3);
-  },1450);
 }
 
 
-/* ===============================
-   MEMORY SECTION
-================================ */
+/* =========================
+   MEMORIES
+========================= */
 
 let memory=1;
 
 function nextMemory(){
 
-  if(memory<3){
+if(memory<3){
 
-    document
-      .getElementById("m"+memory)
-      .classList.remove("active");
+document
+.getElementById("m"+memory)
+.classList.remove("active");
 
-    document
-      .getElementById("d"+memory)
-      .classList.remove("active");
+document
+.getElementById("d"+memory)
+.classList.remove("active");
 
-    memory++;
+memory++;
 
-    document
-      .getElementById("m"+memory)
-      .classList.add("active");
+document
+.getElementById("m"+memory)
+.classList.add("active");
 
-    document
-      .getElementById("d"+memory)
-      .classList.add("active");
+document
+.getElementById("d"+memory)
+.classList.add("active");
 
-    if(memory===3){
+if(memory===3){
 
-      document
-        .getElementById("memoryBtn")
-        .textContent="AAGE CHALEIN ✦";
-    }
+document
+.getElementById("memoryBtn")
+.textContent="AAGE CHALEIN ✦";
 
-  }else{
+}
 
-    go(5);
-  }
+}else{
+
+go(5);
+
+}
+
 }
 
 
-/* ===============================
+/* =========================
    GIFT
-================================ */
+========================= */
 
 let giftOpened=false;
 
 function openGift(){
 
-  if(giftOpened)return;
+if(giftOpened)return;
 
-  giftOpened=true;
+giftOpened=true;
 
-  document
-    .getElementById("gift")
-    .classList.add("open");
+document
+.getElementById("gift")
+.classList.add("open");
 
-  setTimeout(()=>{
-    makeConfetti(18);
-  },500);
+setTimeout(()=>{
+makeConfetti(18);
+},450);
 
-  setTimeout(()=>{
-    go(6);
-  },1050);
+setTimeout(()=>{
+go(6);
+},1000);
+
 }
 
 
-/* ===============================
-   YES / NO
-================================ */
+/* =========================
+   CHOICE
+========================= */
 
 let noCount=0;
 
 function noAnswer(){
 
-  const button=document.getElementById("noBtn");
+const btn=
+document.getElementById("noBtn");
 
-  noCount++;
+noCount++;
 
-  if(noCount===1){
+if(noCount===1){
 
-    button.style.transform="translate(45px,-5px)";
-    button.textContent="Sochiye 😌";
+btn.style.transform=
+"translate(40px,-5px)";
 
-  }else if(noCount===2){
+btn.textContent=
+"Sochiye 😌";
 
-    button.style.transform="translate(-45px,18px)";
-    button.textContent="Pakka? 😂";
+}
 
-  }else{
+else if(noCount===2){
 
-    button.style.opacity="0";
-    button.style.pointerEvents="none";
-  }
+btn.style.transform=
+"translate(-40px,15px)";
+
+btn.textContent=
+"Pakka? 😂";
+
+}
+
+else{
+
+btn.style.opacity="0";
+btn.style.pointerEvents="none";
+
+}
+
 }
 
 function yesAnswer(){
 
-  makeConfetti(12);
+makeConfetti(12);
 
-  setTimeout(()=>{
-    go(8);
-  },450);
+go(8);
 
-  setTimeout(()=>{
-    go(9);
-  },2300);
+setTimeout(()=>{
+go(9);
+},2200);
+
 }
 
 
-/* ===============================
-   FAKE END
-================================ */
+/* =========================
+   CAKE CUTTING
+========================= */
 
-let fakeStarted=false;
-
-document
-  .getElementById("s8")
-  .addEventListener("transitionend",function(){
-
-    if(
-      this.classList.contains("active") &&
-      !fakeStarted
-    ){
-
-      fakeStarted=true;
-
-      setTimeout(()=>{
-        go(9);
-      },1800);
-    }
-  });
-
-
-/* ===============================
-   SMOOTH CAKE CUTTING
-================================ */
-
-const knife=document.getElementById("knife");
-const cake=document.getElementById("cake");
+const knife=
+document.getElementById("knife");
 
 let dragging=false;
 let cutDone=false;
 
-let knifeStartX=0;
-let knifeStartY=0;
-let lastX=0;
+let startX=0;
 
-function getPoint(e){
+function point(e){
 
-  if(e.touches && e.touches.length){
-    return {
-      x:e.touches[0].clientX,
-      y:e.touches[0].clientY
-    };
-  }
+if(e.touches && e.touches.length){
 
-  return {
-    x:e.clientX,
-    y:e.clientY
-  };
+return{
+x:e.touches[0].clientX,
+y:e.touches[0].clientY
+};
+
 }
 
-function pointerDown(e){
+return{
+x:e.clientX,
+y:e.clientY
+};
 
-  if(cutDone)return;
-
-  const p=getPoint(e);
-
-  dragging=true;
-
-  knifeStartX=p.x;
-  knifeStartY=p.y;
-
-  lastX=p.x;
-
-  knife.classList.add("dragging");
-
-  e.preventDefault();
 }
 
-function pointerMove(e){
 
-  if(!dragging || cutDone)return;
+function down(e){
 
-  const p=getPoint(e);
+if(cutDone)return;
 
-  const dx=p.x-lastX;
+const p=point(e);
 
-  const totalX=p.x-knifeStartX;
-  const totalY=p.y-knifeStartY;
+dragging=true;
 
-  lastX=p.x;
+startX=p.x;
 
-  /*
-    The knife follows the finger gradually.
-    requestAnimationFrame isn't necessary here because
-    CSS transform is GPU-friendly and the movement is tiny.
-  */
+knife.classList.add("dragging");
 
-  const moveX=Math.max(-78,Math.min(8,totalX));
+e.preventDefault();
 
-  const moveY=Math.max(-5,Math.min(52,totalY));
-
-  knife.style.transform=
-    `rotate(-42deg) translate(${moveX}px,${moveY}px)`;
-
-  /*
-    Actual cutting threshold.
-    User has to move the knife across the cake,
-    so accidental taps don't trigger it.
-  */
-
-  if(totalX < -62){
-
-    cutCake();
-  }
-
-  e.preventDefault();
 }
 
-function pointerUp(){
 
-  if(!dragging)return;
+function move(e){
 
-  dragging=false;
+if(!dragging || cutDone)return;
 
-  knife.classList.remove("dragging");
+const p=point(e);
 
-  if(!cutDone){
+const dx=p.x-startX;
 
-    knife.style.transition=
-      "transform .45s cubic-bezier(.22,.75,.18,1)";
+const x=
+Math.max(-75,Math.min(0,dx));
 
-    knife.style.transform=
-      "rotate(-42deg) translate(0,0)";
+const y=
+Math.max(0,Math.min(40,-dx*.35));
 
-    setTimeout(()=>{
-      knife.style.transition="";
-    },500);
-  }
+knife.style.transform=
+`rotate(-42deg)
+ translate(${x}px,${y}px)`;
+
+if(dx < -55){
+
+cutCake();
+
 }
 
-knife.addEventListener("mousedown",pointerDown);
-window.addEventListener("mousemove",pointerMove);
-window.addEventListener("mouseup",pointerUp);
+e.preventDefault();
 
-knife.addEventListener("touchstart",pointerDown,{
-  passive:false
-});
+}
 
-window.addEventListener("touchmove",pointerMove,{
-  passive:false
-});
 
-window.addEventListener("touchend",pointerUp,{
-  passive:true
-});
+function up(){
+
+if(!dragging)return;
+
+dragging=false;
+
+knife.classList.remove("dragging");
+
+if(!cutDone){
+
+knife.style.transition=
+"transform .45s var(--ease)";
+
+knife.style.transform=
+"rotate(-42deg)";
+
+setTimeout(()=>{
+knife.style.transition="";
+},500);
+
+}
+
+}
+
+
+knife.addEventListener(
+"mousedown",
+down
+);
+
+window.addEventListener(
+"mousemove",
+move
+);
+
+window.addEventListener(
+"mouseup",
+up
+);
+
+
+knife.addEventListener(
+"touchstart",
+down,
+{passive:false}
+);
+
+window.addEventListener(
+"touchmove",
+move,
+{passive:false}
+);
+
+window.addEventListener(
+"touchend",
+up
+);
 
 
 function cutCake(){
 
-  if(cutDone)return;
+if(cutDone)return;
 
-  cutDone=true;
-  dragging=false;
+cutDone=true;
 
-  knife.classList.remove("dragging");
+dragging=false;
 
-  /*
-    Smooth final knife position
-  */
+document
+.getElementById("cutHint")
+.textContent=
+"Cut! ✨";
 
-  knife.style.transition=
-    "transform .42s cubic-bezier(.22,.75,.18,1)";
+knife.style.transition=
+"transform .45s var(--ease)";
 
-  knife.style.transform=
-    "rotate(-42deg) translate(-70px,34px)";
-
-  document
-    .getElementById("cutHint")
-    .textContent=
-    "Cut! ✨";
-
-  /*
-    Tiny settling motion
-  */
-
-  cake.animate(
-    [
-      {transform:"translateX(-50%)"},
-      {transform:"translateX(-50%) scale(1.015)"},
-      {transform:"translateX(-50%) scale(1)"}
-    ],
-    {
-      duration:500,
-      easing:"ease-out"
-    }
-  );
-
-  /*
-    Candle extinguish
-  */
-
-  setTimeout(()=>{
-
-    document
-      .querySelectorAll(".flame")
-      .forEach(flame=>{
-
-        flame.style.animation="none";
-
-        flame.animate(
-          [
-            {
-              opacity:1,
-              transform:"scale(1)"
-            },
-            {
-              opacity:0,
-              transform:"translateY(-7px) scale(.15)"
-            }
-          ],
-          {
-            duration:480,
-            easing:"ease-out",
-            fill:"forwards"
-          }
-        );
-
-      });
-
-  },250);
+knife.style.transform=
+"rotate(-42deg) translate(-65px,28px)";
 
 
-  /*
-    Cake separates
-  */
+/* candle animation */
 
-  setTimeout(()=>{
+setTimeout(()=>{
 
-    cake.classList.add("cut");
+document
+.querySelectorAll(".flame")
+.forEach(flame=>{
 
-  },450);
+flame.animate(
+[
+{
+opacity:1,
+transform:"scale(1)"
+},
+{
+opacity:0,
+transform:
+"translateY(-8px) scale(.15)"
+}
+],
+{
+duration:480,
+fill:"forwards",
+easing:"ease-out"
+}
+);
+
+});
+
+},220);
 
 
-  /*
-    Celebration burst
-  */
+/* cake little movement */
 
-  setTimeout(()=>{
+setTimeout(()=>{
 
-    flash();
+document
+.getElementById("cake")
+.animate(
+[
+{
+transform:
+"translateX(-50%)"
+},
+{
+transform:
+"translateX(-50%) scale(1.02)"
+},
+{
+transform:
+"translateX(-50%) scale(1)"
+}
+],
+{
+duration:550,
+easing:"ease-out"
+}
+);
 
-    makeConfetti(45);
-
-  },950);
+},350);
 
 
-  /*
-    Give the animation time to breathe
-    before changing scene.
-  */
+/* celebration */
 
-  setTimeout(()=>{
+setTimeout(()=>{
 
-    knife.style.transition="";
+flash();
 
-    go(11);
+makeConfetti(45);
 
-  },2350);
+},900);
+
+
+/* birthday */
+
+setTimeout(()=>{
+
+go(11);
+
+},2100);
+
 }
 
 
-/* ===============================
+/* =========================
    FLASH
-================================ */
+========================= */
 
 function flash(){
 
-  const layer=document.getElementById("flash");
+const f=
+document.getElementById("flash");
 
-  layer.animate(
-    [
-      {opacity:0},
-      {opacity:.45},
-      {opacity:0}
-    ],
-    {
-      duration:650,
-      easing:"ease-out"
-    }
-  );
+f.animate(
+[
+{opacity:0},
+{opacity:.4},
+{opacity:0}
+],
+{
+duration:650,
+easing:"ease-out"
+}
+);
+
 }
 
 
-/* ===============================
+/* =========================
    CONFETTI
-================================ */
+========================= */
 
 function makeConfetti(amount){
 
-  const colors=[
-    "#f1c8ce",
-    "#f4d98c",
-    "#ded9ee",
-    "#f6d7c1",
-    "#b86d7c"
-  ];
+const colors=[
+"#f1c8ce",
+"#f4d98c",
+"#ded9ee",
+"#f6d7c1",
+"#b86d7c"
+];
 
-  for(let i=0;i<amount;i++){
+for(let i=0;i<amount;i++){
 
-    const c=document.createElement("div");
+const c=
+document.createElement("div");
 
-    c.className="confetti";
+c.className="confetti";
 
-    c.style.left=Math.random()*100+"%";
+c.style.left=
+Math.random()*100+"%";
 
-    c.style.background=
-      colors[Math.floor(Math.random()*colors.length)];
+c.style.background=
+colors[
+Math.floor(
+Math.random()*colors.length
+)
+];
 
-    c.style.setProperty(
-      "--x",
-      ((Math.random()-.5)*180)+"px"
-    );
+c.style.setProperty(
+"--x",
+((Math.random()-.5)*180)+"px"
+);
 
-    c.style.animationDuration=
-      (2.5+Math.random()*1.8)+"s";
+c.style.animationDuration=
+(2.5+Math.random()*1.8)+"s";
 
-    document.body.appendChild(c);
+document.body.appendChild(c);
 
-    setTimeout(()=>{
-      c.remove();
-    },5000);
-  }
+setTimeout(()=>{
+c.remove();
+},5000);
+
+}
+
 }
 
 
-/* ===============================
+/* =========================
    IMAGE PRELOAD
-================================ */
+========================= */
 
 [
-  "photo1.jpg",
-  "photo2.jpg",
-  "photo3.jpg"
+"1000244923.png",
+"1000244922.png"
 ].forEach(src=>{
 
-  const img=new Image();
-  img.src=src;
+const img=
+new Image();
+
+img.src=src;
 
 });
 
 
-/* ===============================
-   PREVENT PAGE SCROLL
-================================ */
+/* =========================
+   BLOCK PAGE SCROLL
+========================= */
 
 document.addEventListener(
-  "touchmove",
-  e=>{
+"touchmove",
+e=>{
 
-    if(!e.target.closest(".cake-stage")){
-      e.preventDefault();
-    }
+if(
+!e.target.closest(".cake-stage")
+){
 
-  },
-  {passive:false}
+e.preventDefault();
+
+}
+
+},
+{passive:false}
 );
-
-document.addEventListener("keydown",e=>{
-
-  if(
-    e.key==="ArrowUp" ||
-    e.key==="ArrowDown" ||
-    e.key===" " ||
-    e.key==="PageUp" ||
-    e.key==="PageDown"
-  ){
-    e.preventDefault();
-  }
-
-});
 
 </script>
 
