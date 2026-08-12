@@ -2,629 +2,1105 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mission Shubham — Birthday 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SHUBHAM // LEVEL 17</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+  --cyan:#00eaff;
+  --blue:#147cff;
+  --red:#ff416c;
+  --green:#45ff9a;
+  --bg:#03050a;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#05070d;
-    color:#fff;
-    overflow:hidden;
+  background:var(--bg);
+  color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow:hidden;
 }
 
 button{
-    font:inherit;
+  font-family:inherit;
 }
 
 .scene{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:22px;
-    text-align:center;
-    overflow:hidden;
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  overflow:hidden;
+  text-align:center;
 }
 
 .scene.active{
-    display:flex;
-    animation:sceneIn .7s ease;
+  display:flex;
+  animation:enter .7s ease;
 }
 
-@keyframes sceneIn{
-    from{opacity:0;transform:scale(1.04)}
-    to{opacity:1;transform:scale(1)}
+@keyframes enter{
+  from{
+    opacity:0;
+    transform:scale(1.06);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
-.bg{
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(circle at 50% 30%,rgba(0,200,255,.14),transparent 35%),
-      linear-gradient(135deg,#05070d,#101827 50%,#030407);
-    z-index:-2;
+.background{
+  position:absolute;
+  inset:0;
+  z-index:-5;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(0,234,255,.15),transparent 32%),
+    radial-gradient(circle at 80% 80%,rgba(20,124,255,.12),transparent 30%),
+    #03050a;
 }
 
 .grid{
-    position:absolute;
-    inset:0;
-    opacity:.12;
-    background-image:
-      linear-gradient(rgba(255,255,255,.3) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.3) 1px,transparent 1px);
-    background-size:45px 45px;
-    transform:perspective(500px) rotateX(60deg) scale(1.5);
-    transform-origin:bottom;
-    z-index:-1;
+  position:absolute;
+  inset:-20%;
+  z-index:-4;
+  opacity:.12;
+  background-image:
+    linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);
+  background-size:45px 45px;
+  transform:perspective(500px) rotateX(60deg);
+  transform-origin:bottom;
+}
+
+.scan{
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  pointer-events:none;
+  background:linear-gradient(
+    transparent 49%,
+    rgba(0,234,255,.05) 50%,
+    transparent 51%
+  );
+  background-size:100% 8px;
 }
 
 .card{
-    width:min(92vw,620px);
-    padding:30px 22px;
-    border:1px solid rgba(255,255,255,.13);
-    background:rgba(10,15,25,.78);
-    backdrop-filter:blur(14px);
-    border-radius:24px;
-    box-shadow:0 20px 70px rgba(0,0,0,.55);
+  width:min(94vw,650px);
+  padding:30px 22px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:25px;
+  background:rgba(5,10,18,.82);
+  backdrop-filter:blur(15px);
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.7),
+    inset 0 0 40px rgba(0,234,255,.025);
+  position:relative;
 }
 
-.small{
-    color:#65ddff;
-    letter-spacing:4px;
-    font-size:12px;
-    margin-bottom:15px;
+.card:before{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid rgba(0,234,255,.05);
+  border-radius:19px;
+  pointer-events:none;
+}
+
+.tag{
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:4px;
+  margin-bottom:15px;
+  font-family:monospace;
 }
 
 h1{
-    font-size:clamp(36px,10vw,70px);
-    line-height:.95;
-    margin-bottom:20px;
+  font-size:clamp(42px,12vw,82px);
+  line-height:.9;
+  margin-bottom:20px;
 }
 
 h2{
-    font-size:clamp(27px,7vw,45px);
-    margin-bottom:14px;
+  font-size:clamp(28px,7vw,48px);
+  margin-bottom:15px;
 }
 
 p{
-    color:#b9c2d0;
-    line-height:1.6;
-    font-size:16px;
+  color:#b8c2d0;
+  line-height:1.65;
 }
 
-.neon{
-    color:#66e6ff;
-    text-shadow:0 0 18px rgba(0,220,255,.7);
+.cyan{
+  color:var(--cyan);
+  text-shadow:0 0 20px rgba(0,234,255,.7);
+}
+
+.red{
+  color:#ff5575;
 }
 
 .btn{
-    margin-top:25px;
-    border:0;
-    padding:15px 26px;
-    border-radius:12px;
-    background:linear-gradient(135deg,#00cfff,#1478ff);
-    color:white;
-    font-weight:800;
-    cursor:pointer;
-    box-shadow:0 0 25px rgba(0,180,255,.35);
-    transition:.2s;
+  border:0;
+  margin-top:25px;
+  padding:15px 28px;
+  border-radius:12px;
+  color:white;
+  font-weight:800;
+  background:linear-gradient(135deg,#00bfff,#176cff);
+  box-shadow:0 0 28px rgba(0,190,255,.35);
+  cursor:pointer;
+  transition:.2s;
 }
 
 .btn:active{
-    transform:scale(.94);
+  transform:scale(.93);
 }
 
-.status{
-    margin:25px auto 0;
-    width:min(400px,90%);
-    text-align:left;
-    font-family:monospace;
-    font-size:13px;
-    color:#80f1ff;
+.smallBtn{
+  border:1px solid rgba(255,255,255,.15);
+  background:#0c1420;
+  color:white;
+  padding:12px 17px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-.line{
-    margin:8px 0;
-    opacity:0;
-    animation:appear .5s forwards;
+/* BOOT */
+
+.bootLogo{
+  font-family:monospace;
+  font-size:clamp(40px,12vw,80px);
+  font-weight:900;
+  letter-spacing:5px;
+  color:var(--cyan);
+  text-shadow:
+    3px 3px 0 #146dff,
+    0 0 35px rgba(0,234,255,.8);
 }
 
-@keyframes appear{
-    to{opacity:1}
+.bootText{
+  margin-top:25px;
+  font-family:monospace;
+  color:#8e9bad;
+  font-size:13px;
 }
 
 .loader{
-    height:8px;
-    background:#18202d;
-    border-radius:10px;
-    overflow:hidden;
-    margin-top:20px;
+  width:min(430px,85vw);
+  height:8px;
+  background:#101722;
+  border-radius:20px;
+  margin:20px auto;
+  overflow:hidden;
 }
 
 .loader span{
-    display:block;
-    height:100%;
-    width:0;
-    background:#00d9ff;
-    box-shadow:0 0 15px #00d9ff;
-    transition:width 2.5s linear;
+  display:block;
+  width:0;
+  height:100%;
+  background:var(--cyan);
+  box-shadow:0 0 20px var(--cyan);
+  transition:width 2.4s linear;
 }
 
-.player{
-    margin:20px auto;
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:60px;
-    border:2px solid #52dcff;
-    box-shadow:0 0 35px rgba(0,210,255,.4);
-    background:#101a28;
+/* PROFILE */
+
+.avatar{
+  width:150px;
+  height:150px;
+  margin:20px auto;
+  border-radius:50%;
+  border:2px solid var(--cyan);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:65px;
+  background:
+    radial-gradient(circle,#122438,#05080d);
+  box-shadow:0 0 40px rgba(0,234,255,.3);
 }
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    margin-top:25px;
+.profile{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px;
 }
 
 .stat{
-    padding:18px 10px;
-    border-radius:15px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  padding:15px 8px;
 }
 
 .stat b{
-    display:block;
-    font-size:25px;
-    color:#66e6ff;
-    margin-bottom:5px;
+  display:block;
+  color:var(--cyan);
+  font-size:25px;
+  margin-bottom:5px;
 }
 
 .stat span{
-    color:#9da8b7;
-    font-size:12px;
+  font-size:11px;
+  color:#8f9bab;
 }
 
-.memories{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-    margin-top:20px;
+/* MEMORY */
+
+.photos{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:20px;
 }
 
-.memory{
-    aspect-ratio:1/1;
-    border-radius:15px;
-    overflow:hidden;
-    background:#121a25;
-    border:1px solid rgba(255,255,255,.1);
+.photo{
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:15px;
+  background:#080d14;
+  border:1px solid rgba(255,255,255,.1);
 }
 
-.memory img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:#05070d;
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
 }
 
-.game-area{
-    height:260px;
-    position:relative;
-    margin-top:20px;
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:20px;
-    background:#080d16;
-    overflow:hidden;
+/* TARGET GAME */
+
+.game{
+  height:270px;
+  position:relative;
+  margin-top:20px;
+  border-radius:18px;
+  border:1px solid rgba(0,234,255,.15);
+  background:
+    radial-gradient(circle,rgba(0,234,255,.06),transparent 55%),
+    #050a11;
+  overflow:hidden;
 }
 
 .target{
-    position:absolute;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    border:3px solid #fff;
-    background:#00cfff;
-    box-shadow:0 0 25px #00cfff;
-    display:none;
-    cursor:pointer;
-    animation:pulse .6s infinite alternate;
+  position:absolute;
+  display:none;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  border:3px solid white;
+  background:#00d9ff;
+  box-shadow:
+    0 0 10px white,
+    0 0 30px #00d9ff;
+  cursor:pointer;
+  animation:pulse .5s infinite alternate;
 }
 
 @keyframes pulse{
-    to{transform:scale(.85)}
+  to{transform:scale(.82)}
 }
 
 .score{
-    margin-top:10px;
-    color:#65ddff;
-    font-weight:bold;
+  color:var(--cyan);
+  font-family:monospace;
+  margin-top:12px;
 }
 
-.choice{
-    display:grid;
-    gap:12px;
-    margin-top:25px;
+/* SECRET CODE */
+
+.codeInput{
+  margin-top:20px;
+  width:100%;
+  padding:16px;
+  border-radius:12px;
+  border:1px solid rgba(0,234,255,.2);
+  background:#080d14;
+  color:#fff;
+  text-align:center;
+  font-size:20px;
+  outline:none;
+  letter-spacing:5px;
 }
 
-.choice button{
-    padding:15px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.12);
-    background:#111927;
-    color:#fff;
-    cursor:pointer;
+.message{
+  min-height:25px;
+  margin-top:14px;
+  color:#ff607d;
 }
 
-.choice button:hover{
-    background:#1a2a40;
+/* FAKE BAN */
+
+.warning{
+  border:1px solid rgba(255,65,108,.35);
+  background:rgba(255,65,108,.07);
+  padding:20px;
+  border-radius:15px;
+  margin-top:20px;
+  font-family:monospace;
 }
 
-.fake{
-    font-family:monospace;
-    color:#ff647c;
-    margin:20px 0;
+.warning h3{
+  color:#ff5272;
+  margin-bottom:10px;
 }
 
-.big17{
-    font-size:clamp(100px,30vw,190px);
-    line-height:.8;
-    color:#66e6ff;
-    text-shadow:
-      0 0 15px #00cfff,
-      0 0 50px rgba(0,200,255,.6);
+/* FINAL */
+
+.level{
+  font-size:clamp(110px,30vw,200px);
+  font-weight:900;
+  line-height:.8;
+  color:var(--cyan);
+  text-shadow:
+    0 0 15px #00dfff,
+    0 0 60px rgba(0,200,255,.7);
 }
+
+.finalMessage{
+  font-size:17px;
+  line-height:1.8;
+  margin-top:15px;
+}
+
+/* CONFETTI */
 
 .confetti{
-    position:fixed;
-    width:8px;
-    height:14px;
-    top:-20px;
-    z-index:20;
-    animation:fall linear forwards;
+  position:fixed;
+  top:-30px;
+  width:8px;
+  height:15px;
+  z-index:100;
+  animation:fall linear forwards;
 }
 
 @keyframes fall{
-    to{
-        transform:translateY(110vh) rotate(720deg);
-    }
+  to{
+    transform:translateY(110vh) rotate(900deg);
+  }
 }
 
-.type{
-    min-height:55px;
+/* FLASH */
+
+.flash{
+  position:fixed;
+  inset:0;
+  background:white;
+  opacity:0;
+  pointer-events:none;
+  z-index:200;
 }
 
-@media(max-width:420px){
-    .card{padding:25px 17px}
-    .stats{gap:8px}
-    .stat{padding:14px 7px}
+.flash.go{
+  animation:flash .5s ease;
+}
+
+@keyframes flash{
+  0%{opacity:0}
+  30%{opacity:.9}
+  100%{opacity:0}
+}
+
+@media(max-width:430px){
+  .card{
+    padding:25px 16px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 1 -->
+<div class="flash" id="flash"></div>
+
+<!-- SCENE 1 -->
+
 <section class="scene active" id="s1">
-<div class="bg"></div><div class="grid"></div>
-<div class="card">
-    <div class="small">INCOMING TRANSMISSION</div>
-    <h1>MISSION<br><span class="neon">SHUBHAM</span></h1>
-    <p>A special birthday mission has been detected.</p>
-    <button class="btn" onclick="next(2)">ACCEPT MISSION 🎮</button>
-</div>
-</section>
+  <div class="background"></div>
+  <div class="grid"></div>
+  <div class="scan"></div>
 
-<!-- 2 -->
-<section class="scene" id="s2">
-<div class="bg"></div><div class="grid"></div>
-<div class="card">
-    <div class="small">MATCHMAKING SYSTEM</div>
-    <h2>Searching for teammate...</h2>
-    <div class="loader"><span id="load"></span></div>
+  <div class="card">
+    <div class="tag">SECURE SYSTEM // 2026</div>
 
-    <div class="status">
-        <div class="line" style="animation-delay:.2s">✓ Server connected</div>
-        <div class="line" style="animation-delay:.8s">✓ Player detected</div>
-        <div class="line" style="animation-delay:1.4s">✓ Match found</div>
-        <div class="line" style="animation-delay:2s">✓ SHUBHAM joined the lobby</div>
+    <div class="bootLogo">MISSION<br>17</div>
+
+    <div class="bootText" id="bootText">
+      INITIALIZING BIRTHDAY PROTOCOL...
     </div>
 
-    <button class="btn" onclick="next(3)">ENTER LOBBY</button>
-</div>
+    <div class="loader">
+      <span id="bootLoader"></span>
+    </div>
+
+    <button class="btn" onclick="next(2)">
+      START MISSION 🎮
+    </button>
+  </div>
 </section>
 
-<!-- 3 -->
-<section class="scene" id="s3">
-<div class="bg"></div><div class="grid"></div>
-<div class="card">
-    <div class="small">PLAYER FOUND</div>
-    <div class="player">🎮</div>
-    <h2>SHUBHAM</h2>
-    <p>
-        Ek random game.<br>
-        Ek random teammate.<br>
-        Aur phir...
+
+<!-- SCENE 2 -->
+
+<section class="scene" id="s2">
+  <div class="background"></div>
+  <div class="grid"></div>
+
+  <div class="card">
+    <div class="tag">MATCHMAKING</div>
+
+    <h2>Searching...</h2>
+
+    <div class="loader">
+      <span id="matchLoader"></span>
+    </div>
+
+    <p id="matchStatus">
+      Looking for a teammate...
     </p>
-    <h2 class="neon">Random teammate → Real friend.</h2>
-    <button class="btn" onclick="next(4)">CONTINUE</button>
-</div>
+
+    <button class="btn" onclick="startMatch()">
+      FIND PLAYER
+    </button>
+  </div>
 </section>
 
-<!-- 4 -->
+
+<!-- SCENE 3 -->
+
+<section class="scene" id="s3">
+  <div class="background"></div>
+
+  <div class="card">
+    <div class="tag">PLAYER FOUND</div>
+
+    <div class="avatar">🎮</div>
+
+    <h2 class="cyan">SHUBHAM</h2>
+
+    <p>
+      Ek random match.<br>
+      Ek random teammate.<br>
+      Aur phir...
+    </p>
+
+    <h2 style="margin-top:18px">
+      Random teammate →<br>
+      <span class="cyan">Real Friend.</span>
+    </h2>
+
+    <button class="btn" onclick="next(4)">
+      CONTINUE
+    </button>
+  </div>
+</section>
+
+
+<!-- SCENE 4 -->
+
 <section class="scene" id="s4">
-<div class="bg"></div>
-<div class="card">
-    <div class="small">PLAYER PROFILE</div>
+  <div class="background"></div>
+  <div class="grid"></div>
+
+  <div class="card">
+    <div class="tag">PLAYER ANALYSIS</div>
+
     <h2>SHUBHAM.exe</h2>
 
-    <div class="stats">
-        <div class="stat"><b>∞</b><span>Bakchodi</span></div>
-        <div class="stat"><b>MAX</b><span>Friendship</span></div>
-        <div class="stat"><b>999+</b><span>Funny Moments</span></div>
-        <div class="stat"><b>100%</b><span>Legend Energy</span></div>
+    <div class="profile">
+      <div class="stat">
+        <b>∞</b>
+        <span>Bakchodi</span>
+      </div>
+
+      <div class="stat">
+        <b>999+</b>
+        <span>Funny Moments</span>
+      </div>
+
+      <div class="stat">
+        <b>MAX</b>
+        <span>Friendship</span>
+      </div>
+
+      <div class="stat">
+        <b>100%</b>
+        <span>Legend Energy</span>
+      </div>
     </div>
 
-    <button class="btn" onclick="next(5)">VIEW MEMORIES 📸</button>
-</div>
+    <p style="margin-top:20px">
+      System verdict:
+      <span class="cyan">KEEP THIS FRIEND.</span>
+    </p>
+
+    <button class="btn" onclick="next(5)">
+      OPEN MEMORY VAULT 📸
+    </button>
+  </div>
 </section>
 
-<!-- 5 -->
+
+<!-- SCENE 5 -->
+
 <section class="scene" id="s5">
-<div class="bg"></div>
-<div class="card">
-    <div class="small">MEMORY VAULT</div>
-    <h2>Some moments 📸</h2>
-    <p>Yahan apni photos/screenshots add karna.</p>
+  <div class="background"></div>
 
-    <div class="memories">
-        <div class="memory"><img src="photo1.jpg" alt="Memory 1"></div>
-        <div class="memory"><img src="photo2.jpg" alt="Memory 2"></div>
-        <div class="memory"><img src="photo3.jpg" alt="Memory 3"></div>
-        <div class="memory"><img src="photo4.jpg" alt="Memory 4"></div>
+  <div class="card">
+    <div class="tag">MEMORY VAULT // LOCKED</div>
+
+    <h2>Our Moments</h2>
+
+    <p>
+      Kuch memories bina kisi mission ke bhi special hoti hain. 🤝
+    </p>
+
+    <div class="photos">
+      <div class="photo">
+        <img src="photo1.jpg" alt="Memory 1">
+      </div>
+
+      <div class="photo">
+        <img src="photo2.jpg" alt="Memory 2">
+      </div>
+
+      <div class="photo">
+        <img src="photo3.jpg" alt="Memory 3">
+      </div>
+
+      <div class="photo">
+        <img src="photo4.jpg" alt="Memory 4">
+      </div>
     </div>
 
-    <button class="btn" onclick="next(6)">NEXT MISSION</button>
-</div>
+    <button class="btn" onclick="next(6)">
+      NEXT MISSION
+    </button>
+  </div>
 </section>
 
-<!-- 6 -->
+
+<!-- SCENE 6 -->
+
 <section class="scene" id="s6">
-<div class="bg"></div><div class="grid"></div>
-<div class="card">
-    <div class="small">SKILL CHECK</div>
-    <h2>Can you handle this? 🎯</h2>
-    <p>Target ko <b>5 times</b> hit karo.</p>
+  <div class="background"></div>
+  <div class="grid"></div>
 
-    <div class="game-area" id="game">
-        <div class="target" id="target" onclick="hit()"></div>
+  <div class="card">
+    <div class="tag">SKILL CHECK</div>
+
+    <h2>PROVE YOUR AIM 🎯</h2>
+
+    <p>
+      Target ko 7 baar hit karo.
+    </p>
+
+    <div class="game">
+      <div
+        class="target"
+        id="target"
+        onclick="hitTarget()">
+      </div>
     </div>
 
-    <div class="score">HITS: <span id="score">0</span> / 5</div>
+    <div class="score">
+      TARGETS: <span id="score">0</span> / 7
+    </div>
 
-    <button class="btn" onclick="startGame()">START GAME</button>
-</div>
+    <button class="btn" onclick="startGame()">
+      START
+    </button>
+  </div>
 </section>
 
-<!-- 7 -->
+
+<!-- SCENE 7 -->
+
 <section class="scene" id="s7">
-<div class="bg"></div>
-<div class="card">
-    <div class="small">SYSTEM QUESTION</div>
-    <h2>Important question... 🤨</h2>
-    <p>Shubham ko birthday pe kya milna chahiye?</p>
+  <div class="background"></div>
 
-    <div class="choice">
-        <button onclick="wrong()">A. Ek aur match 🎮</button>
-        <button onclick="wrong()">B. Unlimited internet 📶</button>
-        <button onclick="correct()">C. Best wishes + cake 🎂</button>
-    </div>
+  <div class="card">
+    <div class="tag">SECRET TERMINAL</div>
 
-    <p id="answer" style="margin-top:18px"></p>
-</div>
+    <h2>ACCESS REQUIRED 🔐</h2>
+
+    <p>
+      Hint:<br>
+      Shubham ka birthday month + age
+    </p>
+
+    <input
+      id="code"
+      class="codeInput"
+      maxlength="6"
+      placeholder="ENTER CODE">
+
+    <div class="message" id="codeMsg"></div>
+
+    <button class="btn" onclick="checkCode()">
+      UNLOCK
+    </button>
+  </div>
 </section>
 
-<!-- 8 -->
+
+<!-- SCENE 8 -->
+
 <section class="scene" id="s8">
-<div class="bg"></div>
-<div class="card">
-    <div class="small">SYSTEM ERROR</div>
-    <h2>Connection Lost...</h2>
+  <div class="background"></div>
 
-    <div class="fake" id="disconnect">
-        SHUBHAM connection lost...
+  <div class="card">
+    <div class="tag">SYSTEM WARNING</div>
+
+    <h2 class="red">ACCOUNT DETECTED</h2>
+
+    <div class="warning">
+      <h3>⚠ SHUBHAM.exe</h3>
+      <p>
+        Too much legendary behaviour detected.
+      </p>
+
+      <p style="margin-top:10px;color:#ff5575">
+        Temporary birthday suspension initiated...
+      </p>
     </div>
 
-    <div class="loader"><span id="reconnect"></span></div>
-
-    <button class="btn" onclick="reconnect()">TRY RECONNECT</button>
-</div>
+    <button class="btn" onclick="next(9)">
+      WAIT... WHAT? 😭
+    </button>
+  </div>
 </section>
 
-<!-- 9 -->
+
+<!-- SCENE 9 -->
+
 <section class="scene" id="s9">
-<div class="bg"></div>
-<div class="card">
-    <div class="small">CONNECTION RESTORED</div>
-    <h2 class="neon">WELCOME BACK, SHUBHAM.</h2>
+  <div class="background"></div>
+  <div class="grid"></div>
+
+  <div class="card">
+    <div class="tag">SYSTEM OVERRIDE</div>
+
+    <h2 class="cyan">
+      JUST KIDDING 😂
+    </h2>
+
     <p>
-        Birthday ke din disconnect allowed nahi hai bhai. 😂
-        <br><br>
-        Aaj mission kuch aur hai.
+      Birthday pe ban karne ki himmat system mein bhi nahi hai.
+      😭
     </p>
-    <button class="btn" onclick="next(10)">OPEN FINAL MISSION</button>
-</div>
+
+    <p style="margin-top:15px">
+      Connection restored.
+    </p>
+
+    <button class="btn" onclick="next(10)">
+      CONTINUE
+    </button>
+  </div>
 </section>
 
-<!-- 10 -->
+
+<!-- SCENE 10 -->
+
 <section class="scene" id="s10">
-<div class="bg"></div><div class="grid"></div>
-<div class="card">
-    <div class="small">FINAL MISSION</div>
-    <h2>One last thing...</h2>
-    <p class="type" id="typing"></p>
-    <button class="btn" onclick="next(11)">REVEAL 🎁</button>
-</div>
-</section>
+  <div class="background"></div>
 
-<!-- 11 -->
-<section class="scene" id="s11">
-<div class="bg"></div>
-<div class="card">
-    <div class="small">PLAYER LEVEL UP</div>
-    <div class="big17">17</div>
-    <h2>LEVEL UP COMPLETE 🎉</h2>
-    <p>
-        SHUBHAM has officially unlocked<br>
-        <span class="neon">LEVEL 17</span>
+  <div class="card">
+    <div class="tag">FINAL TRANSMISSION</div>
+
+    <h2>One Last Message...</h2>
+
+    <p
+      id="typing"
+      style="min-height:150px;text-align:left;margin-top:20px">
     </p>
-    <button class="btn" onclick="next(12);celebrate()">CLAIM REWARD 🎁</button>
-</div>
+
+    <button
+      class="btn"
+      id="revealBtn"
+      style="display:none"
+      onclick="next(11)">
+      OPEN FINAL DROP 🎁
+    </button>
+  </div>
 </section>
 
-<!-- 12 -->
+
+<!-- SCENE 11 -->
+
+<section class="scene" id="s11">
+  <div class="background"></div>
+  <div class="grid"></div>
+
+  <div class="card">
+    <div class="tag">PLAYER LEVEL UP</div>
+
+    <div class="level">17</div>
+
+    <h2>
+      LEVEL UP COMPLETE 🎉
+    </h2>
+
+    <p>
+      SHUBHAM has unlocked
+      <span class="cyan">LEVEL 17</span>.
+    </p>
+
+    <button class="btn" onclick="finale()">
+      CLAIM BIRTHDAY REWARD 🎁
+    </button>
+  </div>
+</section>
+
+
+<!-- SCENE 12 -->
+
 <section class="scene" id="s12">
-<div class="bg"></div><div class="grid"></div>
-<div class="card">
-    <div class="small">MISSION COMPLETE</div>
-    <h1>HAPPY<br><span class="neon">BIRTHDAY</span></h1>
+  <div class="background"></div>
+  <div class="grid"></div>
+  <div class="scan"></div>
+
+  <div class="card">
+
+    <div class="tag">MISSION COMPLETE</div>
+
+    <h1>
+      HAPPY<br>
+      <span class="cyan">BIRTHDAY</span>
+    </h1>
+
     <h2>SHUBHAM 🎂🔥</h2>
 
-    <p>
-        Game mein mila tha tu,<br>
-        lekin friendship game ke bahar bhi continue ho gayi. 🤝
-        <br><br>
-        17th birthday mubarak bhai! ❤️
-        <br><br>
-        Stay crazy. Stay legendary.
-    </p>
+    <div class="finalMessage">
 
-    <button class="btn" onclick="celebrate()">BOOYAH! 🎉</button>
-</div>
+      <p>
+        27 AUGUST 2026
+      </p>
+
+      <p style="margin-top:18px">
+        Game mein mila tha tu,
+        <br>
+        but somehow ek random teammate
+        <br>
+        <span class="cyan">
+          ek genuine friend ban gaya.
+        </span>
+      </p>
+
+      <p style="margin-top:18px">
+        Aaj bas ek cheez wish karta hoon —
+        <br>
+        life ke har match mein
+        <br>
+        <b>good teammates milte rahein.</b> 🤝
+      </p>
+
+      <p style="margin-top:20px">
+        <b>
+          Happy 17th Birthday, Bhai! ❤️🔥
+        </b>
+      </p>
+
+    </div>
+
+    <button class="btn" onclick="celebrate()">
+      BOOYAH! 🎉
+    </button>
+
+  </div>
 </section>
 
+
 <script>
+
+/* =========================
+   BASIC NAVIGATION
+========================= */
+
 let current=1;
-let score=0;
-let gameRunning=false;
 
 function next(n){
-    document.getElementById("s"+current).classList.remove("active");
-    current=n;
-    document.getElementById("s"+current).classList.add("active");
 
-    if(n===2){
-        setTimeout(()=>{
-            document.querySelector("#load").style.width="100%";
-        },100);
-    }
+  const oldScene=document.getElementById("s"+current);
+  const newScene=document.getElementById("s"+n);
 
-    if(n===10){
-        typeMessage();
-    }
+  if(!newScene)return;
+
+  oldScene.classList.remove("active");
+  newScene.classList.add("active");
+
+  current=n;
+
+  if(n===2){
+    setTimeout(()=>{
+      document.getElementById("bootLoader").style.width="100%";
+    },100);
+  }
+
+  if(n===10){
+    startTyping();
+  }
 }
 
-function wrong(){
-    const a=document.getElementById("answer");
-    a.textContent="❌ Galat answer! Ek baar aur soch bhai 😂";
+
+/* =========================
+   MATCHMAKING
+========================= */
+
+function startMatch(){
+
+  const loader=document.getElementById("matchLoader");
+  const status=document.getElementById("matchStatus");
+
+  loader.style.width="100%";
+
+  status.innerHTML="Searching for teammate...";
+
+  setTimeout(()=>{
+    status.innerHTML="Scanning players...";
+  },700);
+
+  setTimeout(()=>{
+    status.innerHTML="Player detected...";
+  },1400);
+
+  setTimeout(()=>{
+    status.innerHTML=
+      '<span class="cyan">SHUBHAM joined the lobby.</span>';
+  },2100);
+
+  setTimeout(()=>{
+    next(3);
+  },2900);
 }
 
-function correct(){
-    const a=document.getElementById("answer");
-    a.textContent="✅ Correct! Cake + wishes = mandatory. 🎂";
-    setTimeout(()=>next(8),900);
-}
+
+/* =========================
+   TARGET GAME
+========================= */
+
+let hits=0;
+let playing=false;
 
 function startGame(){
-    score=0;
-    gameRunning=true;
-    document.getElementById("score").textContent=score;
-    spawnTarget();
+
+  hits=0;
+  playing=true;
+
+  document.getElementById("score").textContent="0";
+
+  spawnTarget();
 }
 
 function spawnTarget(){
-    if(!gameRunning)return;
 
-    const target=document.getElementById("target");
-    const area=document.getElementById("game");
+  if(!playing)return;
 
-    const maxX=area.clientWidth-60;
-    const maxY=area.clientHeight-60;
+  const target=document.getElementById("target");
+  const game=document.querySelector(".game");
 
-    target.style.left=Math.random()*maxX+"px";
-    target.style.top=Math.random()*maxY+"px";
-    target.style.display="block";
+  const maxX=game.clientWidth-65;
+  const maxY=game.clientHeight-65;
+
+  target.style.left=
+    Math.random()*maxX+"px";
+
+  target.style.top=
+    Math.random()*maxY+"px";
+
+  target.style.display="block";
 }
 
-function hit(){
-    if(!gameRunning)return;
+function hitTarget(){
 
-    score++;
-    document.getElementById("score").textContent=score;
+  if(!playing)return;
 
-    if(score>=5){
-        gameRunning=false;
-        document.getElementById("target").style.display="none";
-        setTimeout(()=>next(7),500);
-    }else{
-        spawnTarget();
-    }
-}
+  hits++;
 
-function reconnect(){
-    document.getElementById("reconnect").style.width="100%";
+  document.getElementById("score").textContent=hits;
+
+  if(hits>=7){
+
+    playing=false;
+
+    document.getElementById("target").style.display="none";
 
     setTimeout(()=>{
-        next(9);
-    },2600);
+      next(7);
+    },600);
+
+  }else{
+
+    spawnTarget();
+
+  }
 }
 
-function typeMessage(){
-    const text=
-    "Bro, life ke har match mein perfect teammates nahi milte... "+
-    "but kabhi-kabhi ek random game se ek genuine friend mil jata hai. "+
-    "Aur aaj usi friend ka birthday hai. ❤️";
 
-    const el=document.getElementById("typing");
-    el.textContent="";
-    let i=0;
+/* =========================
+   SECRET CODE
+========================= */
 
-    const timer=setInterval(()=>{
-        el.textContent+=text[i];
-        i++;
+/*
+   August = 08
+   Age = 17
 
-        if(i>=text.length){
-            clearInterval(timer);
-        }
-    },28);
+   CODE = 0817
+*/
+
+function checkCode(){
+
+  const input=
+    document.getElementById("code").value.trim();
+
+  const msg=
+    document.getElementById("codeMsg");
+
+  if(input==="0817"){
+
+    msg.style.color="#45ff9a";
+    msg.textContent="ACCESS GRANTED ✓";
+
+    setTimeout(()=>{
+      next(8);
+    },800);
+
+  }else{
+
+    msg.style.color="#ff5575";
+    msg.textContent=
+      "ACCESS DENIED ❌ Hint dobara padho.";
+
+  }
 }
+
+
+/* =========================
+   FINAL TYPING MESSAGE
+========================= */
+
+function startTyping(){
+
+  const text=
+  "Bro, life mein bahut log milte hain. "+
+  "Kuch log sirf ek match tak rehte hain... "+
+  "aur kuch log random match se start hokar genuine friendship tak pahunch jaate hain. "+
+  "Tu unhi logon mein se hai. ❤️";
+
+  const el=document.getElementById("typing");
+  const btn=document.getElementById("revealBtn");
+
+  el.textContent="";
+  btn.style.display="none";
+
+  let i=0;
+
+  const timer=setInterval(()=>{
+
+    el.textContent+=text[i];
+
+    i++;
+
+    if(i>=text.length){
+
+      clearInterval(timer);
+
+      setTimeout(()=>{
+        btn.style.display="inline-block";
+      },500);
+    }
+
+  },32);
+}
+
+
+/* =========================
+   FINAL CELEBRATION
+========================= */
+
+function finale(){
+
+  const flash=
+    document.getElementById("flash");
+
+  flash.classList.add("go");
+
+  setTimeout(()=>{
+    flash.classList.remove("go");
+  },600);
+
+  next(12);
+
+  setTimeout(()=>{
+    celebrate();
+  },500);
+}
+
 
 function celebrate(){
-    for(let i=0;i<100;i++){
-        const c=document.createElement("div");
-        c.className="confetti";
-        c.style.left=Math.random()*100+"vw";
-        c.style.animationDuration=(2+Math.random()*3)+"s";
-        c.style.animationDelay=Math.random()*1.5+"s";
-        c.style.transform="rotate("+Math.random()*360+"deg)";
-        document.body.appendChild(c);
 
-        setTimeout(()=>c.remove(),6000);
-    }
+  const symbols=[
+    "🎉","✨","🎊","🔥","💙","⭐","🎂"
+  ];
+
+  for(let i=0;i<130;i++){
+
+    const c=document.createElement("div");
+
+    c.className="confetti";
+
+    c.textContent=
+      symbols[
+        Math.floor(Math.random()*symbols.length)
+      ];
+
+    c.style.left=
+      Math.random()*100+"vw";
+
+    c.style.fontSize=
+      (10+Math.random()*15)+"px";
+
+    c.style.animationDuration=
+      (2+Math.random()*4)+"s";
+
+    c.style.animationDelay=
+      Math.random()*1.5+"s";
+
+    document.body.appendChild(c);
+
+    setTimeout(()=>{
+      c.remove();
+    },6500);
+  }
 }
+
+
+/* =========================
+   BOOT TEXT
+========================= */
+
+setTimeout(()=>{
+
+  const text=document.getElementById("bootText");
+
+  text.textContent=
+    "PLAYER PROFILE FOUND: SHUBHAM";
+
+},900);
+
 </script>
 
 </body>
